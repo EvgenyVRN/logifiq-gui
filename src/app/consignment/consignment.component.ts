@@ -1,6 +1,7 @@
 import { Consignment } from '../consignment';
 import { ConsignmentService } from '../consignment.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-consignment',
@@ -9,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsignmentComponent implements OnInit {
 
-  consignment: Consignment;
+  consignment: Observable<Consignment>;
 
   constructor( private consignmentService: ConsignmentService ) { }
 
   ngOnInit() {
-    this.getConsignment(1);
+    this.getConsignment(100000109);
   }
 
   getConsignment( id: number ): void {
