@@ -3,16 +3,23 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ConsignmentComponent } from './consignment/consignment.component';
+import { FormsModule } from '@angular/forms';
+import { ConsignmentService } from './consignment.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConsignmentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ConsignmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
