@@ -5,6 +5,8 @@ export class Contractor {
   name: string;
   fullName: string;
   businessId: string;
-  VATid: string;
+  vatid: string;
   addresses: Address[];
+  enable: boolean;
+  author: number;
 }

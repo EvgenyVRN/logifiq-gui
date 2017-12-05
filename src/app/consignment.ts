@@ -1,10 +1,13 @@
 import { Contractor } from './contractor';
+import { Document } from './document';
 
 export class Consignment {
   id: number;
-  direction: string;
+  document: Document;
+//  direction: string;
   consignor: Contractor;
   consignee: Contractor;
   deliveryToCompany: Contractor;
   finalDestination: Contractor;
+  enable: boolean;
 }

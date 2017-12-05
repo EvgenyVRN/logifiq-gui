@@ -1,3 +1,13 @@
 <p>
   consignments-list works!
 </p>
+
+  <ul class="consignments">
+  	<li *ngFor="let consignment of consignments">
+  		<p>{{consignment.id}}</p>
+  		<p>{{consignment.consignor.name}}</p>
+  		<p>{{consignment.consignee.name}}</p>
+  		<p>{{consignment.finalDestination.name}}</p>
+  		<p>{{consignment.document.updateTime}}</p>
+  </ul> 
+

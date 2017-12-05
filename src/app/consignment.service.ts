@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class ConsignmentService {
 
-  private consignmentUrl = 'localhost:8080/expedition/consignments';
+  private consignmentUrl = 'http://138.197.186.218/rest/expedition/consignments';
 
   constructor( private http: HttpClient ) { }
 
