@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable()
 export class ConsignmentService {
 
-  private consignmentUrl = 'http://138.197.186.218/rest/expedition/consignments';
+  private consignmentUrl = '/rest/expedition/consignments';
 
   constructor( private http: HttpClient ) { }
 
@@ -28,6 +28,27 @@ export class ConsignmentService {
 
   getConsignments(): Observable<Consignment[]> {
     return this.http.get<Consignment[]>(this.consignmentUrl);
+  }
+
+  updateConsignment( consignment: Consignment ): Observable<Consignment> {
+    const url = `${this.consignmentUrl}/${consignment.id}`;
+    return this.http.put(url, consignment, httpOptions).pipe(
+      catchError(this.handleError<any>('updateConsignment id = ${consignment.id}'))
+    );
+  }
+
+  createConsignment( consignment: Consignment ): Observable<Consignment> {
+    return this.http.post<Consignment>(this.consignmentUrl, consignment, httpOptions).pipe(
+      catchError(this.handleError<Consignment>('createHero'))
+    );
+  }
+
+  deleteConsignment(consignment: Consignment | number): Observable<Consignment> {
+    const id = typeof consignment === 'number' ? consignment : consignment.id;
+    const url = `${this.consignmentUrl}/${id}`;
+    return this.http.delete<Consignment>(url, httpOptions).pipe(
+      catchError(this.handleError<Consignment>('deleteConsignment'))
+    );
   }
 
   /**
