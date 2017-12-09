@@ -30,8 +30,6 @@
       "../node_modules/bootstrap/dist/js/bootstrap.min.js",
       "../node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js",
       "../node_modules/modernizr/src/Modernizr.js",
-      "assets/scripts.js",
-      "assets/template-script.js",
       "../node_modules/jquery-ui/ui/jquery-1-7.js"
       ],
       "environmentSource": "environments/environment.ts",
