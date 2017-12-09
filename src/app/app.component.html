@@ -1,6 +1,118 @@
-<h1> {{title}} </h1>
-<nav>
-  <a routerLink="/consignments">Consignments</a>
-  <a routerLink="/consignment">Consignment1</a>
-</nav>
-<router-outlet></router-outlet>
+
+<!--<link href="/resources/ui-select/select.min.css" rel="stylesheet">  -->
+
+
+<!--<script src="<c:url value='/resources/angularjs/angular-route.min.js' />"></script>
+<script src="<c:url value='/resources/sanitize/angular-sanitize.min.js' />"></script>
+<script src="<c:url value='/resources/ui-select/select.min.js' />"></script>  -->
+
+<div class="left-side sticky-left-side" style="overflow: hidden; outline: none;" tabindex="5000">
+  <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+  <div class="left-side-inner">
+
+    <!--sidebar nav start-->
+    <ul class="nav nav-pills nav-stacked custom-nav">
+      <li class="menu-list nav-active"><a href=""><i class="fa fa-cubes" aria-hidden="true"></i><span>Warehousing</span></a>
+        <ul class="sub-menu-list">
+          <li><a href="/arrival/arrivalView"> <i class="fa fa-truck"></i>Arrivals</a></li>
+          <li><a href="/warehouse/orderView"> <i class="fa fa-list-ul"></i>Orders</a></li>
+          <li><a href="/warehouse/goodInStock"> <i class="fa fa-shopping-basket" aria-hidden="true"></i>Goods in stock</a></li>
+          <li><a href=""> <i class="fa fa-calendar-check-o" aria-hidden="true"></i>Reports</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-list"><a href=""><i class="fa fa-globe" aria-hidden="true"></i><span>Expedition</span></a>
+        <ul class="sub-menu-list">
+          <li><a routerLink="/expedition/consignments"> <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Consignment</a></li>
+          <!--<li><a href=""> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Export</a></li>-->
+          <li><a href=""> <i class="fa fa-tags" aria-hidden="true"></i>EDI</a></li>
+        </ul>
+      </li>
+      <li class="menu-list"><a href=""><i class="fa fa-calculator" aria-hidden="true"></i><span>Billing</span></a>
+        <ul class="sub-menu-list">
+          <li><a href=""><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Overview</a></li>
+          <li><a href=""><i class="fa fa-qrcode" aria-hidden="true"></i>Warehouse rent</a></li>
+          <li><a href=""><i class="fa fa-envelope-open-o" aria-hidden="true"></i>Invoicing</a></li>
+        </ul>
+      </li><li><a href="/registry/contractView"><i class="fa fa-handshake-o" aria-hidden="true"></i><span>Contracts</span></a>
+    </li><li class="menu-list"><a href=""><i class="fa fa-cog" aria-hidden="true"></i><span>Registry</span></a>
+      <ul class="sub-menu-list">
+        <li><a href="/registry/addressView"><i class="fa fa-address-book-o" aria-hidden="true"></i>Addresses</a></li>
+        <li><a href="/registry/areaType/typeView"><i class="fa fa-map-o" aria-hidden="true"></i>Area types</a></li>
+        <li><a href="/registry/arrivalType/arrivalTypeView"><i class="fa fa-truck" aria-hidden="true"></i>Arrival types</a></li>
+        <li><a href="/registry/currency/currencyView"><i class="fa fa-money" aria-hidden="true"></i>Currencies</a></li>
+        <li><a href="/registry/contractorView"><i class="fa fa-users" aria-hidden="true"></i>Customers</a></li>
+        <li><a href="/registry/good/goodView"><i class="fa fa-square" aria-hidden="true"></i>Products</a></li>
+        <li><a href="/registry/unit/unitView"><i class="fa fa-superpowers" aria-hidden="true"></i>Units</a></li>
+        <li><a href="/registry/warehouseView"><i class="fa fa-building-o" aria-hidden="true"></i>Warehouses</a></li>
+        <li><a href="/registry/areaView"><i class="fa fa-map-o" aria-hidden="true"></i>Warehouse Areas</a></li>
+        <li><a href="/registry/placeView"><i class="fa fa-map-marker" aria-hidden="true"></i>Warehouse Places</a></li>
+
+
+      </ul>
+    </li>
+      <li class="menu-list"><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Statistical reports</span></a>
+        <ul class="sub-menu-list">
+          <li><a href=""><i class="fa fa-cubes" aria-hidden="true"></i>Warehouse</a></li>
+          <li><a href=""><i class="fa fa-globe" aria-hidden="true"></i>Expedition</a></li>
+          <li><a href=""><i class="fa fa-calculator" aria-hidden="true"></i>Billing</a></li>
+          <li><a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i>Administrative</a></li>
+        </ul>
+      </li></ul></div>
+</div>
+
+<div class="main-content">
+  <div class="header-section">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="logo">
+          <a href="/index"><img [src]="logoPath" alt=""></a>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="quick_access">
+          <a href="/arrival/arrivalView" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Arrivals"><i class="fa fa-truck" aria-hidden="true"></i></a>
+          <a href="/warehouse/orderView" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Orders"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
+          <a href="/warehouse/goodInStock" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Goods In Stock"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Registry"><i class="fa fa-cog" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <!--search -->
+      <div class="col-md-3">
+        <div class="searching">
+          <form action="index" method="post">
+            <input type="text" class="form-control" name="keyword" placeholder="Search here...">
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+
+        <!--notification menu -->
+
+        <div class="menu-right">
+
+          <ul class="notification-menu">
+            <li>
+              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                username
+                <span class="caret"></span>
+              </a>
+
+              <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                <li><a href="#"><i class="fa fa-bell-o"></i>  Notifications</a></li>
+                <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<div id="ascrail2000" class="nicescroll-rails" style="width: 6px; z-index: 1000; background: rgb(66, 79, 99); cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; display: block; opacity: 0;"><div style="position: relative; top: 16px; float: right; width: 6px; height: 82px; background-color: rgb(101, 206, 167); border: 0px; background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 6px; z-index: 1000; background: rgb(66, 79, 99); position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 0;"><div style="position: relative; top: 0px; height: 6px; width: 1366px; background-color: rgb(101, 206, 167); border: 0px; background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2001" class="nicescroll-rails" style="width: 3px; z-index: 100; background: rgb(66, 79, 99); cursor: default; position: fixed; top: 0px; left: 237px; height: 374px; display: block; opacity: 0;"><div style="position: relative; top: 0px; float: right; width: 3px; height: 261px; background-color: rgb(101, 206, 167); border: 0px; background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2001-hr" class="nicescroll-rails" style="height: 3px; z-index: 100; background: rgb(66, 79, 99); top: 371px; left: 0px; position: fixed; cursor: default; display: none; width: 237px; opacity: 0;"><div style="position: relative; top: 0px; height: 3px; width: 240px; background-color: rgb(101, 206, 167); border: 0px; background-clip: padding-box; border-radius: 0px;"></div></div>
+

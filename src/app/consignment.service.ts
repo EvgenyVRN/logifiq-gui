@@ -14,6 +14,7 @@ const httpOptions = {
 
 @Injectable()
 export class ConsignmentService {
+  title = 'Consignment';
 
   private consignmentUrl = '/rest/expedition/consignments';
 
