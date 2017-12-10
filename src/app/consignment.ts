@@ -22,4 +22,7 @@ export class Consignment {
   termsOfDelivery: TermsOfDelivery;
   goodsInConsignment: GoodInConsignment[];
   enable: boolean;
+  totalPackages: number;
+  totalWeight: number;
+  totalVolume: number;
 }

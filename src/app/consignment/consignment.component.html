@@ -1,6 +1,539 @@
-<p>
-  consignment works!
-</p>
+
+<div class="wrapper">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="./consignments">Browse Consignment</a></li>
+                <li class="active"><a href="#">Add New Consignment</a></li>
+            </ul>
+            <div>
+                <form name="myForm" class="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">General Information</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <ng-select
+                                        [items]="statuses"
+                                        placeholder="Select status">
+                                        </ng-select>
+                                        <label>Status</label></div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <!-- ui-select id="direction" ng-model="ctrl.consignment.direction" theme="bootstrap" style="min-width: 150px;" title="Choose direction" required>
+                                            <ui-select-match placeholder="Direction">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices repeat="direction in ctrl.directions | filter: {name : $select.search}">
+                                                <div ng-bind-html="direction.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select><label class="label-border">Direction</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                       <!--  <ui-select ng-model="ctrl.consignment.goodsHolder" theme="bootstrap"
+                                                   style="min-width: 25%;" title="Choose goods holder" required>
+                                            <ui-select-match placeholder="Select a goods holder">
+                                                {{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border  lefted">Goods holder</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.payer" theme="bootstrap"
+                                                   style="min-width: 25%;" title="Choose a cost payer" required>
+                                            <ui-select-match placeholder="Select a cost payer">
+                                                {{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border  lefted">Cost payer</label> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Parties</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.consignor" theme="bootstrap"
+                                                   style="min-width:25%;" title="Choose consignor"
+                                                   ng-change="changeSelectStyle(this, $select)" required>
+                                            <ui-select-match placeholder="Select a contractor">{{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border lefted">Consignor</label> -->
+                                    </div>
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-disabled="!ctrl.arrival.contractor"
+                                                   ng-controller="AddressController as a_ctrl"
+                                                   ng-model="ctrl.arrival.address" theme="bootstrap"
+                                                   style="min-width: 25%;" title="Choose address"
+                                                   append-to-body="false">
+                                            <ui-select-match placeholder="Select an address"> Already chosen
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="address in ctrl.arrival.contractor.addresses | filter:  $select.search ">
+                                                <div ng-bind-html="address.index +', ' + address.country.country | highlight: $select.search"></div>
+                                                <small>
+                                                    city: {{address.city}}
+                                                    street: {{ address.street }}
+                                                    apt: {{ address.apt }}
+                                                </small>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border lefted">Choose address</label> -->
+                                    </div>
+                                    <div class="form-group relative">
+                                        <input required placeholder="Building"/>
+                                        <label class="label-border">Building</label>
+                                    </div>
+                                    <div class="form-group relative">
+                                        <input required placeholder="Street"/>
+                                        <label class="label-border lefted">Street</label>
+                                    </div>
+                                    <div class="form-group relative">
+                                        <input required placeholder="ZIP"/>
+                                        <label class="label-border lefted">ZIP</label>
+                                    </div>
+                                    <div class="form-group relative">
+                                        <input required placeholder="City"/>
+                                        <label class="label-border lefted">City</label>
+                                    </div>
+                                    <div class="form-group relative">
+                                       <!--  <ui-select ng-model="ctrl.arrival.address.country" theme="bootstrap"
+                                                   style="min-width: 75px;"
+                                                   title="Choose country" required>
+                                            <ui-select-match placeholder="Choose country">{{$select.selected.country}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="country in ctrl.countries | filter: {country : $select.search}">
+                                                <div ng-bind-html="country.country | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <label class="label-border lefted">Country</label> -->
+                                    </div>
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.consignorCustomsOffice" theme="bootstrap"
+                                                   style="min-width: 75px;"
+                                                   title="Choose customs office" required>
+                                            <ui-select-match placeholder="Choose customs office">{{$select.selected.country}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="custom in ctrl.customs | filter: {country : $select.search}">
+                                                <div ng-bind-html="custom.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <label class="label-border lefted">Customs</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.consignee" theme="bootstrap"
+                                                   style="min-width: 25%;"
+                                                   title="Choose consignee" required>
+                                            <ui-select-match placeholder="Select a consignee">{{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border lefted">Consignee</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.deliverTo" theme="bootstrap"
+                                                   style="min-width: 25%;" title="Choose deliver to" required>
+                                            <ui-select-match placeholder="Select a deliver to">
+                                                {{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border  lefted">Deliver to</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group relative">
+                                       <!--  <ui-select ng-model="ctrl.consignment.finalDestination" theme="bootstrap"
+                                                   style="min-width: 25%;" title="Choose final destination" required>
+                                            <ui-select-match placeholder="Select a final destination">
+                                                {{$select.selected.name}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="c in contractor_ctrl.contractors | filter: {name : $select.search}">
+                                                <div ng-bind-html="c.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                            <ui-select-no-choice>
+                                                No choices
+                                            </ui-select-no-choice>
+                                        </ui-select>
+                                        <label class="label-border lefted">Final destination</label> -->
+                                    </div>
+                                    <div class="form-group relative">
+                                        <!-- <ui-select ng-model="ctrl.consignment.finalDestinationCustomsOffice" theme="bootstrap"
+                                                   style="min-width: 75px;"
+                                                   title="Choose customs office" required>
+                                            <ui-select-match placeholder="Choose customs office">{{$select.selected.country}}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="custom in ctrl.customs | filter: {country : $select.search}">
+                                                <div ng-bind-html="custom.name | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <label class="label-border lefted">Customs</label> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Additional information</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input 
+                                               placeholder="Vehicle registration number"/>
+                                        <label class="label-border">Vehicle registration</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" 
+                                               placeholder="Vehicle registration country"/>
+                                        <label class="label-border">Vehicle registration country</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" 
+                                               placeholder="Transport mode"/>
+                                        <label class="label-border">Transport mode</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input 
+                                               placeholder="Active vehicle registration number"/>
+                                        <label class="label-border">Active vehicle registration number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" 
+                                               placeholder="Vehicle registration country"/>
+                                        <label class="label-border">Vehicle registration country</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" 
+                                               placeholder="Transport mode"/>
+                                        <label class="label-border">Transport mode</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Seals</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input
+                                               placeholder="Delivery terms"/>
+                                        <label class="label-border">Delivery terms</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               placeholder="Places"/>
+                                        <label class="label-border">Places</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               placeholder="Release terms"/>
+                                        <label class="label-border">Release terms</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               placeholder="Places"/>
+                                        <label class="label-border">Places</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Goods</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <!-- <ui-select ng-model="ctrl.arrival.warehouse" ng-change="ctrl.onWarehouseChange()"
+                                               theme="bootstrap" style="min-width: 300px;" title="Choose warehouse" required>
+                                        <ui-select-match placeholder="Select a warehouse">
+                                            {{$select.selected.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="wh in w_ctrl.warehouses | filter: filter: {name : $select.search}">
+                                            <div ng-bind-html="wh.name | highlight: $select.search"></div>
+                                        </ui-select-choices>
+                                        <ui-select-no-choice>
+                                            No choices
+                                        </ui-select-no-choice>
+                                    </ui-select>
+                                    <label class="label-border">Warehouse</label> -->
+                                </div>
+                            </div>
+                            <div class="good">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <label class="index">{{ 'Row #' + (1) }}</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="#">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input size="5" placeholder="Pkgs" required/>
+                                            <label class="label-border">Places</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                           <!--  <ui-select ng-model="good.placeUnit" theme="bootstrap"
+                                                       title="Choose unit" required>
+                                                <ui-select-match placeholder="Choose unit">{{$select.selected.name}}
+                                                </ui-select-match>
+                                                <ui-select-choices
+                                                        repeat="unit in unit_ctrl.units | filter: {name : $select.search}">
+                                                    <div ng-bind-html="unit.name | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                                <ui-select-no-choice>
+                                                    No choices
+                                                </ui-select-no-choice>
+                                            </ui-select>
+                                            <label class="label-border">Package type</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <input size="6" class="numeric" placeholder="Weight" required/>
+                                            <label class="label-border">Weight</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <input size="5"  placeholder="Volume" required/>
+                                            <label class="label-border">Volume</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="">
+                                            <input size="5" placeholder="Area"/>
+                                            <label class="label-border">Area</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                            <input size="5" placeholder="Freight weight"/>
+                                            <label class="label-border">Freight weight</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                           <!--  <ui-select ng-model="good.country" theme="bootstrap"
+                                                       title="Choose country">
+                                                <ui-select-match placeholder="Choose country">{{$select.selected.country}}
+                                                </ui-select-match>
+                                                <ui-select-choices
+                                                        repeat="country in ctrl.countries | filter: {country : $select.search}">
+                                                    <div ng-bind-html="country.country | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                            <label class="label-border">Country</label> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                            <!-- <ui-select ng-model="good.good" theme="bootstrap"
+                                                       title="Choose product" required>
+                                                <ui-select-match placeholder="Choose product...">{{$select.selected.name}}
+                                                </ui-select-match>
+                                                <ui-select-choices
+                                                        repeat="good in good_ctrl.goods | filter: {name : $select.search}">
+                                                    <div ng-bind-html="good.name | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                                <ui-select-no-choice>
+                                                    No choices
+                                                </ui-select-no-choice>
+                                            </ui-select>
+                                            <label class="label-border">Product</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                            <input disabled placeholder="Taric"/>
+                                            <label class="label-border">Taric</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+
+                                            <input disabled placeholder="Decription"/>
+                                            <label class="label-border">Product description</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                            <!-- <ui-select ng-model="good.warehouseArea"
+                                                       ng-disabled="!ctrl.arrival.warehouse"
+                                                       ng-change="ctrl.onAreaChange(good)"
+                                                       theme="bootstrap"
+                                                       reset-search-input="false"
+                                                       style="width: 150px;"
+                                                       title="Choose an area"
+                                                       required> -->
+                                                <!-- <ui-select-match placeholder="Enter an area...">{{$select.selected.name}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="area in area_ctrl.areas track by $index"
+                                                                   refresh="area_ctrl.refreshAreas(true, $select.search, ctrl.arrival.warehouse.id)"
+                                                                   refresh-delay="0">
+                                                    <div ng-bind-html="area.name | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                                <ui-select-no-choice>
+                                                    No choices
+                                                </ui-select-no-choice>
+                                            </ui-select>
+                                            <label class="label-border">Area</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                           <!--  <ui-select ng-model="good.warehousePlace"
+                                                       ng-disabled="!good.warehouseArea"
+                                                       theme="bootstrap"
+                                                       reset-search-input="false"
+                                                       style="width: 150px;"
+                                                       title="Choose an place"
+                                                       required>
+                                                <ui-select-match placeholder="Enter a place...">{{$select.selected.name}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="place in place_ctrl.places track by $index"
+                                                                   refresh="place_ctrl.refreshPlaces(true, $select.search, good.warehouseArea.id)"
+                                                                   refresh-delay="0">
+                                                    <div ng-bind-html="place.name | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                                <ui-select-no-choice>
+                                                    No choices
+                                                </ui-select-no-choice>
+                                            </ui-select>
+                                            <label class="label-border">Place</label> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="button">Add row</button>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Totals</h3>
+                        </div>
+                        <div class="panel-body">
+
+
+                        </div>
+                    </div>
+                    <div class="btns-arrival">
+                        <input type="submit" value="Save" ng-disabled="myForm.$invalid">
+                        <input value="Cancel">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
 <div>
 	{{consignment.id}}
 	<label>name:

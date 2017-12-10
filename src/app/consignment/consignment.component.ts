@@ -13,6 +13,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment;
 
+  public statuses:Array<string>=['First', 'Second'];
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,

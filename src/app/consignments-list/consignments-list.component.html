@@ -1,13 +1,132 @@
-<p>
-  consignments-list works!
-</p>
+<div class="wrapper">
+	<ul class="nav nav-tabs nav-justified">
+		<li class="active"><a href="#">Browse Consignment</a></li>
+		<li><a href="./consignment">Add New Consignment</a></li>
+	</ul>
+	<div>
+		<div id="popDiv" class="ontop">
+			<div class="modal-window"></div>
+		</div>
+		<div class="table-view">
+			<div class="row">
+				<table class="table table-striped table-condensed">
+					<tr>
+						<td>#</td>
+						<th>
+							<div class="relative">
 
-  <ul class="consignments">
-  	<li *ngFor="let consignment of consignments">
-  		<p>{{consignment.id}}</p>
-  		<p>{{consignment.consignor.name}}</p>
-  		<p>{{consignment.consignee.name}}</p>
-  		<p>{{consignment.finalDestination.name}}</p>
-  		<p>{{consignment.document.updateTime}}</p>
-  </ul> 
+								<select placeholder="Direction">
 
+								</select> <label class="label-border">Direction</label>
+							</div>
+						</th>
+						<th>
+							<div class="relative">
+
+								<input type="text" size="7" placeholder="Consignment ID" /> <label
+									class="label-border">Consignment ID</label>
+							</div>
+						</th>
+						<th>
+							<div class="relative">
+								<select placeholder="Consignor">
+								</select> <label class="label-border">Consignor</label>
+							</div>
+						</th>
+						<th style="width: 10%">
+							<div class="relative">
+								<input type="text" placeholder="Consignee" /> <label
+									class="label-border">Consignee</label>
+							</div>
+						</th>
+						<th>
+							<div class="relative">
+								<input type="text" size="7" placeholder="Vehicle ID" /> <label
+									class="label-border">Vehicle ID</label>
+							</div>
+						</th>
+						<th class="oper-filters-arrivals" style="width: 8%;">
+							<div class="relative">
+								<select class="operator">
+									<option value="=">=</option>
+									<option value="<"><</option>
+									<option value=">">></option>
+								</select> <input placeholder="Pkgs" style="text-align: right;" /> <label
+									class="label-border">Pkgs</label>
+							</div>
+						</th>
+						<th class="oper-filters-arrivals" style="width: 8%;">
+							<div class="relative">
+								<select class="operator">
+									<option value="=">=</option>
+									<option value="<"><</option>
+									<option value=">">></option>
+								</select> <input placeholder="Weight" /> <label class="label-border">Weight</label>
+							</div>
+						</th>
+						<th class="oper-filters-arrivals" style="width: 8%;">
+							<div class="relative">
+								<select class="operator">
+									<option value="=">=</option>
+									<option value="<"><</option>
+									<option value=">">></option>
+								</select> <input placeholder="Volume" /> <label class="label-border">Volume</label>
+							</div>
+						</th>
+						<th>Actions</th>
+					</tr>
+					<tr *ngFor="let c of consignments; let i = index">
+						<td>{{ i+1 }}</td>
+						<td>{{ c.direction }}</td>
+						<td>{{ c.id }}</td>
+						<td>{{ c.consignor }}</td>
+						<td>{{ c.consignee }}</td>
+						<td>{{ c.vehicleRegNum }}</td>
+						<td>{{ c.totalPackages }}</td>
+						<td>{{ c.totalWeight }}</td>
+						<td>{{ c.totalVolume }}</td>
+						<td class="actions">
+							<div class="row">
+								<div class="col-md-2">
+									<button type="button" ng-hide="a.document.confirmed"
+										ng-click="ctrl.confirm(a)" title="Confirm document">
+										<i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
+									</button>
+								</div>
+								<div class="col-md-2">
+									<button type="button" ng-click="ctrl.open(a.id)"
+										title="Open document">
+										<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+									</button>
+								</div>
+								<div class="col-md-2">
+									<button type="button" ng-click="ctrl.remove(a.id)"
+										title="Delete document">
+										<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+									</button>
+								</div>
+								<div class="col-md-2">
+									<button type="button" ng-hide="!a.document.enable"
+										ng-disabled="!a.document.confirmed"
+										ng-click="ctrl.transfer(a)" title="Make siirto operation">
+										<i class="fa fa-exchange fa-2x" aria-hidden="true"></i>
+									</button>
+								</div>
+								<div class="col-md-2">
+									<button type="button" ng-hide="!a.document.enable"
+										ng-disabled="!a.document.confirmed"
+										ng-click="ctrl.coverSheet(a.document.id)"
+										title="Open coversheet">
+										<i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+									</button>
+								</div>
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</div>	
+	</div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {SelectModule} from 'ng2-select-compat';
 
 
 import { AppComponent } from './app.component';
@@ -21,7 +22,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SelectModule
   ],
   providers: [ConsignmentService],
   bootstrap: [AppComponent]
