@@ -10,13 +10,15 @@ import { ConsignmentService } from './consignment.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ConsignmentsListComponent } from './consignments-list/consignments-list.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SelectDemoComponent } from './select-demo/select-demo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsignmentComponent,
-    ConsignmentsListComponent
+    ConsignmentsListComponent,
+    SelectDemoComponent
   ],
   imports: [
     BrowserModule,
