@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: './consignment.component.html',
   styleUrls: ['./consignment.component.css']
 })
+
 export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment;
@@ -20,7 +21,7 @@ export class ConsignmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getConsignment();
+
   }
 
   getConsignment(): void {

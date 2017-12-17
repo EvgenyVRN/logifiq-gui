@@ -1759,9 +1759,6 @@ input[type=date] {
 input:not([type=submit], [type=checkbox]) {
     width: 100%;
 }
-span.ui-select-match-text.pull-left {
-    margin-top: -4px;
-}
 .good {
     padding: 20px 0 20px 0;
     margin: 5px 0 5px 22px;

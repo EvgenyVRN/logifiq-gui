@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {SelectModule} from 'ng2-select-compat';
+import { SelectModule } from 'ng2-select-compat';
 
 
 import { AppComponent } from './app.component';
