@@ -18,6 +18,7 @@ export class ConsignmentsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getConsignments();
   }
 
   getConsignments(): void {

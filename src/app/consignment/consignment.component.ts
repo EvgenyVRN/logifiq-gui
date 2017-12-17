@@ -21,7 +21,7 @@ export class ConsignmentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+      this.getConsignment();
   }
 
   getConsignment(): void {
