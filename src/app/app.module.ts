@@ -6,7 +6,7 @@ import { SelectModule } from 'ng2-select-compat';
 import { AppComponent } from './app.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
 import { FormsModule } from '@angular/forms';
-import { ConsignmentService } from './consignment.service';
+import { ConsignmentService } from './service/consignment.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ConsignmentsListComponent } from './consignments-list/consignments-list.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';

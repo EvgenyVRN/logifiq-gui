@@ -1,5 +1,5 @@
 import { Consignment } from '../model/consignment';
-import { ConsignmentService } from '../consignment.service';
+import { ConsignmentService } from '../service/consignment.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
