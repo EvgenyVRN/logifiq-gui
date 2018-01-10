@@ -13,13 +13,10 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                    	<select>
-                                    	<option disabled>Select status</option>
-                                    	</select>
-                                    
-                                        <label>Status</label></div>
+                                    	<app-select-contractor contractorType="type of consignment"></app-select-contractor>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -33,18 +30,12 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                       <select>
-                                    	<option disabled>Select goods holder</option>
-                                    	</select>
-                                        <label class="label-border  lefted">Goods holder</label>
+                                       <app-select-contractor contractorType="goods holder"></app-select-contractor>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Select cost payer</option>
-                                    	</select>
-                                        <label class="label-border lefted">Cost payer</label>
+                                        <app-select-contractor contractorType="cost payer"></app-select-contractor>
                                     </div>
                                 </div>
                             </div>
@@ -58,9 +49,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Select consignor</option>
-                                    	</select>
+                                        <app-select-contractor contractorType="consignor"></app-select-contractor>
                                     </div>
                                     <div class="form-group relative">
                                         <select>
@@ -96,9 +85,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Select consignee</option>
-                                    	</select>
+                                        <app-select-contractor contractorType="consignee"></app-select-contractor>
                                     </div>
                                     <div class="form-group relative">
                                         <select>
@@ -130,11 +117,6 @@
                                 <div class="col-md-3">
                                     <div class="form-group relative">
                                         <select>
-                                    	<option disabled>Select deliver to address</option>
-                                    	</select>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <select>
                                     	<option disabled>Select address</option>
                                     	</select>
                                     </div>
@@ -161,11 +143,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group relative">
-                                       <select>
-                                    	<option disabled>Select final destination</option>
-                                    	</select>
-                                    </div>
                                     <div class="form-group relative">
                                         <select>
                                     	<option disabled>Select address</option>
@@ -434,4 +411,3 @@
                 </form>
             </div>
 </div>
-<app-select-demo></app-select-demo>

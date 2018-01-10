@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
 import { FormsModule } from '@angular/forms';
 import { ConsignmentService } from './consignment.service';
+import { ContractorService } from './services/contractor.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ConsignmentsListComponent } from './consignments-list/consignments-list.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SelectDemoComponent } from './select-demo/select-demo.component';
+import { SelectContractorComponent } from './select-contractor/select-contractor.component';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { SelectDemoComponent } from './select-demo/select-demo.component';
     AppComponent,
     ConsignmentComponent,
     ConsignmentsListComponent,
-    SelectDemoComponent
+    SelectDemoComponent,
+    SelectContractorComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,7 @@ import { SelectDemoComponent } from './select-demo/select-demo.component';
     AppRoutingModule,
     SelectModule
   ],
-  providers: [ConsignmentService],
+  providers: [ConsignmentService, ContractorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
