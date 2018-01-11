@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Contractor } from '../contractor';
-import { ContractorService } from '../services/contractor.service';
+import { Contractor } from '../model/contractor';
+import { ContractorService } from '../service/contractor.service';
 
 @Component({
   selector: 'app-select-contractor',
