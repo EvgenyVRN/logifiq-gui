@@ -18,9 +18,9 @@ export class SelectDemoComponent implements OnInit {
     'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Wrocław',
     'Zagreb', 'Zaragoza', 'Łódź'];
 
-  private value:any = {};
-  private _disabledV = '0';
-  private disabled = false;
+  public value:any = {};
+  public _disabledV = '0';
+  public disabled = false;
 
   constructor() { }
 

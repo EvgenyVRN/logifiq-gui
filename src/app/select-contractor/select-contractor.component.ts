@@ -16,14 +16,14 @@ export class SelectContractorComponent implements OnInit {
   @Input() contractorType: string;
 
   private value:any = {};
-  private disabled = false;
+  public disabled = false;
 
   constructor(
     private contractorService: ContractorService) { }
 
   ngOnInit() {
-    // this.getContractors();
-    this.getMockContractors();
+     this.getContractors();
+    // this.getMockContractors();
   }
 
   getContractors():void {
