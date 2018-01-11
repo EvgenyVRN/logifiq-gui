@@ -10,6 +10,6 @@ SYNC_DIR='dist/'
 # SITE
 SITE_DIR='/var/www/html/'
 if [ -d $SITE_DIR ]; then
-	rsync -av --delete $SYNC_DIR $SITE_DIR
+	sudo rsync -av --delete $SYNC_DIR $SITE_DIR
 fi
 

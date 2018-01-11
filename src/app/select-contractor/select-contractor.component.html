@@ -1,11 +1,16 @@
 <ng-select [allowClear]="true"
-              [items]="contractors"
+              [items]="items"
               [disabled]="disabled"
               (data)="refreshValue($event)"
               (selected)="selected($event)"
               (removed)="removed($event)"
               (typed)="typed($event)"
+
               placeholder="No {{contractorType}} selected">
-  </ng-select>
-  <label class="label-border">{{contractorType}}</label>
+</ng-select>
+<label class="label-border">{{contractorType}}</label>
+
   
+<select>
+	<option *ngFor="let c of contractors"> {{c.name}} </option>
+</select>

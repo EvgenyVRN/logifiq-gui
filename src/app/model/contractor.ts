@@ -3,7 +3,7 @@ import { Address } from './address';
 export class Contractor {
   id: number;
   name: string;
-  text: string;
+//  text: string;
   fullName: string;
   businessId: string;
   vatid: string;
