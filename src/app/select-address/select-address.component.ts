@@ -12,6 +12,7 @@ export class SelectAddressComponent implements OnInit {
   addresses: Address[];
   disabled = false;
   @Input() ownerId: number;
+  address = new Address();
 
   constructor( private addressService: AddressService ) { }
 
@@ -33,7 +34,7 @@ export class SelectAddressComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    // this.addresses.find()
+    this.address = this.addresses.find(address => address.id === value.id);
   }
 
   public removed(value:any):void {

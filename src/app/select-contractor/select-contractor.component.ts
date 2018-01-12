@@ -61,7 +61,8 @@ export class SelectContractorComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    // this.contractors.find()
+    const contr = this.contractors.find(contractor => contractor.id === value.id);
+    console.log('Contractor: ', contr);
   }
 
   public removed(value:any):void {
