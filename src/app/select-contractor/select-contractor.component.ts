@@ -17,7 +17,7 @@ export class SelectContractorComponent implements OnInit {
 
   private value:any = {};
   public disabled = false;
-  items:Array<any> = [];
+//  items:Array<any> = [];
 
   constructor(
     private contractorService: ContractorService) { }
@@ -25,12 +25,6 @@ export class SelectContractorComponent implements OnInit {
   ngOnInit() {
     this.getContractors();
     // this.getMockContractors();
-//    this.contractors.forEach((contractor: Contractor) => {
-//      this.items.push({
-//        id: contractor.id,
-//        text: contractor.name
-//      });
-//    });
   }
 
   getContractors():void {
@@ -40,14 +34,15 @@ export class SelectContractorComponent implements OnInit {
 
   private contractorsAnswer(contractors: Contractor[]) {
     this.contractors = contractors;
-    console.log('contractors: ' + this.contractors);
+//    this.contractors.forEach((contractor: Contractor) => {
+//      this.items.push({
+//        id: contractor.id,
+//        text: contractor.name
+//      });
+//    });
     this.contractors.forEach((contractor: Contractor) => {
-      this.items.push({
-        id: contractor.id,
-        text: contractor.name
-      });
+      contractor.text = contractor.name;
     });
-    console.log('items: ' + this.items);
   }
 
   getMockContractors():void {
