@@ -10,4 +10,6 @@ export class Address {
   apt: string;
   enable: boolean;
   author: number;
+
+  text: string; // need for ng-select
 }

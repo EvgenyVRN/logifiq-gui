@@ -1,0 +1,11 @@
+<ng-select [allowClear]="true"
+              [items]="addresses"
+              [disabled]="disabled"
+              (data)="refreshValue($event)"
+              (selected)="selected($event)"
+              (removed)="removed($event)"
+              (typed)="typed($event)"
+
+              placeholder="No address selected">
+</ng-select>
+<label class="label-border">Select address</label>
