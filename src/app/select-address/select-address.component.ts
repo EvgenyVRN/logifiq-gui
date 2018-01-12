@@ -1,6 +1,6 @@
 import { Address } from "../model/address";
 import { AddressService } from "../service/address.service";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-select-address',
@@ -11,6 +11,7 @@ export class SelectAddressComponent implements OnInit {
 
   addresses: Address[];
   disabled = false;
+  @Input() ownerId: number;
 
   constructor( private addressService: AddressService ) { }
 
@@ -26,7 +27,7 @@ export class SelectAddressComponent implements OnInit {
   private addressesAnswer(addresses: Address[]): void {
     this.addresses = addresses;
     this.addresses.forEach((address: Address) => {
-      address.text = address.index + ', ' + address.country + ', ' + address.region + ', ' + address.street + ', ' + address.apt;
+      address.text = address.index + ', ' + address.country.country + ', ' + address.region + ', ' + address.city + ', ' + address.street + ', ' + address.apt;
     });
   }
 
