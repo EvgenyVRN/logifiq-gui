@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                       <app-select-contractor contractorType="goods holder"></app-select-contractor>
+                                       <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder"></app-select-contractor>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -355,7 +355,7 @@
                         </div>
                     </div>
                     <div class="btns-arrival">
-                        <input type="submit" value="Save" ng-disabled="myForm.$invalid">
+                        <input (click)="submit($event)" type="submit" value="Save" ng-disabled="myForm.$invalid">
                         <input type="submit" value="Cancel">
                         <input type="reset" value="Reset">
                     </div>

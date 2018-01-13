@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Contractor } from '../model/contractor';
 import { ContractorService } from '../service/contractor.service';
 
@@ -14,6 +14,7 @@ export class SelectContractorComponent implements OnInit {
   public strings:Array<string>;
 
   @Input() contractorType: string;
+  @Input() contractor: Contractor;
 
   private value:any = {};
   public disabled = false;
@@ -60,9 +61,8 @@ export class SelectContractorComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    const contr = this.contractors.find(contractor => contractor.id === value.id);
-    console.log('Contractor: ', contr);
+    this.contractor = this.contractors.find(contractor => contractor.id === value.id);
+    // this.contractorChanged.emit(contr);
   }
 
   public removed(value:any):void {
