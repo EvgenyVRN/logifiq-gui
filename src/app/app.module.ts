@@ -15,6 +15,10 @@ import { SelectDemoComponent } from './select-demo/select-demo.component';
 import { SelectContractorComponent } from './select-contractor/select-contractor.component';
 import { SelectAddressComponent } from './select-address/select-address.component';
 import { AddressService } from './service/address.service';
+import { SelectCustomsComponent } from './select-customs/select-customs.component';
+import { CustomsService } from './service/customs.service';
+import { SelectGenericComponent } from './select-generic/select-generic.component';
+
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import { AddressService } from './service/address.service';
     ConsignmentsListComponent,
     SelectDemoComponent,
     SelectContractorComponent,
-    SelectAddressComponent
+    SelectAddressComponent,
+    SelectCustomsComponent,
+    SelectGenericComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ import { AddressService } from './service/address.service';
     AppRoutingModule,
     SelectModule
   ],
-  providers: [ConsignmentService, ContractorService, AddressService],
+  providers: [ConsignmentService, ContractorService, AddressService, CustomsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

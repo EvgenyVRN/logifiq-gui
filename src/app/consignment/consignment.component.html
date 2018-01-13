@@ -23,11 +23,6 @@
                                        <button>+Link Order</button>
                                     </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-
-                                    </div>
-                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
                                        <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder"></app-select-contractor>
@@ -48,102 +43,30 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <div class="form-group relative">
-                                        <app-select-contractor contractorType="consignor"></app-select-contractor>
-                                    </div>
+                                    <app-select-contractor contractorType="consignor"></app-select-contractor>
 									<app-select-address>Select address</app-select-address>
-                                    <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Dispatch customs code</option>
-                                    	</select>
-                                    </div>
+                                    <app-select-customs></app-select-customs>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group relative">
-                                        <app-select-contractor contractorType="consignee"></app-select-contractor>
-                                    </div>
+                                    <app-select-contractor contractorType="consignee"></app-select-contractor>
                                     <app-select-address>Select address</app-select-address>
-
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Select address</option>
-                                    	</select>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="Building"/>
-                                        <label class="label-border">Building</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="Street"/>
-                                        <label class="label-border lefted">Street</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="ZIP"/>
-                                        <label class="label-border lefted">ZIP</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="City"/>
-                                        <label class="label-border lefted">City</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                       <select>
-                                    	<option disabled>Select country</option>
-                                    	</select>
-                                    </div>
+	                                <app-select-address>Select address</app-select-address>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Select address</option>
-                                    	</select>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="Building"/>
-                                        <label class="label-border">Building</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="Street"/>
-                                        <label class="label-border lefted">Street</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="ZIP"/>
-                                        <label class="label-border lefted">ZIP</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                        <input required placeholder="City"/>
-                                        <label class="label-border lefted">City</label>
-                                    </div>
-                                    <div class="form-group relative">
-                                       <select>
-                                    	<option disabled>Select country</option>
-                                    	</select>
-                                    	</div>
-                                    <div class="form-group relative">
-                                        <select>
-                                    	<option disabled>Destination customs code</option>
-                                    	</select>
-                                    </div>
+                                   <app-select-address>Select address</app-select-address>
+                                   <app-select-customs></app-select-customs>
                                 </div>
                             </div>
                         	<div class="row">
                         		<div class="col-md-3">
-                        			 <label for="dispatchLocation"><input type="checkbox" id="dispatchLocation" value="smtnhg"/>Dispatch location different</label>
+                        			 <input type="checkbox">Dispatch location different
                         		</div>
                         	</div>
                         	<div class="row">
-                        		<div class="col-md-2">
-                        			<input placeholder="Dispatch from"/>
-                        		</div>
-                        		<div class="col-md-2">
-                        			<input placeholder="Dispatch city"/>
-                        		</div>
-                        		<div class="col-md-2">
-                        			<input placeholder="Dispatch country"/>
-                        		</div>
-                        		<div class="col-md-2">
-                        			<input type="date" placeholder="Date"/>
+                        		<div class="col-md-3">
+                        			<app-select-address>Select address</app-select-address>
                         		</div>
                         	</div>
                         </div>
@@ -205,7 +128,7 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Seals</h3>
+                            <h3 class="panel-title">Terms</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
