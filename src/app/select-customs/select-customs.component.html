@@ -1,14 +1,11 @@
-<div class="form-group relative">
 <ng-select [allowClear]="true"
-              [items]="contractors"
+              [items]="customs"
               [disabled]="disabled"
               (data)="refreshValue($event)"
               (selected)="selected($event)"
               (removed)="removed($event)"
               (typed)="typed($event)"
 
-              placeholder="No {{contractorType}} selected">
+              placeholder="No customs selected">
 </ng-select>
-<label class="label-border">{{contractorType}}</label>
-</div>
-
+<label class="label-border">Customs</label>
