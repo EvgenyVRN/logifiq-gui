@@ -33,7 +33,14 @@ export class Consignment {
   releaseTermsPlaces: number;
   goodsInConsignment: GoodInConsignment[];
   enable: boolean;
+
+  totalRows: number; // should calculate
   totalPackages: number; // should calculate
-  totalWeight: number; // should calculate
+  totalGrossWeight: number; // should calculate
+  totalNetWeight: number; // should calculate
   totalVolume: number; // should calculate
+  
+  public addNewGood(){
+    this.goodsInConsignment.push(new GoodInConsignment());
+  }
 }
