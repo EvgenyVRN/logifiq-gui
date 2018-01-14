@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Customs } from '../model/customs';
-import { CustomsService } from '../service/customs.service';
+import { Customs } from '../../model/customs';
+import { CustomsService } from '../../service/customs.service';
 
 @Component({
   selector: 'app-select-customs',

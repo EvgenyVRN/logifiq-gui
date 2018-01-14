@@ -12,12 +12,19 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ConsignmentsListComponent } from './consignments-list/consignments-list.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SelectDemoComponent } from './select-demo/select-demo.component';
-import { SelectContractorComponent } from './select-contractor/select-contractor.component';
-import { SelectAddressComponent } from './select-address/select-address.component';
+import { SelectContractorComponent } from './component/select-contractor/select-contractor.component';
+import { SelectAddressComponent } from './component/select-address/select-address.component';
 import { AddressService } from './service/address.service';
-import { SelectCustomsComponent } from './select-customs/select-customs.component';
+import { SelectCustomsComponent } from './component/select-customs/select-customs.component';
 import { CustomsService } from './service/customs.service';
-import { SelectGenericComponent } from './select-generic/select-generic.component';
+import { SelectGenericComponent } from './component/select-generic/select-generic.component';
+import { SelectDeliveryTermsComponent } from './component/select-delivery-terms/select-delivery-terms.component';
+import { SelectReleaseTermsComponent } from './component/select-release-terms/select-release-terms.component';
+import { SelectTransportModeComponent } from './component/select-transport-mode/select-transport-mode.component';
+import { SelectGoodComponent } from './component/select-good/select-good.component';
+import { SelectUnitComponent } from './component/select-unit/select-unit.component';
+import { GoodService } from './service/good.service';
+import { UnitService } from './service/unit.service';
 
 
 
@@ -30,7 +37,12 @@ import { SelectGenericComponent } from './select-generic/select-generic.componen
     SelectContractorComponent,
     SelectAddressComponent,
     SelectCustomsComponent,
-    SelectGenericComponent
+    SelectGenericComponent,
+    SelectDeliveryTermsComponent,
+    SelectReleaseTermsComponent,
+    SelectTransportModeComponent,
+    SelectGoodComponent,
+    SelectUnitComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +51,7 @@ import { SelectGenericComponent } from './select-generic/select-generic.componen
     AppRoutingModule,
     SelectModule
   ],
-  providers: [ConsignmentService, ContractorService, AddressService, CustomsService],
+  providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

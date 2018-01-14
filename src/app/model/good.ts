@@ -4,4 +4,5 @@ export class Good {
   enable: boolean;
   author: number;
   description: string;
+  text : string;
 }
