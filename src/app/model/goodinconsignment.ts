@@ -1,4 +1,5 @@
 import { Good } from './good';
+import { Unit } from './unit';
 
 export class GoodInConsignment {
   id:number;
@@ -7,7 +8,7 @@ export class GoodInConsignment {
   marks: string;
   description: string;
   places: number;
-  placeType: string;
+  placeType: Unit;
   grossWeight: number;
   netWeight: number;
   volume: number;
