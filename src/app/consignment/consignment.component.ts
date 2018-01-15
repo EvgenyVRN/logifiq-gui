@@ -12,15 +12,15 @@ import { Observable } from 'rxjs';
 
 export class ConsignmentComponent implements OnInit {
 
-  consignment: Consignment;
+  consignment: Consignment = new Consignment();
 
   public statuses:Array<string>=['First', 'Second'];
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
   ) {
-    this.consignment = new Consignment();
-   }
+    this.consignment.releaseTermsPlaces = 1000;
+  }
 
   ngOnInit() {
       this.getConsignment();
@@ -42,7 +42,7 @@ export class ConsignmentComponent implements OnInit {
   }
 
   public addRow(event){
-  this.consignment.addNewGood();
+    this.consignment.addNewGood();
 }
 
   public deleteRow(index){
