@@ -40,11 +40,11 @@ export class ConsignmentComponent implements OnInit {
   public submit(value: any): void {
     console.log('submit consignment: ', this.consignment);
   }
-  
+
   public addRow(event){
   this.consignment.addNewGood();
 }
-  
+
   public deleteRow(index){
     this.consignment.deleteRow(index);
   }
