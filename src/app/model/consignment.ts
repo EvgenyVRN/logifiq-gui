@@ -31,7 +31,7 @@ export class Consignment {
   deliveryTermsPlaces: number;
   releaseTerms: string;
   releaseTermsPlaces: number;
-  goodsInConsignment: GoodInConsignment[];
+  goodsInConsignment: GoodInConsignment[] = new Array();
   enable: boolean;
 
   totalRows: number; // should calculate
@@ -42,5 +42,10 @@ export class Consignment {
   
   public addNewGood(){
     this.goodsInConsignment.push(new GoodInConsignment());
+  }
+  
+  public deleteRow(index){
+    this.goodsInConsignment.slice(index, 1);
+    console.log("row " + index + " deleted");
   }
 }
