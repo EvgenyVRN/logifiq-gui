@@ -12,6 +12,7 @@ export class SelectDeliveryTermsComponent implements OnInit {
 
   public value: any = {};
   public disabled = false;
+  public activeTerm: Array<String> = [];
 
   @Input() term: any;
   @Output() termChange = new EventEmitter();
@@ -19,7 +20,7 @@ export class SelectDeliveryTermsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.value = this.term;
+    this.activeTerm.push(this.term);
   }
 
   public selected(value:any):void {

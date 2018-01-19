@@ -24,7 +24,7 @@ export class SelectContractorComponent implements OnInit {
 
   ngOnInit() {
     this.getContractors();
-    this.value = this.contractor;
+    // this.contractor.text = this.contractor.name;
   }
 
   getContractors():void {

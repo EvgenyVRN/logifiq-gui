@@ -27,7 +27,7 @@ export class Consignment {
   trailerRegNum = '';
   trailerRegCountry = '';
   trailerModeOfTransport = '';
-  deliveryTerms= '';
+  deliveryTerms = '';
   deliveryTermsPlaces = 0;
   releaseTerms = '';
   releaseTermsPlaces = 0;

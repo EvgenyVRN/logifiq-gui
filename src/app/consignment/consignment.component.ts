@@ -22,6 +22,7 @@ export class ConsignmentComponent implements OnInit {
 
   ngOnInit() {
       this.getConsignment();
+      this.consignment.deliveryTerms = 'CFR';
   }
 
   getConsignment(): void {
