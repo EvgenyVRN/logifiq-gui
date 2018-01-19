@@ -18,9 +18,7 @@ export class ConsignmentComponent implements OnInit {
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
-  ) {
-    this.consignment.releaseTermsPlaces = 1000;
-  }
+  ) { }
 
   ngOnInit() {
       this.getConsignment();
@@ -48,4 +46,6 @@ export class ConsignmentComponent implements OnInit {
   public deleteRow(index){
     this.consignment.deleteRow(index);
   }
+
+
 }

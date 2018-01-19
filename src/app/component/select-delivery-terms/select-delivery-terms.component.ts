@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-delivery-terms',
@@ -10,25 +10,23 @@ export class SelectDeliveryTermsComponent implements OnInit {
   public items:Array<string> = ['CFR', 'CIF', 'CIP', 'CPT', 'DAF', 'DAP', 'DAT', 'DDP', 'DDU', 'DEQ', 'DES',
                                 'EXW', 'FAS', 'FCA', 'FOB', 'ZZZ'];
 
-  public value:any = {};
-  public _disabledV = '0';
+  public value: any = {};
   public disabled = false;
+
+  @Input() term: any;
+  @Output() termChange = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  private get disabledV():string {
-    return this._disabledV;
-  }
-
-  private set disabledV(value:string) {
-    this._disabledV = value;
-    this.disabled = this._disabledV === '1';
+    this.value = this.term;
   }
 
   public selected(value:any):void {
+    if (this.items.indexOf(value.text) > -1){
+      this.term = value;
+    }
+    this.termChange.emit(this.term);
     console.log('Selected value is: ', value);
   }
 

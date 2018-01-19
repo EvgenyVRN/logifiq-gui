@@ -11,10 +11,9 @@ export class SelectContractorComponent implements OnInit {
 
   public contractors:Contractor[];
 
-  public strings:Array<string>;
-
   @Input() contractorType: string;
   @Input() contractor: Contractor;
+  @Output() contractorChange = new EventEmitter();
 
   private value:any = {};
   public disabled = false;
@@ -25,7 +24,7 @@ export class SelectContractorComponent implements OnInit {
 
   ngOnInit() {
     this.getContractors();
-    // this.getMockContractors();
+    this.value = this.contractor;
   }
 
   getContractors():void {
@@ -62,7 +61,7 @@ export class SelectContractorComponent implements OnInit {
 
   public selected(value:any):void {
     this.contractor = this.contractors.find(contractor => contractor.id === value.id);
-    // this.contractorChanged.emit(contr);
+    this.contractorChange.emit(this.contractor);
   }
 
   public removed(value:any):void {
