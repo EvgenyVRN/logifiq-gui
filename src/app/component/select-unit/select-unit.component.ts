@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Unit } from '../../model/unit';
 import { UnitService } from '../../service/unit.service';
 
@@ -12,11 +12,19 @@ export class SelectUnitComponent implements OnInit {
   private value:any = {};
   public disabled = false;
 
+  @Input() unit: Unit;
+  @Output() unitChange = new EventEmitter();
+  public active: Unit[] = [];
+
   constructor(
     private unitService: UnitService) { }
 
   ngOnInit() {
     this.getUnits();
+    if (this.unit != null){
+      this.unit.text = this.unit.name;
+      this.active.push(this.unit);
+    }
   }
 
   getUnits():void {
@@ -33,8 +41,7 @@ export class SelectUnitComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    const u = this.units.find(unit => unit.id === value.id);
-    console.log('Unit: ', u);
+    this.unitChange.emit(this.unit);
   }
 
   public removed(value:any):void {

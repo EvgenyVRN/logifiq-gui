@@ -1,8 +1,9 @@
-  <ng-select [allowClear]="true"
-              [items]="items"
-              (data)="refreshValue($event)"
-              (selected)="selected($event)"
-              (removed)="removed($event)"
-              (typed)="typed($event)"
-              placeholder="No transport mode selected">
-  </ng-select>
+<ng-select [allowClear]="true"
+           [items]="items"
+           [active] = "active"
+           (data)="refreshValue($event)"
+           (selected)="selected($event)"
+           (removed)="removed($event)"
+           (typed)="typed($event)"
+           placeholder="No transport mode selected">
+</ng-select>

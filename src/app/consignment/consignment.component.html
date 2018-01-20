@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                    	<app-select-contractor contractorType="type of consignment" [(contractor)]="consignment.direction"></app-select-contractor>
+                                      <app-select-cons-direction [(direction)]="consignment.direction"></app-select-cons-direction>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -31,6 +31,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group relative">
                                         <app-select-contractor contractorType="cost payer" [(contractor)]="consignment.costPayer"></app-select-contractor>
+                                        <app-select-contract [(contract)]="consignment.costPayerContract"></app-select-contract>
                                     </div>
                                 </div>
                             </div>
@@ -44,19 +45,19 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <app-select-contractor contractorType="consignor" [(contractor)]="consignment.consignor"></app-select-contractor>
-                                    <app-select-address>Select address</app-select-address>
-                                    <app-select-customs></app-select-customs>
+                                    <app-select-address [(address)] = "consignment.consigneeAddress">Select address</app-select-address>
+                                    <app-select-customs [(custom)] = "consignment.consignorCustoms"></app-select-customs>
                                 </div>
                                 <div class="col-md-3">
                                     <app-select-contractor contractorType="consignee" [(contractor)]="consignment.consignee"></app-select-contractor>
-                                    <app-select-address>Select address</app-select-address>
+                                    <app-select-address [(address)] = "consignment.consigneeAddress">Select address</app-select-address>
                                 </div>
                                 <div class="col-md-3">
-	                                <app-select-address>Select address</app-select-address>
+	                                <app-select-address [(address)] = "consignment.deliveryToCompany">Select address</app-select-address>
                                 </div>
                                 <div class="col-md-3">
-                                   <app-select-address>Select address</app-select-address>
-                                   <app-select-customs></app-select-customs>
+                                   <app-select-address [(address)] = "consignment.finalDestination">Select address</app-select-address>
+                                   <app-select-customs [(custom)] = "consignment.finalDestinationCustoms"></app-select-customs>
                                 </div>
                             </div>
                         	<div class="row">
@@ -66,7 +67,7 @@
                         	</div>
                         	<div class="row">
                         		<div class="col-md-3">
-                        			<app-select-address>Select address</app-select-address>
+                        			<app-select-address [(address)] = "consignment.otherConsignorAddress">Select address</app-select-address>
                         		</div>
                         	</div>
                         </div>
@@ -92,7 +93,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <app-select-transport-mode></app-select-transport-mode>
+                                        <app-select-transport-mode [(mode)] = "consignment.vehicleModeOfTransport"></app-select-transport-mode>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +112,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <app-select-transport-mode></app-select-transport-mode>
+                                        <app-select-transport-mode [(mode)] = "consignment.trailerModeOfTransport"></app-select-transport-mode>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +138,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <app-select-release-terms></app-select-release-terms>
+                                        <app-select-release-terms [(term)] = "consignment.releaseTerms"></app-select-release-terms>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -167,71 +168,70 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                	<div class="col-md-1">
+                                	<div class="col-md-4">
                                         <div class="form-group">
-                                            <app-select-good></app-select-good>
+                                            <app-select-good [(good)]="row.good"></app-select-good>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <input size="5" placeholder="Description" [(ngModel)]="row.description" name="row.description" disabled/>
                                             <label class="label-border">Description</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <input size="5" placeholder="Marks" [(ngModel)]="row.marks" name="row.marks" required/>
                                             <label class="label-border">Marks</label>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-1">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <input size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places" required/>
                                             <label class="label-border">Places</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <app-select-unit [(ngModel)]="row.placeType"></app-select-unit>
+                                            <app-select-unit [(unit)]="row.placeType"></app-select-unit>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <input size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight" name="row.grossWeight" required/>
                                             <label class="label-border">Gross Weight</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <input size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight" name="row.netWeight" required/>
                                             <label class="label-border">Net Weight</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <input size="5"  placeholder="Volume" [(ngModel)]="row.volume" name="row.volume" required/>
                                             <label class="label-border">Volume</label>
                                         </div>
                                     </div>
-								 </div>
-
-
-                            </div>
+                                </div>
+								            </div>
                             <button type="button" (click)="addRow($event)">Add row</button>
                             <button type="button">Add row from order</button>
-
                         </div>
                     </div>
+
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Totals</h3>
                         </div>
                         <div class="panel-body">
-							<div class="row">
+							            <div class="row">
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input size="5" placeholder="Total goods" disabled/>
+                                            <input size="5" placeholder="Total goods" [(ngModel)]="consignment.totalRows" disabled/>
 
                                         </div>
                                     </div>
@@ -240,7 +240,7 @@
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total places" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total places" [(ngModel)]="consignment.totalPackages" disabled/>
                                             <label class="label-border">Places</label>
                                         </div>
                                     </div>
@@ -249,19 +249,19 @@
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total Gross Weight" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total Gross Weight" [(ngModel)]="consignment.totalGrossWeight" disabled/>
                                             <label class="label-border">Gross Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total Net Weight" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total Net Weight" [(ngModel)]="consignment.totalNetWeight" disabled/>
                                             <label class="label-border">Net Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input size="5"  placeholder="Total Volume" disabled/>
+                                            <input size="5"  placeholder="Total Volume" [(ngModel)]="consignment.totalVolume" disabled/>
                                             <label class="label-border">Volume</label>
                                         </div>
                                     </div>

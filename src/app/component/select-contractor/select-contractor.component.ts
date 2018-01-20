@@ -10,6 +10,7 @@ import { ContractorService } from '../../service/contractor.service';
 export class SelectContractorComponent implements OnInit {
 
   public contractors:Contractor[];
+  public active: Contractor[] = [];
 
   @Input() contractorType: string;
   @Input() contractor: Contractor;
@@ -17,14 +18,18 @@ export class SelectContractorComponent implements OnInit {
 
   private value:any = {};
   public disabled = false;
-//  items:Array<any> = [];
 
   constructor(
     private contractorService: ContractorService) { }
 
   ngOnInit() {
     this.getContractors();
-    // this.contractor.text = this.contractor.name;
+    if (this.contractor == null){
+
+    } else {
+      this.contractor.text = this.contractor.name;
+      this.active.push(this.contractor);
+    }
   }
 
   getContractors():void {

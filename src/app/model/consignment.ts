@@ -5,22 +5,24 @@ import { ModeOfTransport } from './modeoftransport';
 import { TermsOfDelivery } from './termsofdelivery';
 import { Address } from './address';
 import { Customs } from './customs';
+import {Contract} from "./contract";
 
 export class Consignment {
   id: number;
   document: Document;
   direction = '';
-  consignor: Contractor = new Contractor();
-  consignorAddress: Address = new Address;
-  consignorCustoms: Customs = new Customs;
-  otherConsignorAddress: Address = new Address;
-  consignee: Contractor = new Contractor;
-  consigneeAddress: Address = new Address;
-  deliveryToCompany: Address = new Address;
-  finalDestination: Address = new Address;
-  finalDestinationCustoms: Customs = new Customs;
-  goodsHolder: Contractor = new Contractor;
-  costPayer: Contractor = new Contractor;
+  consignor: Contractor;
+  consignorAddress: Address;
+  consignorCustoms: Customs;
+  otherConsignorAddress: Address;
+  consignee: Contractor;
+  consigneeAddress: Address;
+  deliveryToCompany: Address;
+  finalDestination: Address;
+  finalDestinationCustoms: Customs;
+  goodsHolder: Contractor;
+  costPayer: Contractor;
+  costPayerContract: Contract;
   vehicleRegNum = '';
   vehicleRegCountry = '';
   vehicleModeOfTransport = '';
@@ -28,9 +30,9 @@ export class Consignment {
   trailerRegCountry = '';
   trailerModeOfTransport = '';
   deliveryTerms = '';
-  deliveryTermsPlaces = 0;
+  deliveryTermsPlaces: number;
   releaseTerms = '';
-  releaseTermsPlaces = 0;
+  releaseTermsPlaces: number;
   goodsInConsignment: GoodInConsignment[] = [];
   enable: boolean;
 

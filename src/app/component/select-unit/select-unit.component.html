@@ -1,8 +1,9 @@
-  <ng-select [allowClear]="true"
-              [items]="units"
-              (data)="refreshValue($event)"
-              (selected)="selected($event)"
-              (removed)="removed($event)"
-              (typed)="typed($event)"
-              placeholder="No package type selected">
-  </ng-select>
+<ng-select [allowClear]="true"
+           [items]="units"
+           [active] = "active"
+           (data)="refreshValue($event)"
+           (selected)="selected($event)"
+           (removed)="removed($event)"
+           (typed)="typed($event)"
+           placeholder="No package type selected">
+</ng-select>

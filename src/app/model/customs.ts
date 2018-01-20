@@ -1,6 +1,8 @@
+import {Country} from "./country";
+
 export class Customs {
-  id: number;
-  country: string;
-  name: string;
-  text: string;
+  id = 0;
+  country: Country;
+  name = '';
+  text = '';
 }

@@ -1,10 +1,10 @@
 export class Document {
-  id: number;
-  name: string;
-  enable: boolean;
-  author: number;
-  confirmed: boolean;
-  updateTime: string;
-  confirmDate: string;
-  createDate: string;
+  id = 0;
+  name= '';
+  enable= true;
+  author= 0;
+  confirmed= true;
+  updateTime= '';
+  confirmDate= '';
+  createDate= '';
 }

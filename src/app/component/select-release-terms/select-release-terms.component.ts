@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-release-terms',
@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class SelectReleaseTermsComponent implements OnInit {
   public items:Array<string> = ['COD', 'CAD', 'BL'];
 
+  @Input() term: string;
+  @Output() termChange = new EventEmitter();
+  public active: Array<string> = [];
   public value:any = {};
   public _disabledV = '0';
   public disabled = false;
@@ -15,6 +18,9 @@ export class SelectReleaseTermsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.term !== ''){
+      this.active.push(this.term);
+    }
   }
 
   private get disabledV():string {
@@ -27,6 +33,7 @@ export class SelectReleaseTermsComponent implements OnInit {
   }
 
   public selected(value:any):void {
+    this.termChange.emit(this.term);
     console.log('Selected value is: ', value);
   }
 

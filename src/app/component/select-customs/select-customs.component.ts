@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Customs } from '../../model/customs';
 import { CustomsService } from '../../service/customs.service';
 
@@ -9,7 +9,9 @@ import { CustomsService } from '../../service/customs.service';
 })
 export class SelectCustomsComponent implements OnInit {
   public customs:Customs[];
-  public strings:Array<string>;
+  @Input() custom: Customs;
+  @Output() customsChange = new EventEmitter();
+  public active: Customs[] = [];
   private value:any = {};
   public disabled = false;
 
@@ -18,6 +20,11 @@ export class SelectCustomsComponent implements OnInit {
 
   ngOnInit() {
     this.getCustoms();
+    if (this.custom != null){
+      this.custom.text = this.custom.name;
+      this.active.push(this.custom);
+    }
+
   }
 
   getCustoms():void {
@@ -34,8 +41,7 @@ export class SelectCustomsComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    const contr = this.customs.find(contractor => contractor.id === value.id);
-    console.log('Contractor: ', contr);
+    this.customsChange.emit(this.custom);
   }
 
   public removed(value:any):void {

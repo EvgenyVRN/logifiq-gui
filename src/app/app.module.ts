@@ -25,6 +25,9 @@ import { SelectGoodComponent } from './component/select-good/select-good.compone
 import { SelectUnitComponent } from './component/select-unit/select-unit.component';
 import { GoodService } from './service/good.service';
 import { UnitService } from './service/unit.service';
+import { SelectConsDirectionComponent } from './component/select-cons-direction/select-cons-direction.component';
+import { SelectContractComponent } from './component/select-contract/select-contract.component';
+import {ContractService} from "./service/contract.service";
 
 
 
@@ -42,7 +45,9 @@ import { UnitService } from './service/unit.service';
     SelectReleaseTermsComponent,
     SelectTransportModeComponent,
     SelectGoodComponent,
-    SelectUnitComponent
+    SelectUnitComponent,
+    SelectConsDirectionComponent,
+    SelectContractComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,7 @@ import { UnitService } from './service/unit.service';
     AppRoutingModule,
     SelectModule
   ],
-  providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService],
+  providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

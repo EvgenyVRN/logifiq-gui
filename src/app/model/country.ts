@@ -1,5 +1,5 @@
 export class Country {
-  id: number;
-  country: string;
-  alpha2: string;
+  id = 0;
+  country= '';
+  alpha2= '';
 }

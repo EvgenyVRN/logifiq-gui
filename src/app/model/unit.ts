@@ -1,5 +1,5 @@
 export class Unit {
-  id : number;
-  name : string;
-  text : string;
+  id = 0;
+  name = '';
+  text = '';
 }

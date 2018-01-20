@@ -1,33 +1,30 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-select-delivery-terms',
-  templateUrl: './select-delivery-terms.component.html',
-  styleUrls: ['./select-delivery-terms.component.css']
+  selector: 'app-select-cons-direction',
+  templateUrl: './select-cons-direction.component.html',
+  styleUrls: ['./select-cons-direction.component.css']
 })
-export class SelectDeliveryTermsComponent implements OnInit {
-
-  public items:Array<string> = ['CFR', 'CIF', 'CIP', 'CPT', 'DAF', 'DAP', 'DAT', 'DDP', 'DDU', 'DEQ', 'DES',
-                                'EXW', 'FAS', 'FCA', 'FOB', 'ZZZ'];
+export class SelectConsDirectionComponent implements OnInit {
+  public directions:Array<string> = ['Import', 'Export'];
 
   public value: any = {};
   public disabled = false;
   public active: Array<string> = [];
 
-  @Input() term: any;
-  @Output() termChange = new EventEmitter();
+  @Input() direction: any;
+  @Output() directionChange = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    if (this.term !== ''){
-      this.active.push(this.term);
+    if (this.direction !== ''){
+      this.active.push(this.direction);
     }
-
   }
 
   public selected(value:any):void {
-    this.termChange.emit(this.term);
+    this.directionChange.emit(this.direction);
     console.log('Selected value is: ', value);
   }
 
@@ -42,5 +39,4 @@ export class SelectDeliveryTermsComponent implements OnInit {
   public refreshValue(value:any):void {
     this.value = value;
   }
-
 }

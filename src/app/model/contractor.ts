@@ -2,12 +2,12 @@ import { Address } from './address';
 
 export class Contractor {
   id: number;
-  name: string;
-  fullName: string;
-  businessId: string;
-  vatid: string;
+  name = '';
+  fullName = '';
+  businessId = '';
+  vatid = '';
   addresses: Address[];
-  enable: boolean;
-  author: number;
-  text: string; // need for ng-select
+  enable = true;
+  author = 0;
+  text = ''; // need for ng-select
 }

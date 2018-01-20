@@ -1,8 +1,8 @@
 export class Good {
-  id: number;
-  name: string;
-  enable: boolean;
-  author: number;
-  description: string;
-  text : string;
+  id= 0;
+  name = '';
+  enable = true;
+  author = 0;
+  description = '';
+  text = '';
 }

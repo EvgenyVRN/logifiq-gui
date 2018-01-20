@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-transport-mode',
@@ -12,10 +12,18 @@ export class SelectTransportModeComponent implements OnInit {
   public _disabledV = '0';
   public disabled = false;
 
+  @Input() mode: string;
+  @Output() modeChange = new EventEmitter();
+  public active: string[] = [];
+
   constructor() { }
 
   ngOnInit() {
+    if (this.mode !== ''){
+      this.active.push(this.mode);
+    }
   }
+
 
   private get disabledV():string {
     return this._disabledV;
@@ -27,6 +35,7 @@ export class SelectTransportModeComponent implements OnInit {
   }
 
   public selected(value:any):void {
+    this.modeChange.emit(this.mode);
     console.log('Selected value is: ', value);
   }
 

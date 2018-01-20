@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Good } from '../../model/good';
 import { GoodService } from '../../service/good.service';
 
@@ -9,6 +9,9 @@ import { GoodService } from '../../service/good.service';
 })
 export class SelectGoodComponent implements OnInit {
   public goods : Good[];
+  @Input() good: Good;
+  @Output() goodChange = new EventEmitter();
+  public active: Good[] = [];
   private value:any = {};
   public disabled = false;
 
@@ -17,6 +20,10 @@ export class SelectGoodComponent implements OnInit {
 
   ngOnInit() {
     this.getGoods();
+    if (this.good != null){
+      this.good.text = this.good.name;
+      this.active.push(this.good);
+    }
   }
 
   getGoods():void {
@@ -33,8 +40,7 @@ export class SelectGoodComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    const g = this.goods.find(good => good.id === value.id);
-    console.log('Good: ', g);
+    this.goodChange.emit(this.good);
   }
 
   public removed(value:any):void {

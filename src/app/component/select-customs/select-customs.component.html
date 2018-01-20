@@ -1,11 +1,11 @@
 <ng-select [allowClear]="true"
-              [items]="customs"
-              [disabled]="disabled"
-              (data)="refreshValue($event)"
-              (selected)="selected($event)"
-              (removed)="removed($event)"
-              (typed)="typed($event)"
-
-              placeholder="No customs selected">
+           [items]="customs"
+           [active] = "active"
+           [disabled]="disabled"
+           (data)="refreshValue($event)"
+           (selected)="selected($event)"
+           (removed)="removed($event)"
+           (typed)="typed($event)"
+           placeholder="No customs selected">
 </ng-select>
 <label class="label-border">Customs</label>

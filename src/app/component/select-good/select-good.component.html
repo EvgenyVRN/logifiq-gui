@@ -1,8 +1,9 @@
   <ng-select [allowClear]="true"
-              [items]="goods"
-              (data)="refreshValue($event)"
-              (selected)="selected($event)"
-              (removed)="removed($event)"
-              (typed)="typed($event)"
-              placeholder="No good selected">
+             [items]="goods"
+             [active] = "active"
+             (data)="refreshValue($event)"
+             (selected)="selected($event)"
+             (removed)="removed($event)"
+             (typed)="typed($event)"
+             placeholder="No good selected">
   </ng-select>

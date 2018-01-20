@@ -1,4 +1,4 @@
 export class ModeOfTransport {
-  id: number;
-  name: string;
+  id = 0;
+  name = '';
 }

@@ -1,0 +1,13 @@
+<div class="form-group relative">
+  <ng-select [allowClear]="true"
+             [items]="contracts"
+             [active]="active"
+             [disabled]="disabled"
+             (data)="refreshValue($event)"
+             (selected)="selected($event)"
+             (removed)="removed($event)"
+             (typed)="typed($event)"
+             placeholder="No contract selected">
+  </ng-select>
+  <label class="label-border">Contract</label>
+</div>
