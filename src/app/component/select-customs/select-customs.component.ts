@@ -41,7 +41,7 @@ export class SelectCustomsComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    this.customsChange.emit(this.custom);
+    this.customsChange.emit(value);
   }
 
   public removed(value:any):void {

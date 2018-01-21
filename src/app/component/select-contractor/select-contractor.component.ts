@@ -65,8 +65,7 @@ export class SelectContractorComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    this.contractor = this.contractors.find(contractor => contractor.id === value.id);
-    this.contractorChange.emit(this.contractor);
+    this.contractorChange.emit(value);
   }
 
   public removed(value:any):void {

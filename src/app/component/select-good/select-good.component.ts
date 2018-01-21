@@ -40,7 +40,7 @@ export class SelectGoodComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    this.goodChange.emit(this.good);
+    this.goodChange.emit(value);
   }
 
   public removed(value:any):void {

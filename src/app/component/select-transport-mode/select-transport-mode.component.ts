@@ -35,7 +35,7 @@ export class SelectTransportModeComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    this.modeChange.emit(this.mode);
+    this.modeChange.emit(value.text);
     console.log('Selected value is: ', value);
   }
 

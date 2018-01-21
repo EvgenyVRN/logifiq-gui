@@ -41,7 +41,7 @@ export class SelectUnitComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    this.unitChange.emit(this.unit);
+    this.unitChange.emit(value);
   }
 
   public removed(value:any):void {

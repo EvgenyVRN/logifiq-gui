@@ -40,7 +40,7 @@ export class SelectContractComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    this.contractChange.emit(this.contract);
+    this.contractChange.emit(value);
   }
 
   public removed(value:any):void {

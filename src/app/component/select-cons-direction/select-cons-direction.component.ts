@@ -24,7 +24,7 @@ export class SelectConsDirectionComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    this.directionChange.emit(this.direction);
+    this.directionChange.emit(value.text);
     console.log('Selected value is: ', value);
   }
 

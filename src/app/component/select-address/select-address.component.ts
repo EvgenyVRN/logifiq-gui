@@ -42,7 +42,7 @@ export class SelectAddressComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
-    this.addressChange.emit(this.address);
+    this.addressChange.emit(value);
   }
 
   public removed(value:any):void {

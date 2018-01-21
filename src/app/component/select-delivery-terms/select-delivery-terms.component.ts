@@ -27,7 +27,7 @@ export class SelectDeliveryTermsComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    this.termChange.emit(this.term);
+    this.termChange.emit(value.text);
     console.log('Selected value is: ', value);
   }
 
