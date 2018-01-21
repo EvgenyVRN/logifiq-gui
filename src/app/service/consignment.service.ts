@@ -40,7 +40,7 @@ export class ConsignmentService {
 
   createConsignment( consignment: Consignment ): Observable<Consignment> {
     return this.http.post<Consignment>(this.consignmentUrl, consignment, httpOptions).pipe(
-      catchError(this.handleError<Consignment>('createHero'))
+      catchError(this.handleError<Consignment>('createConsignment'))
     );
   }
 

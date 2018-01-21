@@ -21,6 +21,7 @@ export class ConsignmentComponent implements OnInit {
 
   ngOnInit() {
       this.getConsignment();
+      this.consignment.totalRows = 100;
   }
 
   getConsignment(): void {
@@ -35,15 +36,18 @@ export class ConsignmentComponent implements OnInit {
   }
 
   public submit(value: any): void {
+    this.consignmentService.createConsignment(this.consignment).subscribe(c => this.consignment = c);
     console.log('submit consignment: ', this.consignment);
   }
 
   public addRow(event){
     this.consignment.addNewGood();
+    this.consignment.totalRows = this.consignment.goodsInConsignment.length;
 }
 
   public deleteRow(index){
     this.consignment.deleteRow(index);
+    this.consignment.totalRows = this.consignment.goodsInConsignment.length;
   }
 
 
