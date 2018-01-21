@@ -36,11 +36,11 @@ export class Consignment {
   goodsInConsignment: GoodInConsignment[] = [];
   enable: boolean;
 
-  totalRows = 0; // should calculate
-  totalPackages = 0; // should calculate
-  totalGrossWeight = 0; // should calculate
-  totalNetWeight = 0; // should calculate
-  totalVolume = 0; // should calculate
+  totalRows: number; // should calculate
+  totalPackages: number; // should calculate
+  totalGrossWeight: number; // should calculate
+  totalNetWeight: number; // should calculate
+  totalVolume: number; // should calculate
 
   public addNewGood(){
     this.goodsInConsignment.push(new GoodInConsignment());

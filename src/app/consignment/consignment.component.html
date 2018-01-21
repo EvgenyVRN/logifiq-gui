@@ -189,7 +189,7 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places" required/>
+                                            <input size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places" (blur)="calculateTotalPlaces()" required/>
                                             <label class="label-border">Places</label>
                                         </div>
                                     </div>
@@ -200,19 +200,19 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight" name="row.grossWeight" required/>
+                                            <input size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" required/>
                                             <label class="label-border">Gross Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight" name="row.netWeight"/>
+                                            <input size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight" name="row.netWeight" (blur)="calculateTotalNetWeight()"/>
                                             <label class="label-border">Net Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="5"  placeholder="Volume" [(ngModel)]="row.volume" name="row.volume"/>
+                                            <input size="5"  placeholder="Volume" [(ngModel)]="row.volume" name="row.volume" (blur)="calculateTotalVolume()"/>
                                             <label class="label-border">Volume</label>
                                         </div>
                                     </div>
@@ -231,30 +231,30 @@
 							            <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="5" placeholder="Total goods" [ngModel]="consignment.totalRows"/>
+                                            <input size="5" placeholder="Total goods" [ngModel]="consignment.totalRows" name="totalRows" disabled/>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total places" [(ngModel)]="consignment.totalPackages" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total places" [(ngModel)]="consignment.totalPackages" name="totalPackages" disabled/>
                                             <label class="label-border">Places</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total Gross Weight" [(ngModel)]="consignment.totalGrossWeight" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total Gross Weight" [(ngModel)]="consignment.totalGrossWeight" name="totalGrossWeight" disabled/>
                                             <label class="label-border">Gross Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="6" class="numeric" placeholder="Total Net Weight" [(ngModel)]="consignment.totalNetWeight" disabled/>
+                                            <input size="6" class="numeric" placeholder="Total Net Weight" [(ngModel)]="consignment.totalNetWeight" name="tptaNetWeight" disabled/>
                                             <label class="label-border">Net Weight</label>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <input size="5"  placeholder="Total Volume" [(ngModel)]="consignment.totalVolume" disabled/>
+                                            <input size="5"  placeholder="Total Volume" [(ngModel)]="consignment.totalVolume" name="totalVolume" disabled/>
                                             <label class="label-border">Volume</label>
                                         </div>
                                     </div>

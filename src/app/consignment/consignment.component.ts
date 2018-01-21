@@ -21,7 +21,6 @@ export class ConsignmentComponent implements OnInit {
 
   ngOnInit() {
       this.getConsignment();
-      this.consignment.totalRows = 100;
   }
 
   getConsignment(): void {
@@ -48,6 +47,26 @@ export class ConsignmentComponent implements OnInit {
   public deleteRow(index){
     this.consignment.deleteRow(index);
     this.consignment.totalRows = this.consignment.goodsInConsignment.length;
+  }
+
+  public calculateTotalPlaces():void{
+    this.consignment.totalPackages = 0;
+    this.consignment.goodsInConsignment.forEach(g => this.consignment.totalPackages =  +this.consignment.totalPackages + +g.places);
+  }
+
+  public calculateTotalGrossWeight():void{
+    this.consignment.totalGrossWeight = 0;
+    this.consignment.goodsInConsignment.forEach(g => this.consignment.totalGrossWeight =  +this.consignment.totalGrossWeight + +g.grossWeight);
+  }
+
+  public calculateTotalNetWeight():void{
+    this.consignment.totalNetWeight = 0;
+    this.consignment.goodsInConsignment.forEach(g => this.consignment.totalNetWeight =  +this.consignment.totalNetWeight + +g.netWeight);
+  }
+
+  public calculateTotalVolume():void{
+    this.consignment.totalVolume = 0;
+    this.consignment.goodsInConsignment.forEach(g => this.consignment.totalVolume =  +this.consignment.totalVolume + +g.volume);
   }
 
 
