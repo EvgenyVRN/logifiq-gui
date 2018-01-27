@@ -13,6 +13,8 @@ import { Observable } from 'rxjs';
 export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
+  hideChooseOrder = true;
+  serviceIdValue: number;
 
   constructor(
     private consignmentService: ConsignmentService,
@@ -69,5 +71,16 @@ export class ConsignmentComponent implements OnInit {
     this.consignment.goodsInConsignment.forEach(g => this.consignment.totalVolume =  +this.consignment.totalVolume + +g.volume);
   }
 
+  public showChooseOrder(){
+    this.hideChooseOrder = false;
+  }
+
+  idChangeEvent(event){
+    this.serviceIdValue = event;
+  }
+
+  orderChangeEvent(event){
+    this.consignment.order = event;
+  }
 
 }

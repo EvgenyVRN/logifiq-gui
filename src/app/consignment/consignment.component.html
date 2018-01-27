@@ -6,6 +6,7 @@
                 <li class="active"><a href="#">Add New Consignment</a></li>
             </ul>
             <div>
+              <app-modal-window [(isVisible)]="!hideChooseOrder" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (idChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
                 <form name="myForm" class="">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -13,19 +14,24 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                       <app-select-cons-direction [(direction)]="consignment.direction" required></app-select-cons-direction>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                       <button>+Link Order</button>
+                                       <button [hidden]="consignment.direction === 'Import' || consignment.direction == ''" (click)="showChooseOrder()">+Link Order</button>
                                     </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-group">
+                                    <label [hidden]="consignment.direction === 'Import' || consignment.direction == ''">Order Id: {{ consignment.order }}</label>
+                                  </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                       <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder" [hidden]="consignment.direction === 'Import'" [required]="consignment.direction === 'Import'"></app-select-contractor>
+                                       <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder" [hidden]="consignment.direction === 'Import' || consignment.direction == ''"></app-select-contractor>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -47,6 +53,11 @@
                                     <app-select-contractor contractorType="consignor" [(contractor)]="consignment.consignor" required></app-select-contractor>
                                     <app-select-address [(address)] = "consignment.consigneeAddress" required>Select address</app-select-address>
                                     <app-select-customs [(custom)] = "consignment.consignorCustoms"></app-select-customs>
+                                    <div class="group-form relative">
+                                      <input id="sendingDate" type="date" [(ngModel)]="consignment.sendingDate"
+                                             name="sendingDate" placeholder="Sending date" required/>
+                                      <label class="label-border" for="sendingDate">Sending date</label>
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <app-select-contractor contractorType="consignee" [(contractor)]="consignment.consignee" required></app-select-contractor>
@@ -62,7 +73,7 @@
                             </div>
                         	<div class="row">
                         		<div class="col-md-3">
-                        			 <input type="checkbox">Dispatch location different
+                              <label for="dispatchLocation"><input type="checkbox" id="dispatchLocation"/>Dispatch location different</label>
                         		</div>
                         	</div>
                         	<div class="row">

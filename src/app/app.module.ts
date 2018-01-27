@@ -28,6 +28,10 @@ import { UnitService } from './service/unit.service';
 import { SelectConsDirectionComponent } from './component/select-cons-direction/select-cons-direction.component';
 import { SelectContractComponent } from './component/select-contract/select-contract.component';
 import {ContractService} from "./service/contract.service";
+import { SelectCountryComponent } from './component/select-country/select-country.component';
+import { ConsignmentFilterPipe } from './pipe/consignment-filter.pipe';
+import { ChooseOrderComponent } from './component/choose-order/choose-order.component';
+import { ModalWindowComponent } from './component/modal-window/modal-window.component';
 
 
 
@@ -47,7 +51,11 @@ import {ContractService} from "./service/contract.service";
     SelectGoodComponent,
     SelectUnitComponent,
     SelectConsDirectionComponent,
-    SelectContractComponent
+    SelectContractComponent,
+    SelectCountryComponent,
+    ConsignmentFilterPipe,
+    ChooseOrderComponent,
+    ModalWindowComponent
   ],
   imports: [
     BrowserModule,

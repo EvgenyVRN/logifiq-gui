@@ -11,9 +11,11 @@ export class Consignment {
   id: number;
   document: Document;
   direction = '';
+  order: number;
   consignor: Contractor;
   consignorAddress: Address;
   consignorCustoms: Customs;
+  sendingDate: string;
   otherConsignorAddress: Address;
   consignee: Contractor;
   consigneeAddress: Address;

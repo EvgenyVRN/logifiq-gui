@@ -1,0 +1,11 @@
+<ng-select [allowClear]="true"
+           [items]="countries"
+           [active] = "active"
+           [disabled]="disabled"
+           (data)="refreshValue($event)"
+           (selected)="selected($event)"
+           (removed)="removed($event)"
+           (typed)="typed($event)"
+           placeholder="No country selected">
+</ng-select>
+<label class="label-border">Country</label>
