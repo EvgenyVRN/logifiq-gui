@@ -14,7 +14,7 @@ export class ChooseOrderComponent implements OnInit {
   ngOnInit() {
   }
 
-  idBlur(): void{
+  idChangeEvent(): void{
     this.idChange.emit(this.id);
   }
 

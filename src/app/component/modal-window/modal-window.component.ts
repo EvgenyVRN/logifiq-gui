@@ -22,6 +22,7 @@ export class ModalWindowComponent implements OnChanges, OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.receivedValue = null;
   }
 
   cancel():void{
