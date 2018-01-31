@@ -8,7 +8,7 @@ import {OrderService} from "../../service/order.service";
   styleUrls: ['./choose-order.component.css']
 })
 export class ChooseOrderComponent implements OnInit {
-  @Output() idChange = new EventEmitter();
+  @Output() orderChange = new EventEmitter();
   orders: Order[];
   selectedRow: number;
   selectedOrder: number;
@@ -19,8 +19,8 @@ export class ChooseOrderComponent implements OnInit {
     this.getOrders();
   }
 
-  idChangeEvent(): void{
-    this.idChange.emit(this.selectedOrder);
+  orderChangeEvent(): void{
+    this.orderChange.emit(this.selectedOrder);
   }
 
   getOrders(){

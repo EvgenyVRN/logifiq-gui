@@ -6,8 +6,8 @@
                 <li class="active"><a href="#">Add New Consignment</a></li>
             </ul>
             <div>
-              <app-modal-window [(isVisible)]="!hideChooseOrder" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (idChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
-              <app-modal-window [(isVisible)]="!hideChooseGIS" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (idChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
+              <app-modal-window [(isVisible)]="!hideChooseOrder" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (orderChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
+              <app-modal-window [(isVisible)]="!hideChooseGIS" [receivedValue]="serviceIdValue" (orderChange)="gisChangeEvent($event)"><app-choose-gis (gisChange)="idChangeEvent($event)"></app-choose-gis></app-modal-window>
                 <form name="myForm" class="">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -231,7 +231,7 @@
                                 </div>
 								            </div>
                             <button type="button" (click)="addRow($event)">Add row</button>
-                            <button type="button">Add row from order</button>
+                            <button type="button" (click)="addRowFromOrder()">Add row from order</button>
                         </div>
                     </div>
 

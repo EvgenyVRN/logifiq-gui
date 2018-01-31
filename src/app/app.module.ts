@@ -33,6 +33,8 @@ import { ConsignmentFilterPipe } from './pipe/consignment-filter.pipe';
 import { ChooseOrderComponent } from './component/choose-order/choose-order.component';
 import { ModalWindowComponent } from './component/modal-window/modal-window.component';
 import { ChooseGisComponent } from './component/choose-gis/choose-gis.component';
+import {OrderService} from "./service/order.service";
+import {GoodInStockService} from "./service/good-in-stock.service";
 
 
 
@@ -66,7 +68,8 @@ import { ChooseGisComponent } from './component/choose-gis/choose-gis.component'
     AppRoutingModule,
     SelectModule
   ],
-  providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService],
+  providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
+  OrderService, GoodInStockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

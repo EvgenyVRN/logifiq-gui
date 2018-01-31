@@ -8,9 +8,8 @@ import {GoodInStockService} from "../../service/good-in-stock.service";
   styleUrls: ['./choose-gis.component.css']
 })
 export class ChooseGisComponent implements OnInit {
-  @Output() idChange = new EventEmitter();
+  @Output() gisChange = new EventEmitter();
   goods: GoodInStock[];
-  gisId: number;
   selectedRows: number[];
   selectedGoods: number[];
 
@@ -20,8 +19,8 @@ export class ChooseGisComponent implements OnInit {
     this.getGoods();
   }
 
-  idChangeEvent(): void{
-    this.idChange.emit(this.selectedGoods);
+  gisChangeEvent(): void{
+    this.gisChange.emit(this.selectedGoods);
   }
 
   getGoods(){

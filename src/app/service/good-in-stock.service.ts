@@ -8,7 +8,7 @@ import {of} from "rxjs/observable/of";
 export class GoodInStockService {
   title = 'Good in stock';
 
-  private url = '/registry/goodinstock/';
+  private url = '/warehouse/goodInStocks/';
 
   constructor( private http: HttpClient ) { }
 

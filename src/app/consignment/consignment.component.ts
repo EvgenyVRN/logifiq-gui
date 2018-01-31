@@ -3,6 +3,7 @@ import { ConsignmentService } from '../service/consignment.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import {GoodInStock} from "../model/good-in-stock";
 
 @Component({
   selector: 'app-consignment',
@@ -15,7 +16,8 @@ export class ConsignmentComponent implements OnInit {
   consignment: Consignment = new Consignment();
   hideChooseOrder = true;
   hideChooseGIS = true;
-  serviceIdValue: number;
+  serviceIdValue: any;
+  chosenGoods: GoodInStock[];
 
   constructor(
     private consignmentService: ConsignmentService,
@@ -82,6 +84,14 @@ export class ConsignmentComponent implements OnInit {
 
   orderChangeEvent(event){
     this.consignment.order = event;
+  }
+
+  gisChangeEvent(event){
+    this.chosenGoods = event;
+  }
+
+  public addRowFromOrder(){
+    this.hideChooseGIS = false;
   }
 
 }
