@@ -7,6 +7,7 @@
             </ul>
             <div>
               <app-modal-window [(isVisible)]="!hideChooseOrder" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (idChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
+              <app-modal-window [(isVisible)]="!hideChooseGIS" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)"><app-choose-order (idChange)="idChangeEvent($event)"></app-choose-order></app-modal-window>
                 <form name="myForm" class="">
                     <div class="panel panel-default">
                         <div class="panel-heading">

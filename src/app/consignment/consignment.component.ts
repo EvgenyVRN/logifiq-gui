@@ -14,6 +14,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
   hideChooseOrder = true;
+  hideChooseGIS = true;
   serviceIdValue: number;
 
   constructor(

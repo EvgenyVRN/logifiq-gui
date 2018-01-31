@@ -32,6 +32,7 @@ import { SelectCountryComponent } from './component/select-country/select-countr
 import { ConsignmentFilterPipe } from './pipe/consignment-filter.pipe';
 import { ChooseOrderComponent } from './component/choose-order/choose-order.component';
 import { ModalWindowComponent } from './component/modal-window/modal-window.component';
+import { ChooseGisComponent } from './component/choose-gis/choose-gis.component';
 
 
 
@@ -55,7 +56,8 @@ import { ModalWindowComponent } from './component/modal-window/modal-window.comp
     SelectCountryComponent,
     ConsignmentFilterPipe,
     ChooseOrderComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    ChooseGisComponent
   ],
   imports: [
     BrowserModule,

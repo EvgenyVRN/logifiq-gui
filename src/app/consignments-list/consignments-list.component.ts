@@ -16,6 +16,10 @@ export class ConsignmentsListComponent implements OnInit {
   consignor: Contractor;
   consignee: Contractor;
   vehicleId: number;
+  totalPackages: number;
+  totalGrossWeight: number;
+  totalVolume: number;
+
   consId: number;
 
   constructor(
