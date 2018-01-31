@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group relative">
-                                       <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder" [hidden]="consignment.direction === 'Import'" [required]="consignment.direction === 'Import'"></app-select-contractor>
+                                       <app-select-contractor [(contractor)]="consignment.goodsHolder"  contractorType="goods holder" [hidden]="consignment.direction === 'Import'" ></app-select-contractor>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -264,6 +264,7 @@
                     </div>
                     <div class="btns-arrival">
                         <input (click)="submit($event)" type="submit" value="Save" ng-disabled="myForm.$invalid">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <input type="submit" value="Cancel">
                         <input type="reset" value="Reset">
                     </div>

@@ -42,6 +42,7 @@ export class SelectAddressComponent implements OnInit {
 
   public selected(value:any):void {
     console.log('Selected value is: ', value);
+    this.address = this.addresses.find(address => address.id === value.id);
     this.addressChange.emit(value);
   }
 
