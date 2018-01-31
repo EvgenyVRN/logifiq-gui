@@ -10,7 +10,7 @@ import {GoodInStockService} from "../../service/good-in-stock.service";
 export class ChooseGisComponent implements OnInit {
   @Output() idChange = new EventEmitter();
   goods: GoodInStock[];
-  gisId
+  gisId: number;
   selectedRows: number[];
   selectedGoods: number[];
 
