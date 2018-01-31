@@ -14,34 +14,31 @@
 						<td>#</td>
 						<th>
 							<div class="relative">
-
-								<select placeholder="Direction">
-
-								</select> <label class="label-border">Direction</label>
+								<app-select-cons-direction ([direction])="direction"></app-select-cons-direction>
+								<label class="label-border">Direction</label>
 							</div>
 						</th>
 						<th>
 							<div class="relative">
-
-								<input type="text" size="7" placeholder="Consignment ID" /> <label
-									class="label-border">Consignment ID</label>
+								<input type="text" size="7" placeholder="Consignment ID" ([ngModel])="consId" name="consId"/>
+                <label class="label-border">Consignment ID</label>
 							</div>
 						</th>
 						<th>
 							<div class="relative">
-								<select placeholder="Consignor">
-								</select> <label class="label-border">Consignor</label>
+								<app-select-contractor contractorType="consignor" ([contractor])="consignor"></app-select-contractor>
+							  <label class="label-border">Consignor</label>
 							</div>
 						</th>
 						<th style="width: 10%">
 							<div class="relative">
-								<input type="text" placeholder="Consignee" /> <label
-									class="label-border">Consignee</label>
+                <app-select-contractor contractorType="consignee" ([contractor])="consignee"></app-select-contractor>
+                <label class="label-border">Consignee</label>
 							</div>
 						</th>
 						<th>
 							<div class="relative">
-								<input type="text" size="7" placeholder="Vehicle ID" /> <label
+								<input type="text" size="7" placeholder="Vehicle ID" ([ngModel])="vehicleId" name="vehicleId"/> <label
 									class="label-border">Vehicle ID</label>
 							</div>
 						</th>
@@ -51,8 +48,8 @@
 									<option value="=">=</option>
 									<option value="<"><</option>
 									<option value=">">></option>
-								</select> <input placeholder="Pkgs" style="text-align: right;" /> <label
-									class="label-border">Pkgs</label>
+								</select> <input placeholder="Total packages" style="text-align: right;" ([ngModel])="totalPackages" name="totalPackages"/>
+                <label class="label-border">Total packages</label>
 							</div>
 						</th>
 						<th class="oper-filters-arrivals" style="width: 8%;">
@@ -61,7 +58,8 @@
 									<option value="=">=</option>
 									<option value="<"><</option>
 									<option value=">">></option>
-								</select> <input placeholder="Weight" /> <label class="label-border">Weight</label>
+								</select> <input placeholder="Total Gross Weight" ([ngModel])="totalGrossWeight" name="totalGrossWeight"/>
+                <label class="label-border">Total Gross Weight</label>
 							</div>
 						</th>
 						<th class="oper-filters-arrivals" style="width: 8%;">
@@ -70,17 +68,18 @@
 									<option value="=">=</option>
 									<option value="<"><</option>
 									<option value=">">></option>
-								</select> <input placeholder="Volume" /> <label class="label-border">Volume</label>
+								</select> <input placeholder="Total Volume" ([ngModel])="totalVolume" name="totalVolume"/>
+                <label class="label-border">Total Volume</label>
 							</div>
 						</th>
 						<th>Actions</th>
 					</tr>
-					<tr *ngFor="let c of consignments; let i = index">
+					<tr *ngFor="let c of (consignments | consignmentFilter : [direction, consId, consignor, consignee, vehicleId, totalPackages, totalGrossWeight, totalVolume]); let i = index">
 						<td>{{ i+1 }}</td>
 						<td>{{ c.direction }}</td>
 						<td>{{ c.id }}</td>
-						<td>{{ c.consignor }}</td>
-						<td>{{ c.consignee }}</td>
+						<td>{{ c.consignor.name }}</td>
+						<td>{{ c.consignee.name }}</td>
 						<td>{{ c.vehicleRegNum }}</td>
 						<td>{{ c.totalPackages }}</td>
 						<td>{{ c.totalGrossWeight }}</td>
@@ -88,38 +87,29 @@
 						<td class="actions">
 							<div class="row">
 								<div class="col-md-2">
-									<button type="button" ng-hide="a.document.confirmed"
-										ng-click="ctrl.confirm(a)" title="Confirm document">
-										<i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
-									</button>
-								</div>
-								<div class="col-md-2">
-									<button type="button" ng-click="ctrl.open(a.id)"
+									<button type="button" (click)="open(a.id)"
 										title="Open document">
 										<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
 									</button>
 								</div>
 								<div class="col-md-2">
-									<button type="button" ng-click="ctrl.remove(a.id)"
+									<button type="button" (click)="remove(a.id)"
 										title="Delete document">
 										<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
 									</button>
 								</div>
-								<div class="col-md-2">
-									<button type="button" ng-hide="!a.document.enable"
-										ng-disabled="!a.document.confirmed"
-										ng-click="ctrl.transfer(a)" title="Make siirto operation">
-										<i class="fa fa-exchange fa-2x" aria-hidden="true"></i>
-									</button>
-								</div>
-								<div class="col-md-2">
-									<button type="button" ng-hide="!a.document.enable"
-										ng-disabled="!a.document.confirmed"
-										ng-click="ctrl.coverSheet(a.document.id)"
-										title="Open coversheet">
-										<i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
-									</button>
-								</div>
+                <div class="col-md-2">
+                  <button type="button" (click)="createCMR(a.id)"
+                          title="Create CMR">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" (click)="createTIR(a.id)"
+                          title="Create TIR Carnet">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                  </button>
+                </div>
 							</div>
 						</td>
 
@@ -129,5 +119,5 @@
 			</div>
 		</div>
 	</div>
-	
+
 	</div>
