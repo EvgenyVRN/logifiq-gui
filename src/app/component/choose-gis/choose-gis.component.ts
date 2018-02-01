@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GoodInStock} from "../../model/good-in-stock";
 import {GoodInStockService} from "../../service/good-in-stock.service";
 
@@ -9,9 +9,9 @@ import {GoodInStockService} from "../../service/good-in-stock.service";
 })
 export class ChooseGisComponent implements OnInit {
   @Output() gisChange = new EventEmitter();
-  goods: GoodInStock[];
-  selectedRows: number[];
-  selectedGoods: number[];
+  selectedRows: Array<number> = [];
+  selectedGoods: Array<GoodInStock> = [];
+  @Input() goods: Array<GoodInStock>;
 
   constructor(private gisService: GoodInStockService) { }
 
@@ -27,8 +27,8 @@ export class ChooseGisComponent implements OnInit {
     this.gisService.getGoods().subscribe(goods => this.goods = goods);
   }
 
-  setClickedRow(index, id){
+  setClickedRow(index, good){
     this.selectedRows.push(index);
-    this.selectedGoods.push(id);
+    this.selectedGoods.push(good);
   }
 }

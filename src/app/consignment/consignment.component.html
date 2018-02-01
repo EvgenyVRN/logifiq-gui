@@ -8,7 +8,7 @@
             <div>
               <app-modal-window [(isVisible)]="!hideModal" [receivedValue]="serviceIdValue" (orderChange)="orderChangeEvent($event)" (type)="typeOfModal">
                 <app-choose-order (orderChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'order'"></app-choose-order>
-                <app-choose-gis (gisChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'goods'"></app-choose-gis>
+                <app-choose-gis (gisChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'goods'" [goods]="consignment.order == null ? null : consignment.order.goodsInStock"></app-choose-gis>
               </app-modal-window>
 
                 <form name="myForm" class="">

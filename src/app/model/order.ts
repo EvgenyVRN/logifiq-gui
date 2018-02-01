@@ -1,3 +1,6 @@
+import {GoodInStock} from "./good-in-stock";
+
 export class Order {
-  public id: number;
+  id: number;
+  goodsInStock: Array<GoodInStock> = [];
 }

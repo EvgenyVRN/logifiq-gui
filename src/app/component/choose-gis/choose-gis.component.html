@@ -10,9 +10,9 @@
         </div>
       </th>
     </tr>
-    <tr *ngFor="let o of goods; let i=index;" (click)="setClickedRow(i, o.id)" [class.active]="selectedRows.indexOf(i) >= 0">
+    <tr *ngFor="let g of goods; let i=index;" (click)="setClickedRow(i, g)" [class.active]="selectedRows.indexOf(i) >= 0">
       <td>{{ i + 1 }}</td>
-      <td>{{ o.id }}</td>
+      <td>{{ g.id }}</td>
     </tr>
   </table>
 </div>
