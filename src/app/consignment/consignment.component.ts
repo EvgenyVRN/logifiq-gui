@@ -14,10 +14,10 @@ import {GoodInStock} from "../model/good-in-stock";
 export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
-  hideChooseOrder = true;
-  hideChooseGIS = true;
+  hideModal = true;
   serviceIdValue: any;
   chosenGoods: GoodInStock[];
+  typeOfModal: string;
 
   constructor(
     private consignmentService: ConsignmentService,
@@ -75,7 +75,8 @@ export class ConsignmentComponent implements OnInit {
   }
 
   public showChooseOrder(){
-    this.hideChooseOrder = false;
+    this.hideModal = false;
+    this.typeOfModal = 'order';
   }
 
   idChangeEvent(event){
@@ -90,8 +91,9 @@ export class ConsignmentComponent implements OnInit {
     this.chosenGoods = event;
   }
 
-  public addRowFromOrder(){
-    this.hideChooseGIS = false;
+  addRowFromOrder(){
+    this.hideModal = false;
+    this.typeOfModal = 'goods';
   }
 
 }

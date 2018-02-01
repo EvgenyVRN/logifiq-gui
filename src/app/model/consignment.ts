@@ -6,12 +6,13 @@ import { TermsOfDelivery } from './termsofdelivery';
 import { Address } from './address';
 import { Customs } from './customs';
 import {Contract} from "./contract";
+import {Order} from "./order";
 
 export class Consignment {
   id: number;
   document: Document;
   direction = '';
-  order: number;
+  order: Order;
   consignor: Contractor;
   consignorAddress: Address;
   consignorCustoms: Customs;

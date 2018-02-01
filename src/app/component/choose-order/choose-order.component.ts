@@ -11,7 +11,7 @@ export class ChooseOrderComponent implements OnInit {
   @Output() orderChange = new EventEmitter();
   orders: Array<Order> = [];
   selectedRow: number;
-  selectedOrder: number;
+  selectedOrder: Order;
 
   constructor(private orderService: OrderService) { }
 
@@ -34,9 +34,9 @@ export class ChooseOrderComponent implements OnInit {
     this.orders.push(o1, o2, o3);
   }
 
-  setClickedRow(index, id){
+  setClickedRow(index, order){
     this.selectedRow = index;
-    this.selectedOrder = id;
+    this.selectedOrder = order;
     this.orderChange.emit(this.selectedOrder);
   }
 
