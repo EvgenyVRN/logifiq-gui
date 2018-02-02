@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'consignment', component: ConsignmentComponent },
+  { path: 'consignment/:id', component: ConsignmentComponent },
   { path: 'consignments', component: ConsignmentsListComponent }
 ];
 

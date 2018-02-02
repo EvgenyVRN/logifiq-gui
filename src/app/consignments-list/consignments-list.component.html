@@ -74,7 +74,8 @@
 						</th>
 						<th>Actions</th>
 					</tr>
-					<tr *ngFor="let c of (consignments | consignmentFilter : [direction, consId, consignor, consignee, vehicleId, totalPackages, totalGrossWeight, totalVolume]); let i = index">
+			<!-- 	<tr *ngFor="let c of (consignments | consignmentFilter : [direction, consId, consignor, consignee, vehicleId, totalPackages, totalGrossWeight, totalVolume]); let i = index"> -->
+					<tr *ngFor="let c of (consignments); let i = index">
 						<td>{{ i+1 }}</td>
 						<td>{{ c.direction }}</td>
 						<td>{{ c.id }}</td>
@@ -101,13 +102,13 @@
                 <div class="col-md-2">
                   <button type="button" (click)="createCMR(c.id)"
                           title="Create CMR">
-                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-tile-pdf-o fa-2x" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="col-md-2">
                   <button type="button" (click)="createTIR(c.id)"
                           title="Create TIR Carnet">
-                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-tile-pdf-o fa-2x" aria-hidden="true"></i>
                   </button>
                 </div>
 							</div>

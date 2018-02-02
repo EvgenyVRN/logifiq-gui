@@ -7,7 +7,7 @@ import {Consignment} from "../model/consignment";
 export class ConsignmentFilterPipe implements PipeTransform {
 
   transform(consignments: Consignment[], args: any[]): Consignment[] {
-    if (consignments != null){
+    if (consignments === null){
       return;
     }
     let result: Consignment[] = consignments;
