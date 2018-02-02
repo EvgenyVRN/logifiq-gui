@@ -1,9 +1,9 @@
 import { Consignment } from '../model/consignment';
 import { ConsignmentService } from '../service/consignment.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {Contractor} from "../model/contractor";
-import { Location } from "@angular/common";
+
 
 @Component({
   selector: 'app-consignments-list',
@@ -26,7 +26,7 @@ export class ConsignmentsListComponent implements OnInit {
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
-    private location: Location
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,8 +42,8 @@ export class ConsignmentsListComponent implements OnInit {
 
   open(id:number):void{
     console.log("open with id = " + id);
-    this.location.go('/consignment/' + id.toString() );
-    // this.location.replaceState('/consignment/' + id.toString() );
+    this.router.navigate(['/consignment/', id]);
+
   }
 
   remove(id:number):void{
