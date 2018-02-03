@@ -25,6 +25,7 @@ export class SelectAddressComponent implements OnInit {
     } else {
       this.addTextField(this.address);
       this.active.push(this.address);
+      this.addressChange.emit(this.address);
     }
   }
 
@@ -41,9 +42,8 @@ export class SelectAddressComponent implements OnInit {
   }
 
   public selected(value:any):void {
-    console.log('Selected value is: ', value);
     this.address = this.addresses.find(address => address.id === value.id);
-    this.addressChange.emit(value);
+    this.addressChange.emit(this.address);
   }
 
   public removed(value:any):void {
