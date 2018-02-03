@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {GoodInStock} from "../model/good-in-stock";
+import {GoodInConsignment} from "../model/goodinconsignment";
+import {Order} from "../model/order";
 
 @Component({
   selector: 'app-consignment',
@@ -84,12 +86,14 @@ export class ConsignmentComponent implements OnInit {
   }
 
   orderChangeEvent(event){
-    this.consignment.order = event;
+    if (event instanceof Order){
+      this.consignment.order = event;
+    } else {
+      event.forEach(good => this.consignment.goodsInConsignment.push(new GoodInConsignment(event.name, event.text)));
+    }
+
   }
 
-  gisChangeEvent(event){
-    this.chosenGoods = event;
-  }
 
   addRowFromOrder(){
     this.hideModal = false;

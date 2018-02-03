@@ -13,4 +13,11 @@ export class GoodInConsignment {
   netWeight: number;
   volume: number;
   enable = true;
+  name: string;
+  text: string;
+  constructor(name: string, text: string){
+    this.name = name;
+    this.text = text;
+  }
+
 }

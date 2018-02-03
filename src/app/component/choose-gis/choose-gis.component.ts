@@ -19,10 +19,6 @@ export class ChooseGisComponent implements OnInit {
     this.getGoods();
   }
 
-  gisChangeEvent(): void{
-    this.gisChange.emit(this.selectedGoods);
-  }
-
   getGoods(){
     this.gisService.getGoods().subscribe(goods => this.goods = goods);
   }
@@ -30,5 +26,6 @@ export class ChooseGisComponent implements OnInit {
   setClickedRow(index, good){
     this.selectedRows.push(index);
     this.selectedGoods.push(good);
+    this.gisChange.emit(this.selectedGoods);
   }
 }
