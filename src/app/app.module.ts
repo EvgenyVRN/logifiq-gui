@@ -35,6 +35,7 @@ import { ModalWindowComponent } from './component/modal-window/modal-window.comp
 import { ChooseGisComponent } from './component/choose-gis/choose-gis.component';
 import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
+import {Globals} from "./model/globals";
 
 
 
@@ -69,7 +70,7 @@ import {GoodInStockService} from "./service/good-in-stock.service";
     SelectModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
-  OrderService, GoodInStockService],
+  OrderService, GoodInStockService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
