@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
+import {GoodInStock} from "../../model/good-in-stock";
+import {Order} from "../../model/order";
 
 @Component({
   selector: 'app-modal-window',
@@ -10,7 +12,7 @@ export class ModalWindowComponent implements OnChanges, OnInit {
   @Input() isVisible: boolean;
   @Output() isVisibleChange = new EventEmitter();
   @Output() orderChange = new EventEmitter();
-  @Input() receivedValue: any;
+  @Input() receivedValue: Order | GoodInStock[];
 
   ngOnChanges(changes: SimpleChanges){
     const isVisible: SimpleChange = changes.isVisible;

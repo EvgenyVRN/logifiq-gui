@@ -16,7 +16,7 @@ export class ChooseGisComponent implements OnInit {
   constructor(private gisService: GoodInStockService) { }
 
   ngOnInit() {
-    this.getGoods();
+
   }
 
   getGoods(){

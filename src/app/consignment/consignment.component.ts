@@ -18,7 +18,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
   hideModal = true;
-  serviceIdValue: any;
+  serviceIdValue: Order | GoodInStock[];
   chosenGoods: GoodInStock[];
   typeOfModal: string;
   dispatchDifferentLocation: boolean = false;
@@ -91,16 +91,16 @@ export class ConsignmentComponent implements OnInit {
   }
 
   orderChangeEvent(event){
+    console.log(event);
     if (event instanceof Order){
       this.consignment.order = event;
-    } else {
+    } else if (event instanceof Array) {
       event.forEach(good => this.consignment.goodsInConsignment.push(
         new GoodInConsignment(good.name, good.text, good.good, good.placeCount, good.placeType, good.weight, good.freightWeight,
           good.volume)));
     }
 
   }
-
 
   addRowFromOrder(){
     this.hideModal = false;

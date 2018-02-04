@@ -7,6 +7,8 @@ import { Address } from './address';
 import { Customs } from './customs';
 import {Contract} from "./contract";
 import {Order} from "./order";
+import {CountryService} from "../service/country.service";
+import {Country} from "./country";
 
 export class Consignment {
   id: number;
@@ -27,10 +29,10 @@ export class Consignment {
   costPayer: Contractor;
   costPayerContract: Contract;
   vehicleRegNum = '';
-  vehicleRegCountry = '';
+  vehicleRegCountry: Country;
   vehicleModeOfTransport = '';
   trailerRegNum = '';
-  trailerRegCountry = '';
+  trailerRegCountry: Country;
   trailerModeOfTransport = '';
   deliveryTerms = '';
   deliveryTermsPlaces: number;

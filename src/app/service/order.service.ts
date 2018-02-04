@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Order} from "../model/order";
 import {of} from "rxjs/observable/of";
@@ -13,7 +13,10 @@ export class OrderService {
   constructor( private http: HttpClient ) { }
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.orderUrl + 'enable');
+    const headers = new HttpHeaders();
+    headers.append('Content-type', 'application/json');
+    const params = new HttpParams().set('enabled', String(true));
+    return this.http.get<Order[]>(this.orderUrl, {headers: headers, params : params});
   }
 
   /**

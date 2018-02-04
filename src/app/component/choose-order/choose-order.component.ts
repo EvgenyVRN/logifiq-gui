@@ -10,7 +10,7 @@ import {GoodInStock} from "../../model/good-in-stock";
 })
 export class ChooseOrderComponent implements OnInit {
   @Output() orderChange = new EventEmitter();
-  orders: Array<Order> = [];
+  orders: Order[] = [];
   selectedRow: number;
   selectedOrder: Order;
 
@@ -18,7 +18,7 @@ export class ChooseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.getOrders();
-    this.getMockOrders();
+    // this.getMockOrders();
   }
 
   getOrders(){
@@ -81,7 +81,7 @@ export class ChooseOrderComponent implements OnInit {
   setClickedRow(index, order){
     this.selectedRow = index;
     this.selectedOrder = order;
-    this.orderChange.emit(this.selectedOrder);
+    this.orderChange.emit(this.orders[index]);
   }
 
 }
