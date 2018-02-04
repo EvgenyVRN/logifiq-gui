@@ -14,7 +14,7 @@
 						<td>#</td>
 						<th>
 							<div class="relative">
-								<app-select-cons-direction ([direction])="direction"></app-select-cons-direction>
+								<!--<app-select-cons-direction ([direction])="direction"></app-select-cons-direction>-->
 								<label class="label-border">Direction</label>
 							</div>
 						</th>
@@ -26,13 +26,17 @@
 						</th>
 						<th>
 							<div class="relative">
-								<app-select-contractor contractorType="consignor" ([contractor])="consignor"></app-select-contractor>
-							  <label class="label-border">Consignor</label>
+								<!--<app-select-contractor [contractorType]="consignor" ([contractor])="consignor"></app-select-contractor>-->
+							  <!--<label class="label-border">Consignor</label>-->
+                <input type="text" size="7" placeholder="Consignor" ([ngModel])="consignor" name="consignor"/>
+                <label class="label-border">Consignor</label>
 							</div>
 						</th>
 						<th style="width: 10%">
 							<div class="relative">
-                <app-select-contractor contractorType="consignee" ([contractor])="consignee"></app-select-contractor>
+                <!--<app-select-contractor [contractorType]="consignee" ([contractor])="consignee"></app-select-contractor>-->
+                <!--<label class="label-border">Consignee</label>-->
+                <input type="text" size="7" placeholder="Consignee" ([ngModel])="consignee" name="consignee"/>
                 <label class="label-border">Consignee</label>
 							</div>
 						</th>
