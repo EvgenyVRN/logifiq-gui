@@ -21,7 +21,7 @@ export class SelectAddressComponent implements OnInit {
 
   ngOnInit() {
     this.getAddresses();
-     this.getMockAddresses();
+     // this.getMockAddresses();
     if (this.address == null){
       this.address = new Address();
     } else {

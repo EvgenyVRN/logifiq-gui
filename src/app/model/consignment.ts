@@ -46,7 +46,7 @@ export class Consignment {
   totalVolume: number; // should calculate
 
   public addNewGood(){
-    this.goodsInConsignment.push(new GoodInConsignment('', ''));
+    this.goodsInConsignment.push(new GoodInConsignment('', '', null, 0, null, 0 , 0, 0));
   }
 
   public deleteRow(index){

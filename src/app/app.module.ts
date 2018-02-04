@@ -36,6 +36,7 @@ import { ChooseGisComponent } from './component/choose-gis/choose-gis.component'
 import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
 import {Globals} from "./model/globals";
+import {CountryService} from "./service/country.service";
 
 
 
@@ -70,7 +71,7 @@ import {Globals} from "./model/globals";
     SelectModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
-  OrderService, GoodInStockService, Globals],
+  OrderService, GoodInStockService, Globals, CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

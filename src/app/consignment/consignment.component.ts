@@ -21,6 +21,7 @@ export class ConsignmentComponent implements OnInit {
   serviceIdValue: any;
   chosenGoods: GoodInStock[];
   typeOfModal: string;
+  dispatchDifferentLocation: boolean = false;
 
   constructor(
     private consignmentService: ConsignmentService,
@@ -92,7 +93,9 @@ export class ConsignmentComponent implements OnInit {
     if (event instanceof Order){
       this.consignment.order = event;
     } else {
-      event.forEach(good => this.consignment.goodsInConsignment.push(new GoodInConsignment(event.name, event.text)));
+      event.forEach(good => this.consignment.goodsInConsignment.push(
+        new GoodInConsignment(good.name, good.text, good.good, good.placeCount, good.placeType, good.weight, good.freightWeight,
+          good.volume)));
     }
 
   }

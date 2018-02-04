@@ -8,12 +8,12 @@ import {of} from "rxjs/observable/of";
 export class CountryService {
   title = 'Country';
 
-  private countriesUrl = '/rest/registry/countries/';
+  private countriesUrl = '/registry/addresses/countries/';
 
   constructor( private http: HttpClient ) { }
 
   getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.countriesUrl + 'enabled');
+    return this.http.get<Country[]>(this.countriesUrl);
   }
 
   /**

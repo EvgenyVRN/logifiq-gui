@@ -32,6 +32,10 @@ export class ChooseOrderComponent implements OnInit {
     g1.id = 1;
     g1.name = 'g1';
     g1.text = 'g1';
+    g1.volume = 100;
+    g1.freightWeight = 150;
+    g1.placeCount = 200;
+    g1.weight = 250;
     const g2 = new GoodInStock();
     g2.id = 2;
     g2.name = 'g2';

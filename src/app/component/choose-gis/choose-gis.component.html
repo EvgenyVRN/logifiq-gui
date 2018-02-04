@@ -8,10 +8,18 @@
           <label class="label-border">GIS ID</label>
         </div>
       </th>
+      <th>Places</th>
+      <th>Gross weight</th>
+      <th>Net weight</th>
+      <th>Volume</th>
     </tr>
     <tr *ngFor="let g of goods; let i=index;" (click)="setClickedRow(i, g)" [class.active]="selectedRows.indexOf(i) >= 0">
       <td>{{ i + 1 }}</td>
       <td>{{ g.id }}</td>
+      <td>{{ g.placeCount }}</td>
+      <td>{{ g.weight }}</td>
+      <td>{{ g.freightWeight }}</td>
+      <td>{{ g.volume }}</td>
     </tr>
   </table>
 </div>

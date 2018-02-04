@@ -57,11 +57,11 @@
                                     <app-select-contractor contractorType="consignor" [(contractor)]="consignment.consignor" required></app-select-contractor>
                                     <app-select-address [(address)] = "consignment.consigneeAddress" required>Select address</app-select-address>
                                     <app-select-customs [(custom)] = "consignment.consignorCustoms"></app-select-customs>
-                                    <div class="group-form relative">
-                                      <input id="sendingDate" type="date" [(ngModel)]="consignment.sendingDate"
-                                             name="sendingDate" placeholder="Sending date" required/>
-                                      <label class="label-border" for="sendingDate">Sending date</label>
-                                    </div>
+
+                                  <input id="sendingDate" type="date" [(ngModel)]="consignment.sendingDate"
+                                         name="sendingDate" placeholder="Sending date" required/>
+                                  <label class="label-border" for="sendingDate">Sending date</label>
+
                                 </div>
                                 <div class="col-md-3">
                                     <app-select-contractor contractorType="consignee" [(contractor)]="consignment.consignee" required></app-select-contractor>
@@ -77,10 +77,10 @@
                             </div>
                         	<div class="row">
                         		<div class="col-md-3">
-                              <label for="dispatchLocation"><input type="checkbox" id="dispatchLocation"/>Dispatch location different</label>
+                              <label for="dispatchLocation"><input type="checkbox" id="dispatchLocation" [(ngModel)]="dispatchDifferentLocation" name="dispatchDifferentLocation"/>Dispatch location different</label>
                         		</div>
                         	</div>
-                        	<div class="row">
+                        	<div class="row" *ngIf="dispatchDifferentLocation">
                         		<div class="col-md-3">
                         			<app-select-address [(address)] = "consignment.otherConsignorAddress">Select address</app-select-address>
                         		</div>
@@ -102,8 +102,7 @@
 
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Vehicle registration country" [(ngModel)]="consignment.vehicleRegCountry" name="vehicleRegCountry" required/>
-                                        <label class="label-border">Vehicle registration country</label>
+                                        <app-select-country [(country)]="consignment.vehicleRegCountry"></app-select-country>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -121,8 +120,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Vehicle registration country" [(ngModel)]="consignment.trailerRegCountry" name="trailerRegCountry"/>
-                                        <label class="label-border">Vehicle registration country</label>
+                                      <app-select-country [(country)]="consignment.trailerRegCountry"></app-select-country>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
