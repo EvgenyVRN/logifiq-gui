@@ -9,7 +9,7 @@ import { ContractorService } from '../../service/contractor.service';
 })
 export class SelectContractorComponent implements OnInit {
 
-  public contractors:Contractor[];
+  public contractors:Contractor[] = [];
   public active: Contractor[] = [];
 
   @Input() contractorType: string;
@@ -24,6 +24,7 @@ export class SelectContractorComponent implements OnInit {
 
   ngOnInit() {
     this.getContractors();
+    this.getMockContractors();
     if (this.contractor == null){
 
     } else {
@@ -53,15 +54,14 @@ export class SelectContractorComponent implements OnInit {
   getMockContractors():void {
     const c1 = new Contractor();
     c1.id = 1;
-    c1.name = "Contractor1";
+    c1.text = "Contractor1";
     const c2 = new Contractor();
     c2.id = 2;
-    c2.name = "Contractor2";
+    c2.text = "Contractor2";
     const c3 = new Contractor();
     c3.id = 3;
-    c3.name = "Contractor3";
-    const mockArray = [c1, c2, c3];
-    this.contractors = mockArray;
+    c3.text = "Contractor3";
+    this.contractors.push(c1, c2, c3);
   }
 
   public selected(value:any):void {

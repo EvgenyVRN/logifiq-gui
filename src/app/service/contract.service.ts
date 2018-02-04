@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Contract} from "../model/contract";
 import {of} from "rxjs/observable/of";
@@ -14,6 +14,13 @@ export class ContractService {
 
   getContracts(): Observable<Contract[]> {
     return this.http.get<Contract[]>(this.contractsUrl + 'enabled');
+  }
+
+  getContractsByContractor(id: number): Observable<Contract[]> {
+    const headers = new HttpHeaders();
+    headers.append('Content-type', 'application/json');
+    const params = new HttpParams().set('contractor', String(id));
+    return this.http.get<Contract[]>(this.contractsUrl, {headers: headers, params : params});
   }
 
   /**

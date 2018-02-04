@@ -41,7 +41,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group relative">
                                         <app-select-contractor contractorType="cost payer" [(contractor)]="consignment.costPayer" required></app-select-contractor>
-                                        <app-select-contract [(contract)]="consignment.costPayerContract" required></app-select-contract>
+                                        <app-select-contract [(contract)]="consignment.costPayerContract" [contractor]="consignment.costPayer" [disabled]="!consignment.costPayer" required></app-select-contract>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Contract} from "../../model/contract";
 import {ContractService} from "../../service/contract.service";
+import {Contractor} from "../../model/contractor";
 
 @Component({
   selector: 'app-select-contract',
@@ -11,9 +12,10 @@ export class SelectContractComponent implements OnInit {
   public contracts : Contract[];
   @Input() contract: Contract;
   @Output() contractChange = new EventEmitter();
+  @Input() contractor: Contractor;
   public active: Contract[] = [];
   private value:any = {};
-  public disabled = false;
+  @Input() disabled;
 
   constructor(
     private contractService: ContractService) { }
@@ -27,11 +29,11 @@ export class SelectContractComponent implements OnInit {
   }
 
   getContracts():void {
-    this.contractService.getContracts()
-      .subscribe(good => this.goodAnswer(good));
+    this.contractService.getContractsByContractor(this.contractor.id)
+      .subscribe(contract => this.contractAnswer(contract));
   }
 
-  private goodAnswer(contracts: Contract[]) {
+  private contractAnswer(contracts: Contract[]) {
     this.contracts = contracts;
     this.contracts.forEach((contract : Contract) => {
       contract.text = contract.name;

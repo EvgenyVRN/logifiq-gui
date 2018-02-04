@@ -1,6 +1,7 @@
 import { Address } from "../../model/address";
 import { AddressService } from "../../service/address.service";
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Country} from "../../model/country";
 
 @Component({
   selector: 'app-select-address',
@@ -9,7 +10,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 })
 export class SelectAddressComponent implements OnInit {
 
-  addresses: Address[];
+  addresses: Address[] = [];
   disabled = false;
   @Input() ownerId: number;
   @Input() address: Address;
@@ -20,6 +21,7 @@ export class SelectAddressComponent implements OnInit {
 
   ngOnInit() {
     this.getAddresses();
+     this.getMockAddresses();
     if (this.address == null){
       this.address = new Address();
     } else {
@@ -27,6 +29,19 @@ export class SelectAddressComponent implements OnInit {
       this.active.push(this.address);
       this.addressChange.emit(this.address);
     }
+  }
+
+  getMockAddresses(): void{
+    const a1 = new Address();
+    a1.id = 10000001;
+    a1.apt = '10';
+    a1.city = 'Voronezh';
+    a1.country = new Country();
+    a1.region = 'Voronezhskaya obk.';
+    a1.street = 'Leningradskaya';
+    this.addTextField(a1);
+    this.addresses.push(a1);
+
   }
 
   getAddresses(): void {

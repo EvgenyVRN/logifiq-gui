@@ -63,7 +63,7 @@ export class ChooseOrderComponent implements OnInit {
     g7.name = 'g7';
     g7.text = 'g7';
     const g8 = new GoodInStock();
-    g8.id = 1;
+    g8.id = 8;
     g8.name = 'g8';
     g8.text = 'g8';
     const g9 = new GoodInStock();
