@@ -48,6 +48,7 @@ export class ConsignmentComponent implements OnInit {
   public submit(value: any): void {
     this.consignmentService.createConsignment(this.consignment).subscribe(c => this.consignment = c);
     console.log('submit consignment: ', this.consignment);
+    window.location.href = '/consignments';
   }
 
   public addRow(event){

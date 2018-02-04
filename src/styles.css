@@ -325,7 +325,7 @@ button.accordion.active, button.accordion:hover {
 
 .table-wrapper{
     height:250px;
-    overflow-y:scroll;
+    overflow-y:auto;
 }
 
 .table{
@@ -333,14 +333,6 @@ button.accordion.active, button.accordion:hover {
 }
 
 
-body {
-    background: #372C45;
-    font-family: 'Raleway', sans-serif;
-    color: #7a7676;
-    line-height: 20px;
-    overflow-x: hidden;
-    font-size: 14px;
-}
 
 #main-menu{
     position: absolute;
@@ -895,12 +887,13 @@ input[type="text"][disabled]{
 
 
 body {
-    background: #372C45;
-    font-family: 'Raleway', sans-serif;
-    color: #7a7676;
-    line-height: 20px;
-    overflow-x: hidden;
-    font-size: 14px;
+  background: #372C45;
+  font-family: 'Raleway', sans-serif;
+  color: #7a7676;
+  line-height: 20px;
+  overflow-x: hidden;
+  overflow-y:auto;
+  font-size: 14px;
 }
 
 input, select, textarea {
@@ -1648,6 +1641,7 @@ h5.left-nav-title {
     margin-left: 240px;
     background: #fff;
     min-height: 1000px;
+    overflow-y: auto;
 }
 
 .page-heading {
