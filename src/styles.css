@@ -2116,3 +2116,9 @@ td {
 .righted{
     right: 5px;
 }
+
+.btns-arrival input:hover{
+  background-color: #FFFFFF;;
+  color: #372c45;
+  font-weight: 700;
+}
