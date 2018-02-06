@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Order} from "../model/order";
 import {of} from "rxjs/observable/of";
+import {Globals} from "../model/globals";
 
 @Injectable()
 export class OrderService {
@@ -10,13 +11,14 @@ export class OrderService {
 
   private orderUrl = '/warehouse/orders/';
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+               private globals: Globals) { }
 
   getOrders(): Observable<Order[]> {
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
     const params = new HttpParams().set('enabled', String(true));
-    return this.http.get<Order[]>(this.orderUrl, {headers: headers, params : params});
+    return this.http.get<Order[]>(this.globals.host + this.orderUrl, {headers: headers, params : params});
   }
 
   /**

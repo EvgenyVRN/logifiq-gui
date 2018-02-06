@@ -7,6 +7,9 @@ import {GoodInStock} from "../model/good-in-stock";
 import {GoodInConsignment} from "../model/goodinconsignment";
 import {Order} from "../model/order";
 import {Contractor} from "../model/contractor";
+import {LoginService} from "../service/login.service";
+import {MatDialog} from "@angular/material";
+import {ModalWindowComponent} from "../component/modal-window/modal-window.component";
 
 @Component({
   selector: 'app-consignment',
@@ -22,10 +25,13 @@ export class ConsignmentComponent implements OnInit {
   chosenGoods: GoodInStock[];
   typeOfModal: string;
   dispatchDifferentLocation: boolean = false;
+  order: Order;
 
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
+    private loginService: LoginService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -92,9 +98,10 @@ export class ConsignmentComponent implements OnInit {
 
   orderChangeEvent(event){
     console.log(event);
-    if (event instanceof Order){
+    const type: string  = typeof event;
+    if (type === "Order"){
       this.consignment.order = event;
-    } else if (event instanceof Array) {
+    } else {
       event.forEach(good => this.consignment.goodsInConsignment.push(
         new GoodInConsignment(good.name, good.text, good.good, good.placeCount, good.placeType, good.weight, good.freightWeight,
           good.volume)));
@@ -105,6 +112,19 @@ export class ConsignmentComponent implements OnInit {
   addRowFromOrder(){
     this.hideModal = false;
     this.typeOfModal = 'goods';
+  }
+
+  login(){
+    let dialogRef = this.dialog.open(ModalWindowComponent, {
+      width: '700px',
+      height: '500px',
+      data: { order: this.order }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.order = result;
+    });
   }
 
 }

@@ -18,7 +18,7 @@ export class ChooseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.getOrders();
-    // this.getMockOrders();
+    this.getMockOrders();
   }
 
   getOrders(){

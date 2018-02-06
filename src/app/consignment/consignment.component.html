@@ -5,12 +5,12 @@
     <li class="active"><a href="#">Add New Consignment</a></li>
   </ul>
   <div>
-    <app-modal-window [(isVisible)]="!hideModal" [receivedValue]="serviceIdValue"
-                      (orderChange)="orderChangeEvent($event)" (type)="typeOfModal">
-      <app-choose-order (orderChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'order'"></app-choose-order>
-      <app-choose-gis (gisChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'goods'"
-                      [goods]="consignment.order == null ? null : consignment.order.goodsInStock"></app-choose-gis>
-    </app-modal-window>
+    <!--<app-modal-window [(isVisible)]="!hideModal" [receivedValue]="serviceIdValue"-->
+                      <!--(orderChange)="orderChangeEvent($event)" (type)="typeOfModal">-->
+      <!--<app-choose-order (orderChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'order'"></app-choose-order>-->
+      <!--<app-choose-gis (gisChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'goods'"-->
+                      <!--[goods]="consignment.order == null ? null : consignment.order.goodsInStock"></app-choose-gis>-->
+    <!--</app-modal-window>-->
 
     <form name="myForm" class="">
       <div class="panel panel-default">
@@ -26,13 +26,13 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <button [hidden]="consignment.direction !== 'Export'" (click)="showChooseOrder()">+Link Order</button>
+                <button [hidden]="consignment.direction !== 'Export'" (click)="login()">+Link Order</button>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <label [hidden]="consignment.direction !== 'Export'">Order Id: {{ consignment.order == null ? '' :
-                  consignment.order.id }}</label>
+                <label [hidden]="consignment.direction !== 'Export'">Order Id: {{ order == null ? '' :
+                 order.id }}</label>
               </div>
             </div>
             <div class="col-md-3">

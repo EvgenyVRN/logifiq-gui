@@ -37,6 +37,9 @@ import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
 import {Globals} from "./model/globals";
 import {CountryService} from "./service/country.service";
+import {LoginService} from "./service/login.service";
+import {MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -68,10 +71,15 @@ import {CountryService} from "./service/country.service";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    SelectModule
+    SelectModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
-  OrderService, GoodInStockService, Globals, CountryService],
-  bootstrap: [AppComponent]
+  OrderService, GoodInStockService, Globals, CountryService, LoginService],
+  bootstrap: [AppComponent],
+  entryComponents: [ModalWindowComponent]
 })
 export class AppModule { }
