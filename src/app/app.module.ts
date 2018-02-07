@@ -30,16 +30,14 @@ import { SelectContractComponent } from './component/select-contract/select-cont
 import {ContractService} from "./service/contract.service";
 import { SelectCountryComponent } from './component/select-country/select-country.component';
 import { ConsignmentFilterPipe } from './pipe/consignment-filter.pipe';
-import { ChooseOrderComponent } from './component/choose-order/choose-order.component';
-import { ModalWindowComponent } from './component/modal-window/modal-window.component';
-import { ChooseGisComponent } from './component/choose-gis/choose-gis.component';
 import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
 import {Globals} from "./model/globals";
 import {CountryService} from "./service/country.service";
-import {LoginService} from "./service/login.service";
 import {MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { OrderModalComponent } from './component/order-modal/order-modal.component';
+import { GisModalComponent } from './component/gis-modal/gis-modal.component';
 
 
 
@@ -62,9 +60,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     SelectContractComponent,
     SelectCountryComponent,
     ConsignmentFilterPipe,
-    ChooseOrderComponent,
-    ModalWindowComponent,
-    ChooseGisComponent
+    OrderModalComponent,
+    GisModalComponent
   ],
   imports: [
     BrowserModule,
@@ -78,8 +75,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatInputModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
-  OrderService, GoodInStockService, Globals, CountryService, LoginService],
+  OrderService, GoodInStockService, Globals, CountryService],
   bootstrap: [AppComponent],
-  entryComponents: [ModalWindowComponent]
+  entryComponents: [OrderModalComponent, GisModalComponent]
 })
 export class AppModule { }

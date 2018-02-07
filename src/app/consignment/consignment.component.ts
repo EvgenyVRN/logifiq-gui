@@ -2,14 +2,12 @@ import { Consignment } from '../model/consignment';
 import { ConsignmentService } from '../service/consignment.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import {GoodInStock} from "../model/good-in-stock";
 import {GoodInConsignment} from "../model/goodinconsignment";
 import {Order} from "../model/order";
-import {Contractor} from "../model/contractor";
-import {LoginService} from "../service/login.service";
 import {MatDialog} from "@angular/material";
-import {ModalWindowComponent} from "../component/modal-window/modal-window.component";
+import {OrderModalComponent} from "../component/order-modal/order-modal.component";
+import {GisModalComponent} from "../component/gis-modal/gis-modal.component";
 
 @Component({
   selector: 'app-consignment',
@@ -20,17 +18,14 @@ import {ModalWindowComponent} from "../component/modal-window/modal-window.compo
 export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
-  hideModal = true;
-  serviceIdValue: Order | GoodInStock[];
-  chosenGoods: GoodInStock[];
-  typeOfModal: string;
+  gis: GoodInStock[];
   dispatchDifferentLocation: boolean = false;
   order: Order;
+  chosenGoods: GoodInStock[] = [];
 
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
-    private loginService: LoginService,
     public dialog: MatDialog
   ) { }
 
@@ -87,35 +82,8 @@ export class ConsignmentComponent implements OnInit {
     this.consignment.goodsInConsignment.forEach(g => this.consignment.totalVolume =  +this.consignment.totalVolume + +g.volume);
   }
 
-  public showChooseOrder(){
-    this.hideModal = false;
-    this.typeOfModal = 'order';
-  }
-
-  idChangeEvent(event){
-    this.serviceIdValue = event;
-  }
-
-  orderChangeEvent(event){
-    console.log(event);
-    const type: string  = typeof event;
-    if (type === "Order"){
-      this.consignment.order = event;
-    } else {
-      event.forEach(good => this.consignment.goodsInConsignment.push(
-        new GoodInConsignment(good.name, good.text, good.good, good.placeCount, good.placeType, good.weight, good.freightWeight,
-          good.volume)));
-    }
-
-  }
-
-  addRowFromOrder(){
-    this.hideModal = false;
-    this.typeOfModal = 'goods';
-  }
-
-  login(){
-    let dialogRef = this.dialog.open(ModalWindowComponent, {
+  showOrderModal(){
+    let dialogRef = this.dialog.open(OrderModalComponent, {
       width: '700px',
       height: '500px',
       data: { order: this.order }
@@ -124,6 +92,21 @@ export class ConsignmentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.order = result;
+    });
+  }
+
+  showGisModal(){
+    let dialogRef = this.dialog.open(GisModalComponent, {
+      width: '700px',
+      height: '500px',
+      data: { goods: this.order.goodsInStock, chosenGoods: this.chosenGoods }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      result.forEach(good => this.consignment.goodsInConsignment.push(
+        new GoodInConsignment(good.name, good.text, good.good, good.placeCount, good.placeType, good.weight, good.freightWeight,
+          good.volume)));
     });
   }
 

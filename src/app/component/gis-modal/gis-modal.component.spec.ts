@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalWindowComponent } from './modal-window.component';
+import { GisModalComponent } from './gis-modal.component';
 
-describe('ModalWindowComponent', () => {
-  let component: ModalWindowComponent;
-  let fixture: ComponentFixture<ModalWindowComponent>;
+describe('GisModalComponent', () => {
+  let component: GisModalComponent;
+  let fixture: ComponentFixture<GisModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalWindowComponent ]
+      declarations: [ GisModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalWindowComponent);
+    fixture = TestBed.createComponent(GisModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

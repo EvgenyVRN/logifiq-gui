@@ -1,18 +1,14 @@
-import {
-  Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChange,
-  SimpleChanges
-} from '@angular/core';
-import {GoodInStock} from "../../model/good-in-stock";
+import {Component, Inject, OnInit} from '@angular/core';
 import {Order} from "../../model/order";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {GoodInStock} from "../../model/good-in-stock";
 
 @Component({
-  selector: 'app-modal-window',
-  templateUrl: './modal-window.component.html',
-  styleUrls: ['./modal-window.component.css']
+  selector: 'app-order-modal',
+  templateUrl: './order-modal.component.html',
+  styleUrls: ['./order-modal.component.css']
 })
-export class ModalWindowComponent implements OnInit{
-
+export class OrderModalComponent implements OnInit {
   selectedRow: number;
   selectedOrder: Order;
   orders: Order[] = [];
@@ -23,7 +19,7 @@ export class ModalWindowComponent implements OnInit{
   }
 
   constructor(
-    public dialogRef: MatDialogRef<ModalWindowComponent>,
+    public dialogRef: MatDialogRef<OrderModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
@@ -87,5 +83,4 @@ export class ModalWindowComponent implements OnInit{
     o3.goodsInStock.push(g7,g8,g9);
     this.orders.push(o1, o2, o3);
   }
-
 }

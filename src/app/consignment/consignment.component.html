@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <button [hidden]="consignment.direction !== 'Export'" (click)="login()">+Link Order</button>
+                <button [hidden]="consignment.direction !== 'Export'" (click)="showOrderModal()">+Link Order</button>
               </div>
             </div>
             <div class="col-md-2">
@@ -250,8 +250,8 @@
             </div>
           </div>
           <button type="button" (click)="addRow($event)">Add row</button>
-          <button type="button" (click)="addRowFromOrder()"
-                  [hidden]="consignment.direction !== 'Export' || consignment.order == null">Add row from order
+          <button type="button" (click)="showGisModal()"
+                  [hidden]="consignment.direction !== 'Export' || order == null">Add row from order
           </button>
         </div>
       </div>
