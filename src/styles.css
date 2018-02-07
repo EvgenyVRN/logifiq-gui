@@ -764,9 +764,9 @@ td div{
     width: 100%;
 }
 
-input:invalid{
-    border: 1px solid #fb9999;
-}
+/*input:invalid{*/
+    /*border: 1px solid #fb9999;*/
+/*}*/
 
 div.ng-invalid span.ui-select-toggle {
     border-color: #fb9999;

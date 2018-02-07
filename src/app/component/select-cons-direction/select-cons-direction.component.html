@@ -1,13 +1,10 @@
 <div class="form-group relative">
-  <ng-select [allowClear]="true"
-             [items]="directions"
-             [active]="active"
-             [disabled]="disabled"
-             (data)="refreshValue($event)"
-             (selected)="selected($event)"
-             (removed)="removed($event)"
-             (typed)="typed($event)"
-             placeholder="No direction selected">
-  </ng-select>
-  <label class="label-border">Direction</label>
+  <mat-form-field>
+    <input required matInput placeholder="Direction" aria-label="Direction" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let d of filteredDirections | async" [value]="d">
+        <span>{{ d }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </div>

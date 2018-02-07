@@ -5,7 +5,7 @@ import { SelectModule } from 'ng2-select-compat';
 
 import { AppComponent } from './app.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConsignmentService } from './service/consignment.service';
 import { ContractorService } from './service/contractor.service';
 import { AppRoutingModule } from './/app-routing.module';
@@ -34,7 +34,7 @@ import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
 import {Globals} from "./model/globals";
 import {CountryService} from "./service/country.service";
-import {MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderModalComponent } from './component/order-modal/order-modal.component';
 import { GisModalComponent } from './component/gis-modal/gis-modal.component';
@@ -72,7 +72,9 @@ import { GisModalComponent } from './component/gis-modal/gis-modal.component';
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
   OrderService, GoodInStockService, Globals, CountryService],

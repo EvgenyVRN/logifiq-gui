@@ -14,23 +14,19 @@
 </div>
 
 <div class="form-group relative">
-	<input [(ngModel)]="address.apt" required placeholder="Building" name="Building"/>
-	<label class="label-border">Building</label>
+	<mat-form-field><input matInput [(ngModel)]="address.apt" required placeholder="Building" name="Building"/></mat-form-field>
 </div>
 
 <div class="form-group relative">
-	<input [(ngModel)]="address.street" required placeholder="Street" name="Street"/>
-	<label class="label-border lefted">Street</label>
+	<mat-form-field><input matInput [(ngModel)]="address.street" required placeholder="Street" name="Street"/></mat-form-field>
 </div>
 
 <div class="form-group relative">
-	<input [(ngModel)]="address.index" required placeholder="ZIP" name="Zip"/>
-	<label class="label-border lefted">ZIP</label>
+	<mat-form-field><input matInput [(ngModel)]="address.index" required placeholder="ZIP" name="Zip"/></mat-form-field>
 </div>
 
 <div class="form-group relative">
-	<input [(ngModel)]="address.city" required placeholder="City" name="City"/>
-	<label class="label-border lefted">City</label>
+	<mat-form-field><input matInput [(ngModel)]="address.city" required placeholder="City" name="City"/></mat-form-field>
 </div>
 
 <div class="form-group relative">

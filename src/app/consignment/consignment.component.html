@@ -5,13 +5,6 @@
     <li class="active"><a href="#">Add New Consignment</a></li>
   </ul>
   <div>
-    <!--<app-modal-window [(isVisible)]="!hideModal" [receivedValue]="serviceIdValue"-->
-                      <!--(orderChange)="orderChangeEvent($event)" (type)="typeOfModal">-->
-      <!--<app-choose-order (orderChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'order'"></app-choose-order>-->
-      <!--<app-choose-gis (gisChange)="idChangeEvent($event)" [hidden]="typeOfModal !== 'goods'"-->
-                      <!--[goods]="consignment.order == null ? null : consignment.order.goodsInStock"></app-choose-gis>-->
-    <!--</app-modal-window>-->
-
     <form name="myForm" class="">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -104,9 +97,8 @@
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
-                <input placeholder="Vehicle registration number" [(ngModel)]="consignment.vehicleRegNum"
-                       name="vehicleRegNum"/>
-                <label class="label-border">Vehicle registration</label>
+                <mat-form-field><input matInput placeholder="Vehicle registration number" [(ngModel)]="consignment.vehicleRegNum"
+                       name="vehicleRegNum"/></mat-form-field>
               </div>
             </div>
 
@@ -124,9 +116,8 @@
           <div class="row">
             <div class="col-md-3">
               <div class="form-group">
-                <input placeholder="Active vehicle registration number" [(ngModel)]="consignment.trailerRegNum"
-                       name="trailerRegNum"/>
-                <label class="label-border">Active vehicle registration number</label>
+                <mat-form-field><input matInput placeholder="Active vehicle registration number" [(ngModel)]="consignment.trailerRegNum"
+                       name="trailerRegNum"/></mat-form-field>
               </div>
             </div>
             <div class="col-md-3">
@@ -156,9 +147,8 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <input type="text" [(ngModel)]="consignment.deliveryTermsPlaces" placeholder="Places"
-                       name="deliveryTermsPlaces"/>
-                <label class="label-border">Places</label>
+                <mat-form-field><input matInput type="text" [(ngModel)]="consignment.deliveryTermsPlaces" placeholder="Places"
+                       name="deliveryTermsPlaces"/></mat-form-field>
               </div>
             </div>
             <div class="col-md-3">
@@ -168,9 +158,8 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <input type="text" placeholder="Places" [(ngModel)]="consignment.releaseTermsPlaces"
-                       name="releaseTermsPlaces"/>
-                <label class="label-border">Places</label>
+                <mat-form-field><input matInput type="text" placeholder="Places" [(ngModel)]="consignment.releaseTermsPlaces"
+                       name="releaseTermsPlaces"/></mat-form-field>
               </div>
             </div>
           </div>
@@ -201,24 +190,21 @@
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <input size="5" placeholder="Description" [(ngModel)]="row.description" name="row.description"
-                         disabled/>
-                  <label class="label-border">Description</label>
+                  <mat-form-field><input matInput size="5" placeholder="Description" [(ngModel)]="row.description" name="row.description" disabled/></mat-form-field>
+
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <input size="5" placeholder="Marks" [(ngModel)]="row.marks" name="row.marks" required/>
-                  <label class="label-border">Marks</label>
+                  <mat-form-field><input matInput size="5" placeholder="Marks" [(ngModel)]="row.marks" name="row.marks" required/></mat-form-field>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2">
                 <div class="form-group">
-                  <input size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places"
-                         (blur)="calculateTotalPlaces()" required/>
-                  <label class="label-border">Places</label>
+                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places" (blur)="calculateTotalPlaces()" required/></mat-form-field>
+
                 </div>
               </div>
               <div class="col-md-4">
@@ -228,23 +214,17 @@
               </div>
               <div class="col-md-2">
                 <div class="form-group">
-                  <input size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight"
-                         name="row.grossWeight" (blur)="calculateTotalGrossWeight()" required/>
-                  <label class="label-border">Gross Weight</label>
+                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" required/></mat-form-field>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="form-group">
-                  <input size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight"
-                         name="row.netWeight" (blur)="calculateTotalNetWeight()"/>
-                  <label class="label-border">Net Weight</label>
+                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight" name="row.netWeight" (blur)="calculateTotalNetWeight()"/></mat-form-field>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="form-group">
-                  <input size="5" placeholder="Volume" [(ngModel)]="row.volume" name="row.volume"
-                         (blur)="calculateTotalVolume()"/>
-                  <label class="label-border">Volume</label>
+                  <mat-form-field><input matInput size="5" placeholder="Volume" [(ngModel)]="row.volume" name="row.volume" (blur)="calculateTotalVolume()"/></mat-form-field>
                 </div>
               </div>
             </div>
