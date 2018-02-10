@@ -1,8 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { SelectModule } from 'ng2-select-compat';
-
-
 import { AppComponent } from './app.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -11,7 +8,6 @@ import { ContractorService } from './service/contractor.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ConsignmentsListComponent } from './consignments-list/consignments-list.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SelectDemoComponent } from './select-demo/select-demo.component';
 import { SelectContractorComponent } from './component/select-contractor/select-contractor.component';
 import { SelectAddressComponent } from './component/select-address/select-address.component';
 import { AddressService } from './service/address.service';
@@ -34,12 +30,12 @@ import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
 import {Globals} from "./model/globals";
 import {CountryService} from "./service/country.service";
-import {MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatInputModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderModalComponent } from './component/order-modal/order-modal.component';
 import { GisModalComponent } from './component/gis-modal/gis-modal.component';
-import {DropdownModule, InputTextModule} from "primeng/primeng";
+import {CalendarModule, CheckboxModule, DropdownModule, InputTextModule } from "primeng/primeng";
 import {CommonModule} from "@angular/common";
+import {MatDialogModule} from "@angular/material";
 
 
 
@@ -48,7 +44,6 @@ import {CommonModule} from "@angular/common";
     AppComponent,
     ConsignmentComponent,
     ConsignmentsListComponent,
-    SelectDemoComponent,
     SelectContractorComponent,
     SelectAddressComponent,
     SelectCustomsComponent,
@@ -70,18 +65,15 @@ import {CommonModule} from "@angular/common";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    SelectModule,
     MatDialogModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
     ReactiveFormsModule,
     InputTextModule,
     CommonModule,
-    DropdownModule
-
+    DropdownModule,
+    CalendarModule,
+    CheckboxModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
   OrderService, GoodInStockService, Globals, CountryService],

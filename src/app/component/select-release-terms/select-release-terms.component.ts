@@ -23,7 +23,7 @@ export class SelectReleaseTermsComponent implements OnInit {
     this.selectItems.push({label: str, value: str});
   }
 
-  private onTermSelect(){
+  public onTermSelect(){
     this.termChange.emit(this.term);
   }
 

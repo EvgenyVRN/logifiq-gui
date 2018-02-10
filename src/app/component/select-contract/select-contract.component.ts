@@ -50,5 +50,8 @@ export class SelectContractComponent implements OnInit, OnChanges {
       .subscribe(contracts => this.contracts = contracts);
   }
 
+  public onContractSelect(){
+    this.contractChange.emit(this.contract);
+  }
 
 }

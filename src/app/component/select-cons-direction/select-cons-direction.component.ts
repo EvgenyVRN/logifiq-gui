@@ -3,6 +3,7 @@ import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
 import {startWith} from "rxjs/operators/startWith";
 import {map} from "rxjs/operators/map";
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-cons-direction',
@@ -10,32 +11,25 @@ import {map} from "rxjs/operators/map";
   styleUrls: ['./select-cons-direction.component.css']
 })
 export class SelectConsDirectionComponent implements OnInit {
-  public directions:Array<string> = ['Import', 'Export'];
-
-  @Input() direction: any;
+  directions:Array<string> = ['Import', 'Export'];
+  @Input() direction: string;
   @Output() directionChange = new EventEmitter();
-  stateCtrl: FormControl;
-  filteredDirections: Observable<any[]>;
+  @Input() required: boolean;
+  selectItems: SelectItem[] = [];
 
   constructor() {
-    this.stateCtrl = new FormControl();
-    this.filteredDirections = this.stateCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(d => d ? this.filterDirections(d) : this.directions.slice())
-      );
-  }
-
-  filterDirections(direction: string){
-    return this.directions.filter(dir =>
-      dir.toLowerCase().indexOf(direction.toLowerCase()) === 0);
-  }
-
-  onOptionSelect(){
 
   }
 
   ngOnInit() {
+    this.directions.forEach(d => this.fillSelectItem(d));
+  }
 
+  onItemSelect(){
+    this.directionChange.emit(this.direction);
+  }
+
+  private fillSelectItem(str: string){
+    this.selectItems.push({label: str, value: str});
   }
 }

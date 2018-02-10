@@ -1,10 +1,6 @@
-<div class="form-group relative">
-  <mat-form-field>
-    <input required matInput placeholder="Direction" aria-label="Direction" [matAutocomplete]="auto" [formControl]="stateCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let d of filteredDirections | async" [value]="d">
-        <span>{{ d }}</span>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="direction" (onChange)="onItemSelect()"
+              [style]="{'width':'100%'}" id="item" placeholder="Select a direction" [required]="required"></p-dropdown>
+  <label for="item" [hidden]="direction == ''">Direction</label>
 </div>
+

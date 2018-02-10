@@ -21,7 +21,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
-  dispatchDifferentLocation: boolean = false;
+  dld: boolean = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
 
@@ -69,12 +69,12 @@ export class ConsignmentComponent implements OnInit {
 
   public addRow(event){
     this.consignment.addNewGood();
-    this.consignment.totalRows = this.consignment.goodsInConsignment.length;
+    this.consignment.totalRows = this.consignment.goodsInConsignment.length === 0 ? null : this.consignment.goodsInConsignment.length;
 }
 
   public deleteRow(index){
     this.consignment.deleteRow(index);
-    this.consignment.totalRows = this.consignment.goodsInConsignment.length;
+    this.consignment.totalRows = this.consignment.goodsInConsignment.length === 0 ? null : this.consignment.goodsInConsignment.length;
   }
 
   public calculateTotalPlaces():void{

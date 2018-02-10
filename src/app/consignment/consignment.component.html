@@ -4,6 +4,7 @@
     <li><a href="./consignments">Browse Consignment</a></li>
     <li class="active"><a href="#">Add New Consignment</a></li>
   </ul>
+
   <div>
     <form name="myForm" class="">
       <div class="panel panel-default">
@@ -29,13 +30,13 @@
               </div>
             </div>
             <div class="col-md-3">
-              <div class="form-group relative">
+              <div class="form-group">
                 <app-select-contractor [(contractor)]="consignment.goodsHolder" contractorType="Goods holder"
                                        [hidden]="consignment.direction === 'Import' || consignment.direction == ''"></app-select-contractor>
               </div>
             </div>
             <div class="col-md-3">
-              <div class="form-group relative">
+              <div class="form-group">
                 <app-select-contractor contractorType="Cost payer"
                                        [(contractor)]="consignment.costPayer"></app-select-contractor>
                 <app-select-contract [(contract)]="consignment.costPayerContract" [contractor]="consignment.costPayer"
@@ -57,9 +58,10 @@
               <app-select-address [(address)]="consignment.consignorAddress">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.consignorCustoms"></app-select-customs>
 
-              <input id="sendingDate" type="date" [(ngModel)]="consignment.sendingDate"
-                     name="sendingDate" placeholder="Sending date"/>
-              <label class="label-border" for="sendingDate">Sending date</label>
+              <div class="ui-float-label">
+                  <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                  <label for="sendingDate">Sending date</label>
+              </div>
 
             </div>
             <div class="col-md-3">
@@ -77,12 +79,10 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <label for="dispatchLocation"><input type="checkbox" id="dispatchLocation"
-                                                   [(ngModel)]="dispatchDifferentLocation"
-                                                   name="dispatchDifferentLocation"/>Dispatch location different</label>
+              <p-checkbox name="first" value="Dispatch different location" label="Dispatch location different" [(ngModel)]="dld"></p-checkbox>
             </div>
           </div>
-          <div class="row" *ngIf="dispatchDifferentLocation">
+          <div class="row" *ngIf="dld">
             <div class="col-md-3">
               <app-select-address [(address)]="consignment.otherConsignorAddress">Select address</app-select-address>
             </div>
@@ -96,9 +96,9 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-3">
-              <div class="form-group">
-                <mat-form-field><input matInput placeholder="Vehicle registration number" [(ngModel)]="consignment.vehicleRegNum"
-                       name="vehicleRegNum"/></mat-form-field>
+              <div class="form-group ui-float-label">
+                <input pInputText id="vrn" [(ngModel)]="consignment.vehicleRegNum" name="vehicleRegNum"/>
+                <label for="vrn">Vehicle registration number</label>
               </div>
             </div>
 
@@ -115,9 +115,9 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <div class="form-group">
-                <mat-form-field><input matInput placeholder="Active vehicle registration number" [(ngModel)]="consignment.trailerRegNum"
-                       name="trailerRegNum"/></mat-form-field>
+              <div class="form-group ui-float-label">
+                <input pInputText id="avrn" [(ngModel)]="consignment.trailerRegNum" name="trailerRegNum"/>
+                <label for="avrn">Active vehicle registration number</label>
               </div>
             </div>
             <div class="col-md-3">
@@ -146,9 +146,9 @@
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <mat-form-field><input matInput type="text" [(ngModel)]="consignment.deliveryTermsPlaces" placeholder="Places"
-                       name="deliveryTermsPlaces"/></mat-form-field>
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="consignment.deliveryTermsPlaces" id="dvt" name="deliveryTermsPlaces"/>
+                <label for="dvt">Places</label>
               </div>
             </div>
             <div class="col-md-3">
@@ -157,9 +157,9 @@
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <mat-form-field><input matInput type="text" placeholder="Places" [(ngModel)]="consignment.releaseTermsPlaces"
-                       name="releaseTermsPlaces"/></mat-form-field>
+              <div class="form-group ui-float-label">
+                <input matInput id="rtp" [(ngModel)]="consignment.releaseTermsPlaces" name="releaseTermsPlaces"/>
+                <label for="rtp">Places</label>
               </div>
             </div>
           </div>
@@ -189,42 +189,46 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="5" placeholder="Description" [(ngModel)]="row.description" name="row.description" disabled/></mat-form-field>
-
+                <div class="form-group ui-float-label">
+                  <input pInputText id="desc" [(ngModel)]="row.description" name="row.description" disabled/>
+                  <label for="desc">Description</label>
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="5" placeholder="Marks" [(ngModel)]="row.marks" name="row.marks" required/></mat-form-field>
+                <div class="form-group ui-float-label">
+                  <input pInputText id="marks" [(ngModel)]="row.marks" name="row.marks" required/>
+                  <label for="marks">Marks</label>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-2">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Places" [(ngModel)]="row.places" name="row.places" (blur)="calculateTotalPlaces()" required/></mat-form-field>
-
+                <div class="form-group ui-float-label">
+                  <input pInputText class="numeric" id="goodPlaces" [(ngModel)]="row.places" name="row.places" (blur)="calculateTotalPlaces()" required/>
+                  <label for="goodPlaces">Places</label>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <app-select-unit [(unit)]="row.placeType" required></app-select-unit>
+                  <app-select-unit [(unit)]="row.placeType" [required]="true"></app-select-unit>
                 </div>
               </div>
               <div class="col-md-2">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Gross Weight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" required/></mat-form-field>
+                <div class="form-group ui-float-label">
+                  <input  pInputText class="numeric" id="grossWeight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" [required]="true"/>
+                  <label for="grossWeight">Gross weight</label>
                 </div>
               </div>
               <div class="col-md-2">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="6" class="numeric" placeholder="Net Weight" [(ngModel)]="row.netWeight" name="row.netWeight" (blur)="calculateTotalNetWeight()"/></mat-form-field>
+                <div class="form-group ui-float-label">
+                  <input pInputText class="numeric" id="netWeight" [(ngModel)]="row.netWeight" name="row.netWeight" (blur)="calculateTotalNetWeight()"/>
+                  <label for="netWeight">Net weight</label>
                 </div>
               </div>
               <div class="col-md-2">
-                <div class="form-group">
-                  <mat-form-field><input matInput size="5" placeholder="Volume" [(ngModel)]="row.volume" name="row.volume" (blur)="calculateTotalVolume()"/></mat-form-field>
+                <div class="form-group ui-float-label">
+                  <input pInputText id="volume" [(ngModel)]="row.volume" name="row.volume" (blur)="calculateTotalVolume()"/>
+                  <label for="volume">Volume</label>
                 </div>
               </div>
             </div>
@@ -243,36 +247,33 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-2">
-              <div class="form-group">
-                <input size="5" placeholder="Total goods" [ngModel]="consignment.totalRows" name="totalRows" disabled/>
+              <div class="form-group ui-float-label">
+                <input pInputText size="5" id="goodsTotal" [ngModel]="consignment.totalRows" name="totalRows" disabled/>
+                <label for="goodsTotal">Total goods</label>
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <input size="6" class="numeric" placeholder="Total places" [(ngModel)]="consignment.totalPackages"
-                       name="totalPackages" disabled/>
-                <label class="label-border">Places</label>
+              <div class="form-group ui-float-label">
+                <input pInputText class="numeric" id="placesTotal" [(ngModel)]="consignment.totalPackages" name="totalPackages" disabled/>
+                <label for="placesTotal">Total places</label>
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <input size="6" class="numeric" placeholder="Total Gross Weight"
-                       [(ngModel)]="consignment.totalGrossWeight" name="totalGrossWeight" disabled/>
-                <label class="label-border">Gross Weight</label>
+              <div class="form-group ui-float-label">
+                <input pInputText class="numeric" id="grossWeightTotal" [(ngModel)]="consignment.totalGrossWeight" name="totalGrossWeight" disabled/>
+                <label for="grossWeightTotal">Total gross weight</label>
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <input size="6" class="numeric" placeholder="Total Net Weight" [(ngModel)]="consignment.totalNetWeight"
-                       name="tptaNetWeight" disabled/>
-                <label class="label-border">Net Weight</label>
+              <div class="form-group ui-float-label">
+                <input pInputText class="numeric" id="netWeightTotal" [(ngModel)]="consignment.totalNetWeight" name="tptaNetWeight" disabled/>
+                <label for="netWeightTotal">Total new weight</label>
               </div>
             </div>
             <div class="col-md-2">
-              <div class="form-group">
-                <input size="5" placeholder="Total Volume" [(ngModel)]="consignment.totalVolume" name="totalVolume"
-                       disabled/>
-                <label class="label-border">Volume</label>
+              <div class="form-group ui-float-label">
+                <input pInputText id="volumeTotal" [(ngModel)]="consignment.totalVolume" name="totalVolume" disabled/>
+                <label for="volumeTotal">Total volume</label>
               </div>
             </div>
           </div>

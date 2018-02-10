@@ -27,7 +27,7 @@ export class SelectContractorComponent implements OnInit {
 
   ngOnInit() {
     this.getContractors();
-    this.getMockContractors();
+    // this.getMockContractors();
     this.contractors.forEach(c => this.fillSelectItems(c));
     if (this.contractor == null){
       this.contractor = new Contractor();
