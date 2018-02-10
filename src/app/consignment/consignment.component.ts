@@ -21,7 +21,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
-  dld: boolean = false;
+  dld = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
 
