@@ -1,11 +1,5 @@
-<ng-select [allowClear]="true"
-           [items]="customs"
-           [active] = "active"
-           [disabled]="disabled"
-           (data)="refreshValue($event)"
-           (selected)="selected($event)"
-           (removed)="removed($event)"
-           (typed)="typed($event)"
-           placeholder="No customs selected">
-</ng-select>
-<label class="label-border">Customs</label>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="customs" [filter]="true" (onChange)="onCustomsSelect()"
+              [style]="{'width':'100%'}" id="customs" placeholder="Select a customs" [required]="required"></p-dropdown>
+  <label for="customs" [hidden]="customs.id === 0">Customs</label>
+</div>

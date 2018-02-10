@@ -1,35 +1,31 @@
-<div class="form-group relative">
-  <ng-select [allowClear]="true"
-             [items]="addresses"
-             [active] = "active"
-             [disabled]="disabled"
-             (data)="refreshValue($event)"
-             (selected)="selected($event)"
-             (removed)="removed($event)"
-             (typed)="typed($event)"
-
-             placeholder="No address selected">
-	</ng-select>
-	<label class="label-border">Select address</label>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="address" [filter]="true" (onChange)="onAddressChange($event)"
+              [style]="{'width':'100%'}" id="address" placeholder="Select a address"></p-dropdown>
+  <label for="address" [hidden]="address.id === 0">Address</label>
 </div>
 
-<div class="form-group relative">
-	<mat-form-field><input matInput [(ngModel)]="address.apt" required placeholder="Building" name="Building"/></mat-form-field>
+
+<div class="form-group ui-float-label">
+	<input pInputText [(ngModel)]="address.apt" name="Building" id="building" required/>
+  <label for="building">Building</label>
 </div>
 
-<div class="form-group relative">
-	<mat-form-field><input matInput [(ngModel)]="address.street" required placeholder="Street" name="Street"/></mat-form-field>
+<div class="form-group ui-float-label">
+	<input pInputText [(ngModel)]="address.street" id="street" name="Street" required/>
+  <label for="street">Street</label>
 </div>
 
-<div class="form-group relative">
-	<mat-form-field><input matInput [(ngModel)]="address.index" required placeholder="ZIP" name="Zip"/></mat-form-field>
+<div class="form-group ui-float-label">
+	<input pInputText [(ngModel)]="address.index" id="zip" name="Zip" required/>
+  <label for="zip">ZIP</label>
 </div>
 
-<div class="form-group relative">
-	<mat-form-field><input matInput [(ngModel)]="address.city" required placeholder="City" name="City"/></mat-form-field>
+<div class="form-group ui-float-label">
+	<input pInputText [(ngModel)]="address.city" id="city" name="City" required/>
+  <label for="city">City</label>
 </div>
 
-<div class="form-group relative">
+<div class="form-group">
 <app-select-country [(country)]="address.country" ></app-select-country>
 
 </div>

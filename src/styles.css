@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+div.ui-float-label{
+  margin: 10px 0 25px 0;
+}
+
 #login{
     border-radius: 8px;
     -webkit-border-radius: 8px;

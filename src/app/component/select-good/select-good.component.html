@@ -1,9 +1,5 @@
-  <ng-select [allowClear]="true"
-             [items]="goods"
-             [active] = "active"
-             (data)="refreshValue($event)"
-             (selected)="selected($event)"
-             (removed)="removed($event)"
-             (typed)="typed($event)"
-             placeholder="No good selected">
-  </ng-select>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="good" [filter]="true" (onChange)="onItemSelect()"
+              [style]="{'width':'100%'}" id="item" placeholder="Select a good" [required]="required"></p-dropdown>
+  <label for="item" [hidden]="good.id === 0">Good</label>
+</div>

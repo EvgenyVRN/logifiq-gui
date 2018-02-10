@@ -1,13 +1,5 @@
-<div class="form-group relative">
-  <ng-select [allowClear]="true"
-             [items]="contracts"
-             [active]="active"
-             [disabled]="disabled"
-             (data)="refreshValue($event)"
-             (selected)="selected($event)"
-             (removed)="removed($event)"
-             (typed)="typed($event)"
-             placeholder="No contract selected">
-  </ng-select>
-  <label class="label-border">Contract</label>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="contract" [filter]="true" (onChange)="onContractSelect()"
+              [style]="{'width':'100%'}" id="contract" placeholder="Select a contract" [required]="true" [disabled]="disabled"></p-dropdown>
+  <label for="contract" [hidden]="contract.id === 0">Contract</label>
 </div>

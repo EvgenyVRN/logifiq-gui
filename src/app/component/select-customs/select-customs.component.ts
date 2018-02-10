@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Customs } from '../../model/customs';
 import { CustomsService } from '../../service/customs.service';
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-customs',
@@ -8,51 +9,34 @@ import { CustomsService } from '../../service/customs.service';
   styleUrls: ['./select-customs.component.css']
 })
 export class SelectCustomsComponent implements OnInit {
-  public customs:Customs[];
-  @Input() custom: Customs;
+  public customsArray: Customs[] = [];
+  @Input() customs: Customs;
   @Output() customsChange = new EventEmitter();
-  public active: Customs[] = [];
-  private value:any = {};
-  public disabled = false;
-
+  @Input() required;
+  selectItems: SelectItem[] = [];
   constructor(
     private customsService: CustomsService) { }
 
   ngOnInit() {
     this.getCustoms();
-    if (this.custom != null){
-      this.custom.text = this.custom.name;
-      this.active.push(this.custom);
+    this.customsArray.forEach(c => this.fillSelectItems(c));
+    if (this.customs == null){
+      this.customs = new Customs();
     }
-
   }
 
   getCustoms():void {
     this.customsService.getCustoms()
-       .subscribe(customs => this.customsAnswer(customs));
+       .subscribe(customsArray => this.customsArray = customsArray);
   }
 
-  private customsAnswer(customs: Customs[]) {
-    this.customs = customs;
-    this.customs.forEach((custom: Customs) => {
-      custom.text = custom.name;
-    });
+  private fillSelectItems(customs: Customs){
+    this.selectItems.push({label: customs.name, value: customs});
   }
 
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    this.customsChange.emit(value);
+  public onCustomsSelect(){
+    this.customsChange.emit(this.customs);
   }
 
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
 
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
-  }
 }

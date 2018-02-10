@@ -1,7 +1,7 @@
 import {Contractor} from "./contractor";
 
 export class Contract{
-  id: number;
+  id = 0;
   name: string;
   createDate: string;
   endValidity: string;

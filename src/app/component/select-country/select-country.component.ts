@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Country} from "../../model/country";
 import {CountryService} from "../../service/country.service";
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-country',
@@ -8,51 +9,45 @@ import {CountryService} from "../../service/country.service";
   styleUrls: ['./select-country.component.css']
 })
 export class SelectCountryComponent implements OnInit {
-  public countries: Country[];
+  public countries: Country[] = [];
   @Input() country: Country;
   @Output() countryChange = new EventEmitter();
-  public active: Country[] = [];
-  private value:any = {};
-  public disabled = false;
+  selectItems: SelectItem[] = [];
 
   constructor(
     private countryService: CountryService) { }
 
   ngOnInit() {
     this.getCountries();
-    if (this.country != null){
-      this.country.text = this.country.country;
-      this.active.push(this.country);
+    this.getMockCountries();
+    this.countries.forEach(c => this.fillSelectItems(c));
+    if (this.country == null){
+      this.country = new Country();
     }
+  }
 
+  private getMockCountries(){
+    let c1 = new Country();
+    c1.id = 10000001;
+    c1.country = "Russia";
+    c1.alpha2 = "RU";
+    let c2 = new Country();
+    c2.id = 10000002;
+    c2.country = "Germany";
+    c2.alpha2 = "GR";
+    this.countries.push(c1, c2);
   }
 
   getCountries():void {
     this.countryService.getCountries()
-      .subscribe(countries => this.countriesAnswer(countries));
+      .subscribe(countries => this.countries = countries);
   }
 
-  private countriesAnswer(countries: Country[]) {
-    this.countries = countries;
-    this.countries.forEach((country: Country) => {
-      country.text = country.country;
-    });
+  private fillSelectItems(country: Country){
+    this.selectItems.push({label: country.country, value: country});
   }
 
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    this.countryChange.emit(value);
-  }
-
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
+  public onCountryChange(value:any){
+    this.countryChange.emit(this.country);
   }
 }

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange,
 import {Contract} from "../../model/contract";
 import {ContractService} from "../../service/contract.service";
 import {Contractor} from "../../model/contractor";
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-contract',
@@ -9,23 +10,25 @@ import {Contractor} from "../../model/contractor";
   styleUrls: ['./select-contract.component.css']
 })
 export class SelectContractComponent implements OnInit, OnChanges {
-  public contracts : Contract[];
+  public contracts : Contract[] = [];
   @Input() contract: Contract;
   @Output() contractChange = new EventEmitter();
   @Input() contractor: Contractor;
-  public active: Contract[] = [];
-  private value:any = {};
-  @Input() disabled;
+  @Input() disabled: boolean;
+  selectItems: SelectItem[] = [];
 
   constructor(
     private contractService: ContractService) { }
 
   ngOnInit() {
     this.getContracts();
-    if (this.contract != null){
-      this.contract.text = this.contract.name;
-      this.active.push(this.contract);
+    this.contracts.forEach(c => this.fillSelectItems(c));
+    if (this.contract == null){
+      this.contract = new Contract();
     }
+  }
+  private fillSelectItems(contract: Contract){
+    this.selectItems.push({label: contract.name, value: contract});
   }
 
 
@@ -33,6 +36,7 @@ export class SelectContractComponent implements OnInit, OnChanges {
     const contractor: SimpleChange = changes.contractor;
     if (contractor !== null){
       this.getContracts();
+      this.contract = new Contract();
     }
   }
 
@@ -43,30 +47,8 @@ export class SelectContractComponent implements OnInit, OnChanges {
     }
 
     this.contractService.getContractsByContractor(this.contractor.id)
-      .subscribe(contract => this.contractAnswer(contract));
+      .subscribe(contracts => this.contracts = contracts);
   }
 
-  private contractAnswer(contracts: Contract[]) {
-    this.contracts = contracts;
-    this.contracts.forEach((contract : Contract) => {
-      contract.text = contract.name;
-    });
-  }
 
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    this.contractChange.emit(value);
-  }
-/**/
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
-  }
 }

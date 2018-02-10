@@ -3,7 +3,7 @@ import { Country } from './country';
 export class Address {
   id = 0;
   index = '';
-  country = null;
+  country = new Country();
   region = '';
   city = '';
   street = '';
