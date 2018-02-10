@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Good } from '../../model/good';
 import { GoodService } from '../../service/good.service';
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-good',
@@ -8,50 +9,37 @@ import { GoodService } from '../../service/good.service';
   styleUrls: ['./select-good.component.css']
 })
 export class SelectGoodComponent implements OnInit {
-  public goods : Good[];
+  public goods : Good[] = [];
   @Input() good: Good;
   @Output() goodChange = new EventEmitter();
-  public active: Good[] = [];
-  private value:any = {};
-  public disabled = false;
+  @Input() required;
+  selectItems: SelectItem[] = [];
 
   constructor(
     private goodService: GoodService) { }
 
   ngOnInit() {
     this.getGoods();
-    if (this.good != null){
-      this.good.text = this.good.name;
-      this.active.push(this.good);
+    this.goods.forEach( g => this.fillSelectItem(g));
+    if (this.good == null){
+      this.good = new Good();
     }
+
   }
 
   getGoods():void {
     this.goodService.getGoods()
-       .subscribe(good => this.goodAnswer(good));
+       .subscribe(goods => this.goods = goods);
   }
 
-  private goodAnswer(goods: Good[]) {
-    this.goods = goods;
-    this.goods.forEach((good : Good) => {
-      good.text = good.name;
-    });
+  onItemSelect(){
+    this.goodChange.emit(this.good);
   }
 
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    this.goodChange.emit(value);
+  private fillSelectItem(good: Good){
+    this.selectItems.push({label: good.name, value: good});
   }
 
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
 
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
 
-  public refreshValue(value:any):void {
-    this.value = value;
-  }
 }

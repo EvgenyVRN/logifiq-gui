@@ -1,9 +1,6 @@
-<ng-select [allowClear]="true"
-           [items]="units"
-           [active] = "active"
-           (data)="refreshValue($event)"
-           (selected)="selected($event)"
-           (removed)="removed($event)"
-           (typed)="typed($event)"
-           placeholder="No package type selected">
-</ng-select>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="mode" [filter]="true" (onChange)="onItemSelect()"
+              [style]="{'width':'100%'}" id="item" placeholder="Select a unit" [required]="required"></p-dropdown>
+  <label for="item" [hidden]="unit.id === 0">Unit</label>
+</div>
+

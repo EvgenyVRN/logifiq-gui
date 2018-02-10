@@ -30,13 +30,13 @@
             </div>
             <div class="col-md-3">
               <div class="form-group relative">
-                <app-select-contractor [(contractor)]="consignment.goodsHolder" contractorType="goods holder"
+                <app-select-contractor [(contractor)]="consignment.goodsHolder" contractorType="Goods holder"
                                        [hidden]="consignment.direction === 'Import' || consignment.direction == ''"></app-select-contractor>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group relative">
-                <app-select-contractor contractorType="cost payer"
+                <app-select-contractor contractorType="Cost payer"
                                        [(contractor)]="consignment.costPayer"></app-select-contractor>
                 <app-select-contract [(contract)]="consignment.costPayerContract" [contractor]="consignment.costPayer"
                                      [disabled]="!consignment.costPayer"></app-select-contract>
@@ -52,10 +52,10 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-3">
-              <app-select-contractor contractorType="consignor"
+              <app-select-contractor contractorType="Consignor"
                                      [(contractor)]="consignment.consignor"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consigneeAddress">Select address</app-select-address>
-              <app-select-customs [(custom)]="consignment.consignorCustoms"></app-select-customs>
+              <app-select-address [(address)]="consignment.consignorAddress">Select address</app-select-address>
+              <app-select-customs [(customs)]="consignment.consignorCustoms"></app-select-customs>
 
               <input id="sendingDate" type="date" [(ngModel)]="consignment.sendingDate"
                      name="sendingDate" placeholder="Sending date"/>
@@ -63,7 +63,7 @@
 
             </div>
             <div class="col-md-3">
-              <app-select-contractor contractorType="consignee"
+              <app-select-contractor contractorType="Consignee"
                                      [(contractor)]="consignment.consignee"></app-select-contractor>
               <app-select-address [(address)]="consignment.consigneeAddress">Select address</app-select-address>
             </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-3">
               <app-select-address [(address)]="consignment.finalDestination">Select address</app-select-address>
-              <app-select-customs [(custom)]="consignment.finalDestinationCustoms"></app-select-customs>
+              <app-select-customs [(customs)]="consignment.finalDestinationCustoms"></app-select-customs>
             </div>
           </div>
           <div class="row">
@@ -185,7 +185,7 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <app-select-good [(good)]="row.good" required></app-select-good>
+                  <app-select-good [(good)]="row.good" [required]="true"></app-select-good>
                 </div>
               </div>
               <div class="col-md-4">

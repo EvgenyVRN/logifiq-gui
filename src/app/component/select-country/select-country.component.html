@@ -1,11 +1,5 @@
-<ng-select [allowClear]="true"
-           [items]="countries"
-           [active] = "active"
-           [disabled]="disabled"
-           (data)="refreshValue($event)"
-           (selected)="selected($event)"
-           (removed)="removed($event)"
-           (typed)="typed($event)"
-           placeholder="No country selected">
-</ng-select>
-<label class="label-border">Country</label>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="country" [filter]="true" (onChange)="onCountryChange($event)"
+              [style]="{'width':'100%'}" id="country" placeholder="Select a country"></p-dropdown>
+  <label for="country" [hidden]="country.id === 0">Country</label>
+</div>

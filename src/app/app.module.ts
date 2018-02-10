@@ -38,6 +38,8 @@ import {MatAutocompleteModule, MatDialogModule, MatFormFieldModule, MatInputModu
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderModalComponent } from './component/order-modal/order-modal.component';
 import { GisModalComponent } from './component/gis-modal/gis-modal.component';
+import {DropdownModule, InputTextModule} from "primeng/primeng";
+import {CommonModule} from "@angular/common";
 
 
 
@@ -70,11 +72,16 @@ import { GisModalComponent } from './component/gis-modal/gis-modal.component';
     AppRoutingModule,
     SelectModule,
     MatDialogModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule,
+    CommonModule,
+    DropdownModule
+
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
   OrderService, GoodInStockService, Globals, CountryService],

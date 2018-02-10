@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Unit } from '../../model/unit';
 import { UnitService } from '../../service/unit.service';
+import {SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-select-unit',
@@ -8,51 +9,33 @@ import { UnitService } from '../../service/unit.service';
   styleUrls: ['./select-unit.component.css']
 })
 export class SelectUnitComponent implements OnInit {
-  public units : Unit[];
-  private value:any = {};
-  public disabled = false;
-
+  public units : Unit[] = [];
   @Input() unit: Unit;
   @Output() unitChange = new EventEmitter();
-  public active: Unit[] = [];
+  @Input() required: boolean;
+  selectItems: SelectItem[] = [];
 
   constructor(
     private unitService: UnitService) { }
 
   ngOnInit() {
     this.getUnits();
-    if (this.unit != null){
-      this.unit.text = this.unit.name;
-      this.active.push(this.unit);
+    this.units.forEach(u => this.fillSelectItem(u));
+    if (this.unit == null){
+      this.unit = new Unit();
     }
   }
 
   getUnits():void {
     this.unitService.getUnits()
-       .subscribe(unit => this.unitAnswer(unit));
+       .subscribe(units => this.units = units);
   }
 
-  private unitAnswer(units : Unit[]) {
-    this.units = units;
-    this.units.forEach((unit : Unit) => {
-      unit.text = unit.name;
-    });
+  private fillSelectItem(unit: Unit){
+    this.selectItems.push({label: unit.name, value: unit});
   }
 
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-    this.unitChange.emit(value);
-  }
-
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
+  onItemSelect(){
+    this.unitChange.emit(this.unit);
   }
 }

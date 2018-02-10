@@ -1,7 +1,7 @@
 import { Address } from './address';
 
 export class Contractor {
-  id: number;
+  id = 0;
   name = '';
   fullName = '';
   businessId = '';

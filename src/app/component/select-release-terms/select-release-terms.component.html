@@ -1,9 +1,5 @@
-<ng-select [allowClear]="true"
-           [items]="items"
-           [active] = "active"
-           (data)="refreshValue($event)"
-           (selected)="selected($event)"
-           (removed)="removed($event)"
-           (typed)="typed($event)"
-           placeholder="No release term selected">
-  </ng-select>
+<div class="form-group ui-float-label">
+  <p-dropdown [options]="selectItems" [(ngModel)]="term" [filter]="true" (onChange)="onTermSelect()"
+              [style]="{'width':'100%'}" id="term" placeholder="Select a release term" [required]="required"></p-dropdown>
+  <label for="term" [hidden]="term == ''">Release term</label>
+</div>

@@ -12,10 +12,6 @@ import {map} from "rxjs/operators/map";
 export class SelectConsDirectionComponent implements OnInit {
   public directions:Array<string> = ['Import', 'Export'];
 
-  public value: any = {};
-  public disabled = false;
-  public active: Array<string> = [];
-
   @Input() direction: any;
   @Output() directionChange = new EventEmitter();
   stateCtrl: FormControl;
@@ -35,26 +31,11 @@ export class SelectConsDirectionComponent implements OnInit {
       dir.toLowerCase().indexOf(direction.toLowerCase()) === 0);
   }
 
+  onOptionSelect(){
+
+  }
+
   ngOnInit() {
-    if (this.direction !== ''){
-      this.active.push(this.direction);
-    }
-  }
 
-  public selected(value:any):void {
-    this.directionChange.emit(value.text);
-    console.log('Selected value is: ', value);
-  }
-
-  public removed(value:any):void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value:any):void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value:any):void {
-    this.value = value;
   }
 }
