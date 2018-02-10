@@ -19,7 +19,7 @@ export class ConsignmentComponent implements OnInit {
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
-  dispatchDifferentLocation: boolean = false;
+  dispatchDifferentLocation = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
 
