@@ -9,14 +9,15 @@ import {Globals} from "../model/globals";
 export class OrderService {
   title = 'Order';
 
-  private orderUrl = '/warehouse/orders/';
+  private orderUrl = '/warehouse/orders';
 
   constructor( private http: HttpClient,
                private globals: Globals) { }
 
   getOrders(): Observable<Order[]> {
-    const headers = new HttpHeaders();
-    headers.append('Content-type', 'application/json');
+    const headers = new HttpHeaders()
+      .append("Authorization", "Basic dGVzdGVyOnRlc3Rlcg==")
+      .append("Content-Type", "application/json");
     const params = new HttpParams().set('enabled', String(true));
     return this.http.get<Order[]>(this.globals.host + this.orderUrl, {headers: headers, params : params});
   }
