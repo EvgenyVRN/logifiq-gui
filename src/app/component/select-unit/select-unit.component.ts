@@ -20,7 +20,6 @@ export class SelectUnitComponent implements OnInit {
 
   ngOnInit() {
     this.getUnits();
-    this.units.forEach(u => this.fillSelectItem(u));
     if (this.unit == null){
       this.unit = new Unit();
     }
@@ -28,7 +27,10 @@ export class SelectUnitComponent implements OnInit {
 
   getUnits():void {
     this.unitService.getUnits()
-       .subscribe(units => this.units = units);
+       .subscribe(units => {
+         this.units = units;
+         this.units.forEach(u => this.fillSelectItem(u));
+       });
   }
 
   private fillSelectItem(unit: Unit){

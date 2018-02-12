@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Contractor } from '../model/contractor';
+import {Globals} from "../model/globals";
 
 @Injectable()
 export class ContractorService {
   title = 'Contractor';
 
-  private consignmentUrl = '/registry/contractors/';
+  private consignmentUrl = '/registry/contractors';
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+               private global:Globals) { }
 
   getContractors(): Observable<Contractor[]> {
-    return this.http.get<Contractor[]>(this.consignmentUrl + 'enabled');
+    const headers = new HttpHeaders()
+      .append("Authorization", "Basic dGVzdGVyOnRlc3Rlcg==");
+    const params = new HttpParams().set('enabled', String(true));
+    return this.http.get<Contractor[]>(this.global.host+this.consignmentUrl, {headers: headers, params: params});
   }
 
     /**

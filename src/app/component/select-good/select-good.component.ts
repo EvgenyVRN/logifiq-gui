@@ -20,7 +20,6 @@ export class SelectGoodComponent implements OnInit {
 
   ngOnInit() {
     this.getGoods();
-    this.goods.forEach( g => this.fillSelectItem(g));
     if (this.good == null){
       this.good = new Good();
     }
@@ -29,7 +28,10 @@ export class SelectGoodComponent implements OnInit {
 
   getGoods():void {
     this.goodService.getGoods()
-       .subscribe(goods => this.goods = goods);
+       .subscribe(goods => {
+         this.goods = goods;
+         this.goods.forEach( g => this.fillSelectItem(g));
+       });
   }
 
   onItemSelect(){

@@ -21,8 +21,6 @@ export class SelectAddressComponent implements OnInit {
 
   ngOnInit() {
     this.getAddresses();
-    this.getMockAddresses();
-    this.addresses.forEach(address => this.fillSelectItems(address));
     if (this.address == null){
       this.address = new Address();
     }
@@ -71,7 +69,10 @@ export class SelectAddressComponent implements OnInit {
 
   getAddresses(): void {
     this.addressService.getAddresses()
-      .subscribe(addresses => this.addresses = addresses);
+      .subscribe(addresses => {
+        this.addresses = addresses;
+        this.addresses.forEach(address => this.fillSelectItems(address));
+      });
   }
 
   public onAddressChange(value:any):void {

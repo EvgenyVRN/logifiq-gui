@@ -14,7 +14,8 @@ export class GoodService {
   constructor( private http: HttpClient ) { }
 
   getGoods(): Observable<Good[]> {
-    return this.http.get<Good[]>(this.goodUrl + 'enabled');
+    return this.http.get<Good[]>(this.goodUrl + 'enabled')
+      .pipe(catchError(this.handleError<Good[]>("GoodService: Fetching goods")));
   }
 
     /**

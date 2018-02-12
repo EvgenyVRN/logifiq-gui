@@ -27,8 +27,6 @@ export class SelectContractorComponent implements OnInit {
 
   ngOnInit() {
     this.getContractors();
-    // this.getMockContractors();
-    this.contractors.forEach(c => this.fillSelectItems(c));
     if (this.contractor == null){
       this.contractor = new Contractor();
     }
@@ -36,7 +34,10 @@ export class SelectContractorComponent implements OnInit {
 
   getContractors():void {
     this.contractorService.getContractors()
-       .subscribe(contractors => this.contractors = contractors);
+       .subscribe(contractors => {
+         this.contractors = contractors;
+         this.contractors.forEach(c => this.fillSelectItems(c));
+       });
   }
 
   getMockContractors():void {
@@ -53,7 +54,9 @@ export class SelectContractorComponent implements OnInit {
   }
 
   private fillSelectItems(contractor: Contractor){
+    console.log('Select-contractor: filling select items');
     this.selectItems.push({label: contractor.name, value: contractor});
+    console.log('Select-contractor: selectItems is ' + this.selectItems);
   }
 
   onContractorSelect(){

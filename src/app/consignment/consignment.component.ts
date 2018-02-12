@@ -10,6 +10,8 @@ import {OrderModalComponent} from "../component/order-modal/order-modal.componen
 import {GisModalComponent} from "../component/gis-modal/gis-modal.component";
 import {Country} from "../model/country";
 import {Address} from "../model/address";
+import {ContractorService} from "../service/contractor.service";
+import {Contractor} from "../model/contractor";
 
 @Component({
   selector: 'app-consignment',

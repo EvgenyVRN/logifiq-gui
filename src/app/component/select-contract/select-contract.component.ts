@@ -22,7 +22,6 @@ export class SelectContractComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.getContracts();
-    this.contracts.forEach(c => this.fillSelectItems(c));
     if (this.contract == null){
       this.contract = new Contract();
     }
@@ -47,7 +46,10 @@ export class SelectContractComponent implements OnInit, OnChanges {
     }
 
     this.contractService.getContractsByContractor(this.contractor.id)
-      .subscribe(contracts => this.contracts = contracts);
+      .subscribe(contracts => {
+        this.contracts = contracts;
+        this.contracts.forEach(c => this.fillSelectItems(c));
+      });
   }
 
   public onContractSelect(){

@@ -19,8 +19,6 @@ export class SelectCountryComponent implements OnInit {
 
   ngOnInit() {
     this.getCountries();
-    this.getMockCountries();
-    this.countries.forEach(c => this.fillSelectItems(c));
     if (this.country == null){
       this.country = new Country();
     }
@@ -40,7 +38,10 @@ export class SelectCountryComponent implements OnInit {
 
   getCountries():void {
     this.countryService.getCountries()
-      .subscribe(countries => this.countries = countries);
+      .subscribe(countries => {
+        this.countries = countries;
+        this.countries.forEach(c => this.fillSelectItems(c));
+      });
   }
 
   private fillSelectItems(country: Country){

@@ -19,7 +19,6 @@ export class SelectCustomsComponent implements OnInit {
 
   ngOnInit() {
     this.getCustoms();
-    this.customsArray.forEach(c => this.fillSelectItems(c));
     if (this.customs == null){
       this.customs = new Customs();
     }
@@ -27,7 +26,10 @@ export class SelectCustomsComponent implements OnInit {
 
   getCustoms():void {
     this.customsService.getCustoms()
-       .subscribe(customsArray => this.customsArray = customsArray);
+       .subscribe(customsArray => {
+         this.customsArray = customsArray;
+         this.customsArray.forEach(c => this.fillSelectItems(c));
+       });
   }
 
   private fillSelectItems(customs: Customs){
