@@ -54,9 +54,7 @@ export class SelectContractorComponent implements OnInit {
   }
 
   private fillSelectItems(contractor: Contractor){
-    console.log('Select-contractor: filling select items');
     this.selectItems.push({label: contractor.name, value: contractor});
-    console.log('Select-contractor: selectItems is ' + this.selectItems);
   }
 
   onContractorSelect(){

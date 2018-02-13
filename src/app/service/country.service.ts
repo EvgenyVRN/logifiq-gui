@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Country} from "../model/country";
 import {of} from "rxjs/observable/of";
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class CountryService {
@@ -13,7 +14,8 @@ export class CountryService {
   constructor( private http: HttpClient ) { }
 
   getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.countriesUrl);
+    return this.http.get<Country[]>(SettingsService.getFullUrl(this.countriesUrl),
+      {headers: SettingsService.headers});
   }
 
   /**

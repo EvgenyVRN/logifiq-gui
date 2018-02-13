@@ -23,7 +23,6 @@ export class SelectGoodComponent implements OnInit {
     if (this.good == null){
       this.good = new Good();
     }
-
   }
 
   getGoods():void {

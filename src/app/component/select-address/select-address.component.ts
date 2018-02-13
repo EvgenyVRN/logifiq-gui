@@ -24,8 +24,6 @@ export class SelectAddressComponent implements OnInit {
     if (this.address == null){
       this.address = new Address();
     }
-
-
   }
 
   private fillSelectItems(address: Address) {

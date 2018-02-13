@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Order} from "../model/order";
 import {of} from "rxjs/observable/of";
-import {Globals} from "../model/globals";
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class OrderService {
@@ -11,15 +11,12 @@ export class OrderService {
 
   private orderUrl = '/warehouse/orders';
 
-  constructor( private http: HttpClient,
-               private globals: Globals) { }
+  constructor( private http: HttpClient) { }
 
   getOrders(): Observable<Order[]> {
-    const headers = new HttpHeaders()
-      .append("Authorization", "Basic dGVzdGVyOnRlc3Rlcg==")
-      .append("Content-Type", "application/json");
-    const params = new HttpParams().set('enabled', String(true));
-    return this.http.get<Order[]>(this.globals.host + this.orderUrl, {headers: headers, params : params});
+    let params = new HttpParams().set('enabled', String(true));
+    return this.http.get<Order[]>(SettingsService.getFullUrl(this.orderUrl),
+      {headers: SettingsService.headers, params : params});
   }
 
   /**

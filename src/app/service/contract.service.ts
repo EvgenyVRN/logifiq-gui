@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Contract} from "../model/contract";
 import {of} from "rxjs/observable/of";
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class ContractService {
@@ -13,14 +14,18 @@ export class ContractService {
   constructor( private http: HttpClient ) { }
 
   getContracts(): Observable<Contract[]> {
-    return this.http.get<Contract[]>(this.contractsUrl + 'enabled');
+    let params = new HttpParams()
+      .set("enabled", String(true));
+    return this.http.get<Contract[]>(SettingsService.getFullUrl(this.contractsUrl),
+      {headers: SettingsService.headers, params: params});
   }
 
   getContractsByContractor(id: number): Observable<Contract[]> {
-    const headers = new HttpHeaders();
-    headers.append('Content-type', 'application/json');
-    const params = new HttpParams().set('contractor', String(id));
-    return this.http.get<Contract[]>(this.contractsUrl, {headers: headers, params : params});
+    let params = new HttpParams()
+      .set('contractor', String(id))
+      .set('enabled', String(true));
+    return this.http.get<Contract[]>(SettingsService.getFullUrl(this.contractsUrl),
+      {headers: SettingsService.headers, params : params});
   }
 
   /**

@@ -28,7 +28,6 @@ import { SelectCountryComponent } from './component/select-country/select-countr
 import { ConsignmentFilterPipe } from './pipe/consignment-filter.pipe';
 import {OrderService} from "./service/order.service";
 import {GoodInStockService} from "./service/good-in-stock.service";
-import {Globals} from "./model/globals";
 import {CountryService} from "./service/country.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderModalComponent } from './component/order-modal/order-modal.component';
@@ -76,7 +75,7 @@ import {MatDialogModule} from "@angular/material";
     CheckboxModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
-  OrderService, GoodInStockService, Globals, CountryService],
+  OrderService, GoodInStockService, CountryService],
   bootstrap: [AppComponent],
   entryComponents: [OrderModalComponent, GisModalComponent]
 })

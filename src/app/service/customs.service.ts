@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Customs } from '../model/customs';
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class CustomsService {
@@ -14,7 +14,8 @@ export class CustomsService {
   constructor( private http: HttpClient ) { }
 
   getCustoms(): Observable<Customs[]> {
-    return this.http.get<Customs[]>(this.customsUrl + 'enabled');
+    return this.http.get<Customs[]>(SettingsService.getFullUrl(this.customsUrl + 'enabled'),
+      {headers: SettingsService.headers});
   }
 
     /**

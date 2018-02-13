@@ -35,19 +35,6 @@ export class ConsignmentComponent implements OnInit {
 
   ngOnInit() {
     this.getConsignment();
-    let germany = new Country();
-    germany.id = 10000002;
-    germany.country = "Germany";
-    germany.alpha2 = "GR";
-    const a1 = new Address();
-    a1.id = 10000005;
-    a1.apt = '66';
-    a1.city = 'Moscow';
-    a1.index = "0000007";
-    a1.country = germany;
-    a1.region = 'Moscow obl.';
-    a1.street = 'Red Square';
-    this.consignment.consignorAddress = a1;
   }
 
   getConsignment(): void {
@@ -66,7 +53,7 @@ export class ConsignmentComponent implements OnInit {
   public submit(value: any): void {
     this.consignmentService.createConsignment(this.consignment).subscribe(c => this.consignment = c);
     console.log('submit consignment: ', this.consignment);
-    window.location.href = '/consignments';
+    // window.location.href = '/consignments';
   }
 
   public addRow(event){

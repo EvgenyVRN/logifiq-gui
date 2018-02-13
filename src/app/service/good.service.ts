@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Good } from '../model/good';
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class GoodService {
@@ -14,7 +15,10 @@ export class GoodService {
   constructor( private http: HttpClient ) { }
 
   getGoods(): Observable<Good[]> {
-    return this.http.get<Good[]>(this.goodUrl + 'enabled')
+    let params = new HttpParams()
+      .set("enabled", String(true));
+    return this.http.get<Good[]>(SettingsService.getFullUrl(this.goodUrl),
+      {headers: SettingsService.headers, params: params})
       .pipe(catchError(this.handleError<Good[]>("GoodService: Fetching goods")));
   }
 

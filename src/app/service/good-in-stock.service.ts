@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {GoodInStock} from "../model/good-in-stock";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class GoodInStockService {
@@ -13,7 +14,13 @@ export class GoodInStockService {
   constructor( private http: HttpClient ) { }
 
   getGoods(): Observable<GoodInStock[]> {
-    return this.http.get<GoodInStock[]>(this.url + 'enabled');
+    return this.http.get<GoodInStock[]>(SettingsService.getFullUrl(this.url),
+      { headers: SettingsService.headers});
+  }
+
+  getByOrder(id: number): Observable<GoodInStock[]>{
+    return this.http.get<GoodInStock[]>(SettingsService.getFullUrl(this.url + 'for_order/' + id),
+      {headers: SettingsService.headers});
   }
 
   /**

@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
+import {SettingsService} from "./settings.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,33 +23,35 @@ export class ConsignmentService {
 
   getConsignment( id: number ): Observable<Consignment> {
     const url = `${this.consignmentUrl}/${id}`;
-    return this.http.get<Consignment>(url).pipe(
+    return this.http.get<Consignment>(SettingsService.getFullUrl(url),
+      {headers: SettingsService.headers}).pipe(
       catchError(this.handleError<Consignment>('getConsignment id=${id}'))
     );
   }
 
   getConsignments(): Observable<Consignment[]> {
-    return this.http.get<Consignment[]>(this.consignmentUrl);
+    return this.http.get<Consignment[]>(SettingsService.getFullUrl(this.consignmentUrl),
+      {headers: SettingsService.headers});
   }
 
   updateConsignment( consignment: Consignment ): Observable<Consignment> {
     const url = `${this.consignmentUrl}/${consignment.id}`;
-    return this.http.put(url, consignment, httpOptions).pipe(
-      catchError(this.handleError<any>('updateConsignment id = ${consignment.id}'))
+    return this.http.put(SettingsService.getFullUrl(url), consignment, {headers: SettingsService.headers})
+      .pipe(catchError(this.handleError<any>('updateConsignment id = ${consignment.id}'))
     );
   }
 
   createConsignment( consignment: Consignment ): Observable<Consignment> {
-    return this.http.post<Consignment>(this.consignmentUrl, consignment, httpOptions).pipe(
-      catchError(this.handleError<Consignment>('createConsignment'))
+    return this.http.post<Consignment>(SettingsService.getFullUrl(this.consignmentUrl), consignment, {headers: SettingsService.headers})
+      .pipe(catchError(this.handleError<Consignment>('createConsignment'))
     );
   }
 
   deleteConsignment(consignment: Consignment | number): Observable<Consignment> {
     const id = typeof consignment === 'number' ? consignment : consignment.id;
     const url = `${this.consignmentUrl}/${id}`;
-    return this.http.delete<Consignment>(url, httpOptions).pipe(
-      catchError(this.handleError<Consignment>('deleteConsignment'))
+    return this.http.delete<Consignment>(SettingsService.getFullUrl(url), {headers: SettingsService.headers})
+      .pipe(catchError(this.handleError<Consignment>('deleteConsignment'))
     );
   }
 

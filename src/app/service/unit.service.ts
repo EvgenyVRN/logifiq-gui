@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Unit } from '../model/unit';
+import {SettingsService} from "./settings.service";
 
 @Injectable()
 export class UnitService {
@@ -14,7 +15,10 @@ export class UnitService {
   constructor( private http: HttpClient ) { }
 
   getUnits(): Observable<Unit[]> {
-    return this.http.get<Unit[]>(this.unitUrl + 'enabled');
+    let params = new HttpParams()
+      .set("enabled", String(true));
+    return this.http.get<Unit[]>(SettingsService.getFullUrl(this.unitUrl),
+      {headers: SettingsService.headers, params: params});
   }
 
     /**
