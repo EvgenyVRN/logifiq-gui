@@ -1,6 +1,6 @@
 <div class="form-group ui-float-label">
   <p-dropdown [options]="selectItems" [(ngModel)]="unit" [filter]="true" (onChange)="onItemSelect()"
               [style]="{'width':'100%'}" id="item" placeholder="Select a unit" [required]="required"></p-dropdown>
-  <label for="item" [hidden]="unit.id === 0">Unit</label>
+  <label for="item" *ngIf="unit != null" [hidden]="unit.id === 0">Unit</label>
 </div>
 

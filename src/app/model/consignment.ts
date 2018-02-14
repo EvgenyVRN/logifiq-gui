@@ -47,11 +47,11 @@ export class Consignment {
   totalNetWeight: number; // should calculate
   totalVolume: number; // should calculate
 
-  public addNewGood(){
+  public addNewGood():void{
     this.goodsInConsignment.push(new GoodInConsignment('', '', null, 0, null, 0 , 0, 0));
   }
 
-  public deleteRow(index){
+  public deleteRow(index):void{
     this.goodsInConsignment.splice(index, 1);
     console.log("row " + index + " deleted");
   }

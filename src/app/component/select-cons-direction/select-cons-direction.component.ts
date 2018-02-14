@@ -12,7 +12,7 @@ import {SelectItem} from "primeng/api";
 })
 export class SelectConsDirectionComponent implements OnInit {
   directions:Array<string> = ['Import', 'Export'];
-  @Input() direction: string;
+  @Input() direction: string = '';
   @Output() directionChange = new EventEmitter();
   @Input() required: boolean;
   selectItems: SelectItem[] = [];

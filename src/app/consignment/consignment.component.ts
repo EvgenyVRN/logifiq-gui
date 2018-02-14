@@ -40,6 +40,7 @@ export class ConsignmentComponent implements OnInit {
   getConsignment(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     if(id === 0 || id == null) {
+
       return;
     }
 

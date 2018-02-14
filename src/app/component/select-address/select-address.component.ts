@@ -13,7 +13,7 @@ export class SelectAddressComponent implements OnInit {
 
   addresses: Address[] = [];
   @Input() ownerId: number;
-  @Input() address: Address;
+  @Input() address: Address = new Address();
   selectItems: SelectItem[] = [];
   @Output() addressChange= new EventEmitter();
 
@@ -21,9 +21,6 @@ export class SelectAddressComponent implements OnInit {
 
   ngOnInit() {
     this.getAddresses();
-    if (this.address == null){
-      this.address = new Address();
-    }
   }
 
   private fillSelectItems(address: Address) {
@@ -73,7 +70,7 @@ export class SelectAddressComponent implements OnInit {
       });
   }
 
-  public onAddressChange(value:any):void {
+  public onAddressChange():void {
     this.addressChange.emit(this.address);
   }
 
