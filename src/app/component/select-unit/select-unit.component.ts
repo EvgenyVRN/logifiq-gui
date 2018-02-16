@@ -16,13 +16,12 @@ export class SelectUnitComponent implements OnInit {
   selectItems: SelectItem[] = [];
 
   constructor(
-    private unitService: UnitService) { }
+    private unitService: UnitService) {
+    this.unit = new Unit;
+  }
 
   ngOnInit() {
     this.getUnits();
-    if (this.unit == null){
-      this.unit = new Unit();
-    }
   }
 
   getUnits():void {

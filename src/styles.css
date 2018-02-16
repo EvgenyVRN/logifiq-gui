@@ -709,34 +709,6 @@ i > span {
     max-height: 175px;
 }
 
-::-webkit-input-placeholder{
-    color: rgba(179, 179, 179,1);
-}
-::-moz-placeholder {
-    color:rgba(179, 179, 179,1);
-}
-:-moz-placeholder{
-    color: rgba(179, 179, 179,1);
-}
-:-ms-input-placeholder{
-    color: rgba(179, 179, 179,1);
-}
-.ui-select-placeholder{
-    color: rgba(179, 179, 179,1);
-}
-
-
-
-input:focus::-webkit-input-placeholder,textarea:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder,textarea:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
-input:focus::-moz-placeholder,textarea:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
-input:focus:-ms-input-placeholder,textarea:focus:-ms-input-placeholder { color:transparent; }
-
-.oper-filters-arrivals input::-webkit-input-placeholder{ text-align:right; }
-.oper-filters-arrivals input:-moz-placeholder{ text-align:right; } /* Firefox 18- */
-.oper-filters-arrivals input::-moz-placeholder{ text-align:right; } /* Firefox 19+ */
-.oper-filters-arrivals input:-ms-input-placeholder{ text-align:right; }
-
 .label-border{
     top: -10px;
     left: 20px;
@@ -1690,10 +1662,6 @@ h5.left-nav-title {
     margin-right: 5px;
     margin-left: 5px;
 }
-::-webkit-input-placeholder {
-    color:    #767676;
-}
-
 .nav-tabs.nav-justified>li>a {
     border-bottom: 1px solid #372C45;
     border-radius: 0;
@@ -2051,11 +2019,7 @@ td {
     font-size: 14px;
 
 }
-.table-view ::-webkit-input-placeholder {
-    text-align: center;
-    color: #3B2845;
 
-}
 .table-view .col-md-4 {
     padding: 0;
 }

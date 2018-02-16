@@ -1,5 +1,5 @@
 <div class="form-group ui-float-label">
   <p-dropdown [options]="selectItems" [(ngModel)]="good" [filter]="true" (onChange)="onItemSelect()"
               [style]="{'width':'100%'}" id="item" placeholder="Select a good" [required]="required"></p-dropdown>
-  <label for="item" *ngIf="good != null" [hidden]="good.id === 0">Good</label>
+  <label for="item" [hidden]="good.id === 0">Good</label>
 </div>

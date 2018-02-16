@@ -1,5 +1,5 @@
 <div class="form-group ui-float-label">
   <p-dropdown [options]="selectItems" [(ngModel)]="country" [filter]="true" (onChange)="onCountryChange($event)"
               [style]="{'width':'100%'}" id="country" placeholder="Select a country"></p-dropdown>
-  <label for="country" *ngIf="country != null" [hidden]="country.id === 0">Country</label>
+  <label for="country" [hidden]="country.id === 0">Country</label>
 </div>

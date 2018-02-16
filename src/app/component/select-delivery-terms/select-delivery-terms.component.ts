@@ -16,7 +16,9 @@ export class SelectDeliveryTermsComponent implements OnInit {
   @Input() required;
   selectItems: SelectItem[] = [];
 
-  constructor() { }
+  constructor() {
+    this.term = '';
+  }
 
   ngOnInit() {
     this.items.forEach( i => this.fillSelectItems(i));

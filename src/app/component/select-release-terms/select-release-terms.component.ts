@@ -13,7 +13,9 @@ export class SelectReleaseTermsComponent implements OnInit {
   @Input() required: boolean;
   selectItems: SelectItem[] = [];
 
-  constructor() { }
+  constructor() {
+    this.term = '';
+  }
 
   ngOnInit() {
     this.items.forEach( i => this.fillSelectItem(i));

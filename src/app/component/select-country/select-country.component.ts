@@ -15,13 +15,12 @@ export class SelectCountryComponent implements OnInit {
   selectItems: SelectItem[] = [];
 
   constructor(
-    private countryService: CountryService) { }
+    private countryService: CountryService) {
+    this.country = new Country;
+  }
 
   ngOnInit() {
     this.getCountries();
-    if (this.country == null){
-      this.country = new Country();
-    }
   }
 
   private getMockCountries(){

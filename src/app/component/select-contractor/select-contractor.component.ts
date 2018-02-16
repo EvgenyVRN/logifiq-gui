@@ -20,9 +20,8 @@ export class SelectContractorComponent implements OnInit {
   @Output() contractorChange = new EventEmitter();
   selectItems: SelectItem[] = [];
 
-  constructor(
-    private contractorService: ContractorService) {
-
+  constructor(private contractorService: ContractorService) {
+    this.contractor = new Contractor();
   }
 
   ngOnInit() {

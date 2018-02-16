@@ -13,11 +13,13 @@ export class SelectAddressComponent implements OnInit {
 
   addresses: Address[] = [];
   @Input() ownerId: number;
-  @Input() address: Address = new Address();
+  @Input() address: Address;
   selectItems: SelectItem[] = [];
   @Output() addressChange= new EventEmitter();
 
-  constructor( private addressService: AddressService ) { }
+  constructor( private addressService: AddressService ) {
+    this.address = new Address();
+  }
 
   ngOnInit() {
     this.getAddresses();

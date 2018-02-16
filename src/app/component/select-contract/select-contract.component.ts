@@ -18,7 +18,9 @@ export class SelectContractComponent implements OnInit, OnChanges {
   selectItems: SelectItem[] = [];
 
   constructor(
-    private contractService: ContractService) { }
+    private contractService: ContractService) {
+    this.contract = new Contract;
+  }
 
   ngOnInit() {
     this.getContracts();

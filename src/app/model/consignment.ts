@@ -9,6 +9,8 @@ import {Contract} from "./contract";
 import {Order} from "./order";
 import {CountryService} from "../service/country.service";
 import {Country} from "./country";
+import {Good} from "./good";
+import {Unit} from "./unit";
 
 export class Consignment {
   id: number;
@@ -48,7 +50,7 @@ export class Consignment {
   totalVolume: number; // should calculate
 
   public addNewGood():void{
-    this.goodsInConsignment.push(new GoodInConsignment('', '', null, 0, null, 0 , 0, 0));
+    this.goodsInConsignment.push(new GoodInConsignment('', '', new Good, 0, new Unit, 0 , 0, 0));
   }
 
   public deleteRow(index):void{

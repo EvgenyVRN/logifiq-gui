@@ -15,13 +15,12 @@ export class SelectCustomsComponent implements OnInit {
   @Input() required;
   selectItems: SelectItem[] = [];
   constructor(
-    private customsService: CustomsService) { }
+    private customsService: CustomsService) {
+    this.customs = new Customs;
+  }
 
   ngOnInit() {
     this.getCustoms();
-    if (this.customs == null){
-      this.customs = new Customs();
-    }
   }
 
   getCustoms():void {

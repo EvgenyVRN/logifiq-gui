@@ -16,13 +16,12 @@ export class SelectGoodComponent implements OnInit {
   selectItems: SelectItem[] = [];
 
   constructor(
-    private goodService: GoodService) { }
+    private goodService: GoodService) {
+    this.good = new Good;
+  }
 
   ngOnInit() {
     this.getGoods();
-    if (this.good == null){
-      this.good = new Good();
-    }
   }
 
   getGoods():void {

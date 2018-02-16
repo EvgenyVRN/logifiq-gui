@@ -13,7 +13,9 @@ export class SelectTransportModeComponent implements OnInit {
   selectItems: SelectItem[] = [];
   @Input() required: boolean;
 
-  constructor() { }
+  constructor() {
+    this.mode = '';
+  }
 
   ngOnInit() {
     this.items.forEach(i => this.fillSelectItem(i));
