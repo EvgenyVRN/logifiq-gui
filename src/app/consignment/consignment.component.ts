@@ -1,6 +1,6 @@
 import { Consignment } from '../model/consignment';
 import { ConsignmentService } from '../service/consignment.service';
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {GoodInStock} from "../model/good-in-stock";
 import {GoodInConsignment} from "../model/goodinconsignment";
@@ -20,25 +20,23 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./consignment.component.css']
 })
 
-export class ConsignmentComponent implements OnInit {
+export class ConsignmentComponent implements AfterViewInit{
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
   dld = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
-  myForm: FormGroup;
 
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
-    this.getConsignment();
   }
 
-  ngOnInit() {
-    // this.getConsignment();
+  ngAfterViewInit(){
+    this.getConsignment();
   }
 
   getConsignment(): void {

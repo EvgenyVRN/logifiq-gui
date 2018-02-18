@@ -18,15 +18,16 @@ export class SelectContractorComponent implements OnInit {
   @Input() contractorType: string;
   @Input() contractor: Contractor;
   @Output() contractorChange = new EventEmitter();
-  selectItems: SelectItem[] = [];
+  selectItems: SelectItem[];
   @Input() required: boolean;
 
   constructor(private contractorService: ContractorService) {
     // this.contractor = new Contractor();
+    this.getContractors();
   }
 
   ngOnInit() {
-    this.getContractors();
+    // this.getContractors();
     // if (this.contractor == null){
     //   this.contractor = new Contractor();
     // }
@@ -36,6 +37,7 @@ export class SelectContractorComponent implements OnInit {
     this.contractorService.getContractors()
        .subscribe(contractors => {
          this.contractors = contractors;
+         this.selectItems = [];
          this.contractors.forEach(c => this.fillSelectItems(c));
        });
   }

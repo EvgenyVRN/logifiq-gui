@@ -1,4 +1,4 @@
-<div class="form-group ui-float-label">
+<div *ngIf="selectItems" class="form-group ui-float-label">
   <p-dropdown [options]="selectItems" [(ngModel)]="contractor" [filter]="true" (onChange)="onContractorSelect()"
               [style]="{'width':'100%'}" id="contractor" placeholder="Select a {{ contractorType.toLowerCase() }}" [required]="required" name="contractor"></p-dropdown>
   <label for="contractor" [hidden]="contractor == null">{{ contractorType }}</label>
