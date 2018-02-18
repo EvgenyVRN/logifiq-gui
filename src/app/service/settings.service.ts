@@ -5,6 +5,7 @@ import {HttpHeaders} from "@angular/common/http";
 export class SettingsService {
 
   private static _host = 'http://138.197.186.218';
+  // private static _host = 'http://localhost:8080';
   private static _remoteRest = true;
   private static _headers = new HttpHeaders({"Authorization":"Basic dGVzdGVyOnRlc3Rlcg=="});
 

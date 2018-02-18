@@ -1,1 +1,3 @@
-
+p-dropdown.ng-invalid > div{
+  border:1px solid red;
+}

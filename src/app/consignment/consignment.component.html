@@ -6,7 +6,7 @@
   </ul>
 
   <div>
-    <form name="myForm" class="">
+    <form #myForm="ngForm">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">General Information</h3>
@@ -15,7 +15,7 @@
           <div class="row">
             <div class="col-md-2">
               <div class="form-group">
-                <app-select-cons-direction [(direction)]="consignment.direction"></app-select-cons-direction>
+                <app-select-cons-direction [(direction)]="consignment.direction" [required]="true"></app-select-cons-direction>
               </div>
             </div>
             <div class="col-md-2">
@@ -32,15 +32,15 @@
             <div class="col-md-3">
               <div class="form-group">
                 <app-select-contractor [(contractor)]="consignment.goodsHolder" contractorType="Goods holder"
-                                       [hidden]="consignment.direction === 'Import' || consignment.direction == ''"></app-select-contractor>
+                                       *ngIf="consignment.direction === 'Export'" [required]="true"></app-select-contractor>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
                 <app-select-contractor contractorType="Cost payer"
-                                       [(contractor)]="consignment.costPayer"></app-select-contractor>
+                                       [(contractor)]="consignment.costPayer" [required]="true"></app-select-contractor>
                 <app-select-contract [(contract)]="consignment.costPayerContract" [contractor]="consignment.costPayer"
-                                     [disabled]="!consignment.costPayer"></app-select-contract>
+                                     *ngIf="consignment.costPayer"></app-select-contract>
               </div>
             </div>
           </div>
@@ -54,23 +54,23 @@
           <div class="row">
             <div class="col-md-3">
               <app-select-contractor contractorType="Consignor"
-                                     [(contractor)]="consignment.consignor"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consignorAddress">Select address</app-select-address>
-              <app-select-customs [(customs)]="consignment.consignorCustoms"></app-select-customs>
+                                     [(contractor)]="consignment.consignor" [required]="true"></app-select-contractor>
+              <app-select-address [(address)]="consignment.consignorAddress" [required]="true">Select address</app-select-address>
+              <app-select-customs [(customs)]="consignment.consignorCustoms" [required]="true"></app-select-customs>
 
               <div class="ui-float-label">
-                  <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                  <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [required]="true"></p-calendar>
                   <label for="sendingDate">Sending date</label>
               </div>
 
             </div>
             <div class="col-md-3">
               <app-select-contractor contractorType="Consignee"
-                                     [(contractor)]="consignment.consignee"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consigneeAddress">Select address</app-select-address>
+                                     [(contractor)]="consignment.consignee" [required]="true"></app-select-contractor>
+              <app-select-address [(address)]="consignment.consigneeAddress" [required]="true">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.deliveryToCompany">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true">Select address</app-select-address>
             </div>
             <div class="col-md-3">
               <app-select-address [(address)]="consignment.finalDestination">Select address</app-select-address>
@@ -79,12 +79,10 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <p-checkbox name="first" value="Dispatch different location" label="Dispatch location different" [(ngModel)]="dld"></p-checkbox>
-            </div>
-          </div>
-          <div class="row" *ngIf="dld">
-            <div class="col-md-3">
-              <app-select-address [(address)]="consignment.otherConsignorAddress">Select address</app-select-address>
+              <div class="form-group">
+                <p-checkbox name="dld" value="Dispatch different location" label="Dispatch location different" [(ngModel)]="dld" [binary]="true"></p-checkbox>
+              </div>
+              <app-select-address *ngIf="dld" [(address)]="consignment.otherConsignorAddress" [required]="true">Select address</app-select-address>
             </div>
           </div>
         </div>
@@ -97,19 +95,19 @@
           <div class="row">
             <div class="col-md-3">
               <div class="form-group ui-float-label">
-                <input pInputText id="vrn" [(ngModel)]="consignment.vehicleRegNum" name="vehicleRegNum"/>
+                <input pInputText id="vrn" [(ngModel)]="consignment.vehicleRegNum" name="vehicleRegNum" required/>
                 <label for="vrn">Vehicle registration number</label>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="form-group">
-                <app-select-country [(country)]="consignment.vehicleRegCountry"></app-select-country>
+                <app-select-country [(country)]="consignment.vehicleRegCountry" [required]="true"></app-select-country>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <app-select-transport-mode [(mode)]="consignment.vehicleModeOfTransport"></app-select-transport-mode>
+                <app-select-transport-mode [(mode)]="consignment.vehicleModeOfTransport" [required]="true"></app-select-transport-mode>
               </div>
             </div>
           </div>
@@ -158,7 +156,7 @@
             </div>
             <div class="col-md-2">
               <div class="form-group ui-float-label">
-                <input matInput id="rtp" [(ngModel)]="consignment.releaseTermsPlaces" name="releaseTermsPlaces"/>
+                <input pInputText id="rtp" [(ngModel)]="consignment.releaseTermsPlaces" name="releaseTermsPlaces"/>
                 <label for="rtp">Places</label>
               </div>
             </div>
@@ -196,7 +194,7 @@
               </div>
               <div class="col-md-4">
                 <div class="form-group ui-float-label">
-                  <input pInputText id="marks" [(ngModel)]="row.marks" name="row.marks" required/>
+                  <input pInputText id="marks" [(ngModel)]="row.marks" name="row.marks"/>
                   <label for="marks">Marks</label>
                 </div>
               </div>
@@ -215,7 +213,7 @@
               </div>
               <div class="col-md-2">
                 <div class="form-group ui-float-label">
-                  <input  pInputText class="numeric" id="grossWeight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" [required]="true"/>
+                  <input  pInputText class="numeric" id="grossWeight" [(ngModel)]="row.grossWeight" name="row.grossWeight" (blur)="calculateTotalGrossWeight()" required/>
                   <label for="grossWeight">Gross weight</label>
                 </div>
               </div>
@@ -281,7 +279,7 @@
         </div>
       </div>
       <div class="btns-arrival">
-        <input (click)="submit($event)" type="submit" value="Save">
+        <input (click)="submit($event)" type="submit" value="Save" [disabled]="myForm.form.invalid">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Cancel">
         <input type="reset" value="Reset">

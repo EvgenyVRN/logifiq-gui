@@ -12,11 +12,11 @@ export class SelectCustomsComponent implements OnInit {
   public customsArray: Customs[] = [];
   @Input() customs: Customs;
   @Output() customsChange = new EventEmitter();
-  @Input() required;
+  @Input() required: boolean;
   selectItems: SelectItem[] = [];
   constructor(
     private customsService: CustomsService) {
-    this.customs = new Customs;
+    // this.customs = new Customs;
   }
 
   ngOnInit() {

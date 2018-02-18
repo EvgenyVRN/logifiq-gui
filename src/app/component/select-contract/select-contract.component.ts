@@ -16,17 +16,15 @@ export class SelectContractComponent implements OnInit, OnChanges {
   @Input() contractor: Contractor;
   @Input() disabled: boolean;
   selectItems: SelectItem[] = [];
+  @Input() required: boolean;
 
   constructor(
     private contractService: ContractService) {
-    this.contract = new Contract;
+    // this.contract = new Contract;
   }
 
   ngOnInit() {
     this.getContracts();
-    if (this.contract == null){
-      this.contract = new Contract();
-    }
   }
   private fillSelectItems(contract: Contract){
     this.selectItems.push({label: contract.name, value: contract});
@@ -37,7 +35,6 @@ export class SelectContractComponent implements OnInit, OnChanges {
     const contractor: SimpleChange = changes.contractor;
     if (contractor !== null){
       this.getContracts();
-      this.contract = new Contract();
     }
   }
 

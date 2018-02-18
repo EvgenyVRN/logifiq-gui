@@ -740,9 +740,9 @@ td div{
     width: 100%;
 }
 
-/*input:invalid{*/
-    /*border: 1px solid #fb9999;*/
-/*}*/
+input:invalid{
+    border: 1px solid #fb9999;
+}
 
 div.ng-invalid span.ui-select-toggle {
     border-color: #fb9999;
@@ -1531,7 +1531,7 @@ h5.left-nav-title {
 
 .normal-list li .name {
     font-size: 13px;
-    font-family: 'Arial' Helvetica, sans-serif;
+    font-family: 'Arial', Helvetica, sans-serif;
     line-height: 21px;
 }
 
@@ -2092,3 +2092,30 @@ td {
   color: #372c45;
   font-weight: 700;
 }
+
+p-dropdown.ng-invalid > div{
+  border:1px solid #fb9999;
+}
+
+p-dropdown.ng-invalid div.ui-dropdown-trigger{
+  border-left: 1px solid #fb9999;
+}
+
+
+div.ui-float-label>label{
+  font-family: "Roboto", "Tebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+label{
+  font-weight: 400;
+  margin-bottom: 0;
+  font-family: "Roboto", "Tebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+p-calendar button{
+  margin-top: 0;
+  margin-left: -1px;
+}
+

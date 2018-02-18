@@ -12,7 +12,7 @@ export class SelectGoodComponent implements OnInit {
   public goods : Good[] = [];
   @Input() good: Good;
   @Output() goodChange = new EventEmitter();
-  @Input() required;
+  @Input() required: boolean;
   selectItems: SelectItem[] = [];
 
   constructor(

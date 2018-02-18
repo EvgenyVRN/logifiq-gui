@@ -13,10 +13,11 @@ export class SelectCountryComponent implements OnInit {
   @Input() country: Country;
   @Output() countryChange = new EventEmitter();
   selectItems: SelectItem[] = [];
+  @Input() required: boolean;
 
   constructor(
     private countryService: CountryService) {
-    this.country = new Country;
+    // this.country = new Country;
   }
 
   ngOnInit() {

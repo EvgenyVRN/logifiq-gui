@@ -47,8 +47,10 @@ export class ConsignmentsListComponent implements OnInit {
   }
 
   remove(id:number):void{
-    this.consignmentService.deleteConsignment(id);
-    this.getConsignments();
+    this.consignmentService.deleteConsignment(id).subscribe(c => {
+      this.getConsignments();
+    });
+
   }
 
   createCMR(id:number):void{

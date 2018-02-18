@@ -16,9 +16,10 @@ export class SelectAddressComponent implements OnInit {
   @Input() address: Address;
   selectItems: SelectItem[] = [];
   @Output() addressChange= new EventEmitter();
+  @Input() required: boolean;
 
   constructor( private addressService: AddressService ) {
-    this.address = new Address();
+    // this.address = new Address();
   }
 
   ngOnInit() {
@@ -78,5 +79,36 @@ export class SelectAddressComponent implements OnInit {
 
   private getFullAddress(address: Address):string{
     return address.index + ', ' + address.country.country + ', ' + address.region + ', ' + address.city + ', ' + address.street + ', ' + address.apt;
+  }
+
+  onAptChange(event){
+    this.createIfEmpty();
+    this.address.apt = event;
+  }
+
+  onStreetChange(event){
+    this.createIfEmpty();
+    this.address.street = event;
+  }
+
+  onIndexChange(event){
+    this.createIfEmpty();
+    this.address.index = event;
+  }
+
+  onCityChange(event){
+    this.createIfEmpty();
+    this.address.city = event;
+  }
+
+  onCountryChange(event){
+    this.createIfEmpty();
+    this.address.country = event;
+  }
+
+  private createIfEmpty(){
+    if (this.address == null){
+      this.address = new Address;
+    }
   }
 }

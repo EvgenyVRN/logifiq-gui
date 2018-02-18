@@ -13,7 +13,7 @@ export class SelectDeliveryTermsComponent implements OnInit {
 
   @Input() term: string;
   @Output() termChange = new EventEmitter();
-  @Input() required;
+  @Input() required: boolean;
   selectItems: SelectItem[] = [];
 
   constructor() {

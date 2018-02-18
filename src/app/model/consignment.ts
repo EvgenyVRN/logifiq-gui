@@ -17,24 +17,24 @@ export class Consignment {
   document: Document;
   direction = '';
   order: Order;
-  consignor: Contractor = new Contractor();
-  consignorAddress: Address = new Address();
-  consignorCustoms: Customs = new Customs();
+  consignor: Contractor;
+  consignorAddress: Address;
+  consignorCustoms: Customs;
   sendingDate: string;
-  otherConsignorAddress: Address = new Address();
-  consignee: Contractor = new Contractor();
-  consigneeAddress: Address = new Address();
-  deliveryToCompany: Address = new Address();
-  finalDestination: Address = new Address();
-  finalDestinationCustoms: Customs = new Customs();
-  goodsHolder: Contractor = new Contractor();
-  costPayer: Contractor = new Contractor();
-  costPayerContract: Contract = new Contract();
+  otherConsignorAddress: Address;
+  consignee: Contractor;
+  consigneeAddress: Address;
+  deliveryToCompany: Address;
+  finalDestination: Address;
+  finalDestinationCustoms: Customs;
+  goodsHolder: Contractor;
+  costPayer: Contractor;
+  costPayerContract: Contract;
   vehicleRegNum = '';
-  vehicleRegCountry: Country = new Country();
+  vehicleRegCountry: Country;
   vehicleModeOfTransport = '';
   trailerRegNum = '';
-  trailerRegCountry: Country = new Country();
+  trailerRegCountry: Country;
   trailerModeOfTransport = '';
   deliveryTerms = '';
   deliveryTermsPlaces: number;
@@ -50,7 +50,7 @@ export class Consignment {
   totalVolume: number; // should calculate
 
   public addNewGood():void{
-    this.goodsInConsignment.push(new GoodInConsignment('', '', new Good, 0, new Unit, 0 , 0, 0));
+    this.goodsInConsignment.push(new GoodInConsignment);
   }
 
   public deleteRow(index):void{
