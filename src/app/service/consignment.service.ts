@@ -3,7 +3,7 @@
  */
 import { Consignment } from '../model/consignment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -30,8 +30,9 @@ export class ConsignmentService {
   }
 
   getConsignments(): Observable<Consignment[]> {
+    let params = new HttpParams().set("enabled", String(true));
     return this.http.get<Consignment[]>(SettingsService.getFullUrl(this.consignmentUrl),
-      {headers: SettingsService.headers});
+      {headers: SettingsService.headers, params: params});
   }
 
   updateConsignment( consignment: Consignment ): Observable<Consignment> {

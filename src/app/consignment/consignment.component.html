@@ -55,8 +55,8 @@
             <div class="col-md-3">
               <app-select-contractor contractorType="Consignor"
                                      [(contractor)]="consignment.consignor" [required]="true"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consignorAddress" [required]="true">Select address</app-select-address>
-              <app-select-customs [(customs)]="consignment.consignorCustoms" [required]="true"></app-select-customs>
+              <app-select-address [(address)]="consignment.consignorAddress" [required]="true" [ownerId]="consignment.consignor?.id">Select address</app-select-address>
+              <app-select-customs [(customs)]="consignment.consignorCustoms" [required]="false"></app-select-customs>
 
               <div class="ui-float-label">
                   <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [required]="true"></p-calendar>
@@ -67,7 +67,7 @@
             <div class="col-md-3">
               <app-select-contractor contractorType="Consignee"
                                      [(contractor)]="consignment.consignee" [required]="true"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consigneeAddress" [required]="true">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id">Select address</app-select-address>
             </div>
             <div class="col-md-3">
               <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true">Select address</app-select-address>

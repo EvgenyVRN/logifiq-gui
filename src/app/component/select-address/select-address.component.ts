@@ -1,6 +1,6 @@
 import { Address } from "../../model/address";
 import { AddressService } from "../../service/address.service";
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output, SimpleChanges, SimpleChange, OnChanges} from '@angular/core';
 import {Country} from "../../model/country";
 import {SelectItem} from "primeng/api";
 
@@ -9,9 +9,9 @@ import {SelectItem} from "primeng/api";
   templateUrl: './select-address.component.html',
   styleUrls: ['./select-address.component.css']
 })
-export class SelectAddressComponent implements OnInit {
+export class SelectAddressComponent implements OnInit, OnChanges {
 
-  addresses: Address[] = [];
+  addresses: Address[];
   @Input() ownerId: number;
   @Input() address: Address;
   selectItems: SelectItem[] = [];
@@ -23,7 +23,18 @@ export class SelectAddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAddresses();
+    if (this.ownerId == null){
+      this.selectItems = [];
+      this.getAllAddresses();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const ownerId: SimpleChange = changes.ownerId;
+    if (ownerId !== null){
+      this.selectItems = [];
+      this.getAddresses();
+    }
   }
 
   private fillSelectItems(address: Address) {
@@ -66,6 +77,14 @@ export class SelectAddressComponent implements OnInit {
   }
 
   getAddresses(): void {
+    this.addressService.getAddressesByOwner(this.ownerId)
+      .subscribe(addresses => {
+        this.addresses = addresses;
+        this.addresses.forEach(address => this.fillSelectItems(address));
+      });
+  }
+
+  getAllAddresses():void{
     this.addressService.getAddresses()
       .subscribe(addresses => {
         this.addresses = addresses;

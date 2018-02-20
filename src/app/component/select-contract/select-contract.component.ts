@@ -24,12 +24,11 @@ export class SelectContractComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getContracts();
+    // this.getContracts();
   }
   private fillSelectItems(contract: Contract){
     this.selectItems.push({label: contract.name, value: contract});
   }
-
 
   ngOnChanges(changes: SimpleChanges): void {
     const contractor: SimpleChange = changes.contractor;

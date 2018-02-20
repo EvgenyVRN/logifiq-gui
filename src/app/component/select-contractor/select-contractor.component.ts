@@ -22,15 +22,11 @@ export class SelectContractorComponent implements OnInit {
   @Input() required: boolean;
 
   constructor(private contractorService: ContractorService) {
-    // this.contractor = new Contractor();
-    this.getContractors();
+
   }
 
   ngOnInit() {
-    // this.getContractors();
-    // if (this.contractor == null){
-    //   this.contractor = new Contractor();
-    // }
+    this.getContractors();
   }
 
   getContractors():void {
