@@ -31,7 +31,7 @@ export class SelectAddressComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const ownerId: SimpleChange = changes.ownerId;
-    if (ownerId !== null){
+    if (ownerId != null){
       this.selectItems = [];
       this.getAddresses();
     }

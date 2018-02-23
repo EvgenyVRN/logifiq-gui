@@ -59,10 +59,9 @@
               <app-select-customs [(customs)]="consignment.consignorCustoms" [required]="false"></app-select-customs>
 
               <div class="ui-float-label">
-                  <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [required]="true"></p-calendar>
+                  <p-calendar id="sendingDate" [(ngModel)]="consignment.sendingDate" name="sending date" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [required]="true" dateFormat="dd.mm.yy"></p-calendar>
                   <label for="sendingDate">Sending date</label>
               </div>
-
             </div>
             <div class="col-md-3">
               <app-select-contractor contractorType="Consignee"
@@ -279,10 +278,10 @@
         </div>
       </div>
       <div class="btns-arrival">
-        <input (click)="submit($event)" type="submit" value="Save" [disabled]="myForm.form.invalid">
+        <input (click)="submit($event)" type="submit" value="{{ consignment.id == null ?  'Save' : 'Update' }}" [disabled]="myForm.form.invalid">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Cancel">
-        <input type="reset" value="Reset">
+        <input type="submit" value="Cancel" >
+        <input type="submit" value="Reset" (click)="reset($event)">
       </div>
     </form>
   </div>

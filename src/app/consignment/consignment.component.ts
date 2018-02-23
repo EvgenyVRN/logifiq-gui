@@ -27,6 +27,7 @@ export class ConsignmentComponent implements AfterViewInit{
   dld = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
+  testDate: Date;
 
   constructor(
     private consignmentService: ConsignmentService,
@@ -49,6 +50,7 @@ export class ConsignmentComponent implements AfterViewInit{
     this.consignmentService.getConsignment(id)
       .subscribe(consignment => {
         this.consignment = consignment;
+        this.consignment.sendingDate = new Date(+this.consignment.sendingDate);
         console.log(this.consignment);
       });
 
@@ -125,6 +127,10 @@ export class ConsignmentComponent implements AfterViewInit{
         this.consignment.goodsInConsignment.push(g);
     });
   });
+  }
+
+  reset():void{
+    this.consignment = new Consignment;
   }
 
 }

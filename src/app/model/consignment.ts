@@ -20,7 +20,7 @@ export class Consignment {
   consignor: Contractor;
   consignorAddress: Address;
   consignorCustoms: Customs;
-  sendingDate: string;
+  sendingDate: Date;
   otherConsignorAddress: Address;
   consignee: Contractor;
   consigneeAddress: Address;

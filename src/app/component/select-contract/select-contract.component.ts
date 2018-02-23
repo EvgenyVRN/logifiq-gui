@@ -9,7 +9,7 @@ import {SelectItem} from "primeng/api";
   templateUrl: './select-contract.component.html',
   styleUrls: ['./select-contract.component.css']
 })
-export class SelectContractComponent implements OnInit, OnChanges {
+export class SelectContractComponent implements OnInit{
   public contracts : Contract[] = [];
   @Input() contract: Contract;
   @Output() contractChange = new EventEmitter();
@@ -24,19 +24,11 @@ export class SelectContractComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // this.getContracts();
+    this.getContracts();
   }
   private fillSelectItems(contract: Contract){
     this.selectItems.push({label: contract.name, value: contract});
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const contractor: SimpleChange = changes.contractor;
-    if (contractor !== null){
-      this.getContracts();
-    }
-  }
-
 
   getContracts():void {
     if (this.contractor == null){
