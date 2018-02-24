@@ -41,12 +41,13 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private contractService : ContractService
   ) {
   }
 
   ngAfterViewInit(){
+    console.log('consignment after view init');
     this.getConsignment();
+    console.log('consignment after view init end');
   }
 
 

@@ -14,7 +14,8 @@ export class SelectContractComponent implements OnChanges{
   @Input() contract: Contract;
   @Output() contractChange = new EventEmitter();
   @Input() contractor: Contractor;
-  selectItems: SelectItem[];
+  selectItems: SelectItem[] = [];
+  selectedItem: Contract;
 
   @Input() disabled: boolean;
   @Input() required: boolean;
@@ -23,25 +24,24 @@ export class SelectContractComponent implements OnChanges{
     private contractService: ContractService) {
   }
 
-
   ngOnChanges(changes: SimpleChanges): void {
-    this.getAllContracts();
+    console.log('select contract on changes');
     const contractor: SimpleChange = changes.contractor;
-    this.selectItems = [];
     if (contractor != null && contractor.currentValue != null){
       this.getContractsByContractor();
+    } else {
+      this.getAllContracts();
     }
-  }
-
-  private fillSelectItems(contract: Contract){
-    this.selectItems.push({label: contract.name, value: contract});
+    console.log('select contract on changes end');
   }
 
   getContractsByContractor():void {
     this.contractService.getContractsByContractor(this.contractor.id)
       .subscribe(contracts => {
         this.contracts = contracts;
-        this.contracts.forEach(c => this.fillSelectItems(c));
+        this.fillSelectItems();
+        console.log('before assign selected item');
+        this.selectedItem = this.contract;
       });
   }
 
@@ -49,12 +49,20 @@ export class SelectContractComponent implements OnChanges{
     this.contractService.getContracts()
       .subscribe(contracts => {
         this.contracts = contracts;
-        this.contracts.forEach(c => this.fillSelectItems(c));
+        this.fillSelectItems();
+        console.log('before assign selected item');
+        this.selectedItem = this.contract;
       });
   }
 
   public onContractSelect(){
-    this.contractChange.emit(this.contract);
+    this.contractChange.emit(this.selectedItem);
+  }
+
+  fillSelectItems():void{
+    console.log('filling select items');
+    this.contracts.forEach(c => this.selectItems.push({label: c.name, value: c}));
+    console.log('filling select items end');
   }
 
 }

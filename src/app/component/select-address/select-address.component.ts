@@ -18,17 +18,17 @@ export class SelectAddressComponent implements OnInit, OnChanges {
   @Output() addressChange= new EventEmitter();
   @Input() required: boolean;
 
+  selectedItem: Address;
+
   constructor( private addressService: AddressService ) {
     // this.address = new Address();
   }
 
   ngOnInit() {
-    this.getAllAddresses();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     const ownerId: SimpleChange = changes.ownerId;
-    this.selectItems = [];
     if (ownerId != null && ownerId.currentValue != null){
       this.getAddresses();
     } else {
@@ -45,6 +45,7 @@ export class SelectAddressComponent implements OnInit, OnChanges {
       .subscribe(addresses => {
         this.addresses = addresses;
         this.addresses.forEach(address => this.fillSelectItems(address));
+        this.selectedItem = this.address;
       });
   }
 
@@ -53,11 +54,12 @@ export class SelectAddressComponent implements OnInit, OnChanges {
       .subscribe(addresses => {
         this.addresses = addresses;
         this.addresses.forEach(address => this.fillSelectItems(address));
+        this.selectedItem = this.address;
       });
   }
 
   public onAddressChange():void {
-    this.addressChange.emit(this.address);
+    this.addressChange.emit(this.selectedItem);
   }
 
   private getFullAddress(address: Address):string{

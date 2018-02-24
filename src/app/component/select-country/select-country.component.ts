@@ -17,8 +17,6 @@ export class SelectCountryComponent implements OnInit {
 
   constructor(
     private countryService: CountryService) {
-    // this.country = new Country;
-    this.getCountries();
   }
 
   ngOnInit() {
@@ -41,12 +39,12 @@ export class SelectCountryComponent implements OnInit {
     this.countryService.getCountries()
       .subscribe(countries => {
         this.countries = countries;
-        this.countries.forEach(c => this.fillSelectItems(c));
+        this.fillSelectItems();
       });
   }
 
-  private fillSelectItems(country: Country){
-    this.selectItems.push({label: country.country, value: country});
+  fillSelectItems():void{
+    this.countries.forEach(c => this.selectItems.push({label: c.country, value: c}));
   }
 
   public onCountryChange(value:any){

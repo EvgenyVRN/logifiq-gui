@@ -1,32 +1,32 @@
 <div class="form-group ui-float-label">
-  <p-dropdown [options]="selectItems" [(ngModel)]="address" [filter]="true" (onChange)="onAddressChange()"
+  <p-dropdown [options]="selectItems" [(ngModel)]="selectedItem" [filter]="true" (onChange)="onAddressChange()"
               [style]="{'width':'100%'}" id="address" placeholder="Select a address" name="address" [required]="required"></p-dropdown>
   <label for="address" [hidden]="address == null">Address</label>
 </div>
 
 
 <div class="form-group ui-float-label">
-	<input pInputText [ngModel]="address?.apt" (ngModelChange)="onAptChange($event)" name="Building" id="building" [required]="required"/>
+	<input pInputText [ngModel]="selectedItem?.apt" (ngModelChange)="onAptChange($event)" name="Building" id="building" [required]="required"/>
   <label for="building">Building</label>
 </div>
 
 <div class="form-group ui-float-label">
-	<input pInputText [ngModel]="address?.street" (ngModelChange)="onStreetChange($event)" id="street" name="Street" [required]="required"/>
+	<input pInputText [ngModel]="selectedItem?.street" (ngModelChange)="onStreetChange($event)" id="street" name="Street" [required]="required"/>
   <label for="street">Street</label>
 </div>
 
 <div class="form-group ui-float-label">
-	<input pInputText [ngModel]="address?.index" (ngModelChange)="onIndexChange($event)" id="zip" name="Zip" [required]="required"/>
+	<input pInputText [ngModel]="selectedItem?.index" (ngModelChange)="onIndexChange($event)" id="zip" name="Zip" [required]="required"/>
   <label for="zip">ZIP</label>
 </div>
 
 <div class="form-group ui-float-label">
-	<input pInputText [ngModel]="address?.city" (ngModelChange)="onCityChange($event)" id="city" name="City" [required]="required"/>
+	<input pInputText [ngModel]="selectedItem?.city" (ngModelChange)="onCityChange($event)" id="city" name="City" [required]="required"/>
   <label for="city">City</label>
 </div>
 
 <div class="form-group">
-<app-select-country [country]="address?.country" (countryChange)="onCountryChange($event)" [required]="required"></app-select-country>
+<app-select-country [country]="selectedItem?.country" (countryChange)="onCountryChange($event)" [required]="required"></app-select-country>
 
 </div>
 
