@@ -32,7 +32,7 @@ import {CountryService} from "./service/country.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { OrderModalComponent } from './component/order-modal/order-modal.component';
 import { GisModalComponent } from './component/gis-modal/gis-modal.component';
-import {CalendarModule, CheckboxModule, DropdownModule, InputTextModule } from "primeng/primeng";
+import {CalendarModule, CheckboxModule, DropdownModule, InputTextModule, SplitButtonModule} from "primeng/primeng";
 import {CommonModule} from "@angular/common";
 import {MatDialogModule} from "@angular/material";
 
@@ -72,7 +72,8 @@ import {MatDialogModule} from "@angular/material";
     CommonModule,
     DropdownModule,
     CalendarModule,
-    CheckboxModule
+    CheckboxModule,
+    SplitButtonModule
   ],
   providers: [ConsignmentService, ContractorService, AddressService, CustomsService, GoodService, UnitService, ContractService,
   OrderService, GoodInStockService, CountryService],

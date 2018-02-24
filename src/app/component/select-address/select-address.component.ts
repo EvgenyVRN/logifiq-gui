@@ -23,57 +23,21 @@ export class SelectAddressComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.ownerId == null){
-      this.selectItems = [];
-      this.getAllAddresses();
-    }
+    this.getAllAddresses();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     const ownerId: SimpleChange = changes.ownerId;
-    if (ownerId != null){
-      this.selectItems = [];
+    this.selectItems = [];
+    if (ownerId != null && ownerId.currentValue != null){
       this.getAddresses();
+    } else {
+      this.getAllAddresses();
     }
   }
 
   private fillSelectItems(address: Address) {
     this.selectItems.push({label: this.getFullAddress(address), value: address});
-  }
-
-  getMockAddresses(): void{
-    let russia = new Country();
-    russia.id = 10000001;
-    russia.country = "Russia";
-    russia.alpha2 = "RU";
-    let germany = new Country();
-    germany.id = 10000002;
-    germany.country = "Germany";
-    germany.alpha2 = "GR";
-    const a1 = new Address();
-    a1.id = 10000001;
-    a1.apt = '10';
-    a1.city = 'Voronehhhhh';
-    a1.country = russia;
-    a1.region = 'Voronezhskaya obk.';
-    a1.street = 'Leningradskaya';
-    const a2 = new Address();
-    a2.id = 10000002;
-    a2.apt = '10';
-    a2.city = 'Voronezzzzz';
-    a2.country = russia;
-    a2.region = 'Voronezhskaya obk.';
-    a2.street = 'Leningradskaya';
-    const a3 = new Address();
-    a3.id = 10000005;
-    a3.apt = '66';
-    a3.city = 'Moscow';
-    a3.index = "0000007";
-    a3.country = germany;
-    a3.region = 'Moscow obl.';
-    a3.street = 'Red Square';
-    this.addresses.push(a1, a2, a3);
-
   }
 
   getAddresses(): void {

@@ -13,6 +13,9 @@ import {Address} from "../model/address";
 import {ContractorService} from "../service/contractor.service";
 import {Contractor} from "../model/contractor";
 import {FormGroup} from "@angular/forms";
+import {Contract} from "../model/contract";
+import {ContractService} from "../service/contract.service";
+import {MenuItem, SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-consignment',
@@ -20,24 +23,43 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./consignment.component.css']
 })
 
-export class ConsignmentComponent implements AfterViewInit{
+export class ConsignmentComponent implements AfterViewInit, OnInit{
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
   dld = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
-  testDate: Date;
+  reportItems: MenuItem[] = [
+    {label: 'CMR', command:() => {
+      this.cmr();
+    }}
+  ];
+
 
   constructor(
     private consignmentService: ConsignmentService,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private contractService : ContractService
   ) {
   }
 
   ngAfterViewInit(){
     this.getConsignment();
+  }
+
+
+  ngOnInit(): void {
+
+  }
+
+  cmr():void{
+
+  }
+
+  tirCarnet():void{
+
   }
 
   getConsignment(): void {

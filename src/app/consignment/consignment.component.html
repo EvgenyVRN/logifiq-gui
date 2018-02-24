@@ -69,10 +69,10 @@
               <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true" [ownerId]="null">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.finalDestination">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.finalDestination" [ownerId]="null">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.finalDestinationCustoms"></app-select-customs>
             </div>
           </div>
@@ -282,6 +282,8 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Cancel" >
         <input type="submit" value="Reset" (click)="reset($event)">
+        <input value="TIR CARNET" (onClick)="tirCarnet()" type="submit">
+        <input value="CMR" (onClick)="cmr()" type="submit">
       </div>
     </form>
   </div>

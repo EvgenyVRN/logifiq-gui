@@ -18,6 +18,7 @@ export class SelectCountryComponent implements OnInit {
   constructor(
     private countryService: CountryService) {
     // this.country = new Country;
+    this.getCountries();
   }
 
   ngOnInit() {

@@ -9,33 +9,44 @@ import {SelectItem} from "primeng/api";
   templateUrl: './select-contract.component.html',
   styleUrls: ['./select-contract.component.css']
 })
-export class SelectContractComponent implements OnInit{
+export class SelectContractComponent implements OnChanges{
   public contracts : Contract[] = [];
   @Input() contract: Contract;
   @Output() contractChange = new EventEmitter();
   @Input() contractor: Contractor;
+  selectItems: SelectItem[];
+
   @Input() disabled: boolean;
-  selectItems: SelectItem[] = [];
   @Input() required: boolean;
 
   constructor(
     private contractService: ContractService) {
-    // this.contract = new Contract;
   }
 
-  ngOnInit() {
-    this.getContracts();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getAllContracts();
+    const contractor: SimpleChange = changes.contractor;
+    this.selectItems = [];
+    if (contractor != null && contractor.currentValue != null){
+      this.getContractsByContractor();
+    }
   }
+
   private fillSelectItems(contract: Contract){
     this.selectItems.push({label: contract.name, value: contract});
   }
 
-  getContracts():void {
-    if (this.contractor == null){
-      return;
-    }
-
+  getContractsByContractor():void {
     this.contractService.getContractsByContractor(this.contractor.id)
+      .subscribe(contracts => {
+        this.contracts = contracts;
+        this.contracts.forEach(c => this.fillSelectItems(c));
+      });
+  }
+
+  getAllContracts():void{
+    this.contractService.getContracts()
       .subscribe(contracts => {
         this.contracts = contracts;
         this.contracts.forEach(c => this.fillSelectItems(c));
