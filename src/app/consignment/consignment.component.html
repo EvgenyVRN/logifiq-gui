@@ -281,7 +281,7 @@
         <input (click)="submit($event)" type="submit" value="{{ consignment.id == null ?  'Save' : 'Update' }}" [disabled]="myForm.form.invalid">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Cancel" >
-        <input type="submit" value="Reset" (click)="reset($event)">
+        <input type="submit" value="Reset" (click)="reset()">
         <input value="TIR CARNET" (onClick)="tirCarnet()" type="submit">
         <input value="CMR" (onClick)="cmr()" type="submit">
       </div>
