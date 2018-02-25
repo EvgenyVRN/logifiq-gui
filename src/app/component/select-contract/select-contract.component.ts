@@ -17,7 +17,7 @@ export class SelectContractComponent implements OnChanges{
   selectItems: SelectItem[] = [];
   selectedItem: Contract;
 
-  @Input() disabled: boolean;
+  @Input() disabled = false;
   @Input() required: boolean;
 
   constructor(

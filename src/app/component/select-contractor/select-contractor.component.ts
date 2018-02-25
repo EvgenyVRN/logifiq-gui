@@ -20,6 +20,7 @@ export class SelectContractorComponent implements OnInit {
   @Output() contractorChange = new EventEmitter();
   selectItems: SelectItem[];
   @Input() required: boolean;
+  @Input() disabled = false;
 
   constructor(private contractorService: ContractorService) {
 

@@ -1,7 +1,7 @@
 <div class="form-group ui-float-label">
   <p-dropdown [options]="selectItems" [(ngModel)]="selectedItem" [filter]="true" (onChange)="onAddressChange()"
-              [style]="{'width':'100%'}" id="address" placeholder="Select a address" name="address" [required]="required"></p-dropdown>
-  <label for="address" [hidden]="address == null">Address</label>
+              [style]="{'width':'100%'}" id="address" placeholder="Select a {{ text.toLowerCase() }}" name="address" [required]="required"></p-dropdown>
+  <label for="address" [hidden]="address == null">{{ text }}</label>
 </div>
 
 

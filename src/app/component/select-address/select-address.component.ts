@@ -18,6 +18,8 @@ export class SelectAddressComponent implements OnInit, OnChanges {
   @Output() addressChange= new EventEmitter();
   @Input() required: boolean;
 
+  @Input() text: string;
+
   selectedItem: Address;
 
   constructor( private addressService: AddressService ) {

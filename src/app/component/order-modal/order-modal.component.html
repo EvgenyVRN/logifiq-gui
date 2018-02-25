@@ -3,15 +3,56 @@
     <tr>
       <td>#</td>
       <th>
-        <div class="relative ui-float-label">
-            <input pInputText size="7" id="orderId"/>
-          <label for="orderId">Order id</label>
-        </div>
+        <!--<div class="ui-float-label">-->
+            <!--<input pInputText size="7" id="orderId"/>-->
+          <!--<label for="orderId">Order id</label>-->
+        <!--</div>-->
+        ID
+      </th>
+      <th>
+        <!--<div class="ui-float-label">-->
+          <!--<input pInputText size="7" id="orderDate"/>-->
+          <!--<label for="orderDate">Order date</label>-->
+        <!--</div>-->
+        Order date
+      </th>
+      <th>
+        <!--<div class="ui-float-label">-->
+          <!--<input pInputText size="7" id="Owner"/>-->
+          <!--<label for="Owner">Owner</label>-->
+        <!--</div>-->
+        Owner
+      </th>
+      <th>
+        <!--<div class="ui-float-label">-->
+          <!--<input pInputText size="7" id="Payer"/>-->
+          <!--<label for="Payer">Payer</label>-->
+        <!--</div>-->
+        Payer
+      </th>
+      <th>
+        <!--<div class="ui-float-label">-->
+          <!--<input pInputText size="7" id="Deliverto"/>-->
+          <!--<label for="Deliverto">Deliver to</label>-->
+        <!--</div>-->
+        Deliver to
+      </th>
+      <th>
+        <!--<div class="ui-float-label">-->
+          <!--<input pInputText size="7" id="Receiver"/>-->
+          <!--<label for="Receiver">Receiver</label>-->
+        <!--</div>-->
+        Receiver
       </th>
     </tr>
     <tr *ngFor="let o of orders; let i=index;" (click)="setClickedRow(i, o)" [class.active]="i == selectedRow">
       <td>{{ i + 1 }}</td>
       <td>{{ o.id }}</td>
+      <td>{{ o.orderDate }}</td>
+      <td>{{ o.owner.name }}</td>
+      <td>{{ o.payer.name }}</td>
+      <td>{{ o.deliverTo.name }}</td>
+      <td>{{ o.receiver.name }}</td>
     </tr>
   </table>
 </div>

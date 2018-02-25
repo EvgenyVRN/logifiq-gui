@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {GoodInStock} from "../model/good-in-stock";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
@@ -19,8 +19,9 @@ export class GoodInStockService {
   }
 
   getByOrder(id: number): Observable<GoodInStock[]>{
-    return this.http.get<GoodInStock[]>(SettingsService.getFullUrl(this.url + 'for_order/' + id),
-      {headers: SettingsService.headers});
+    let params = new HttpParams().set("order", String(id));
+    return this.http.get<GoodInStock[]>(SettingsService.getFullUrl(this.url+'/byorder'),
+      {headers: SettingsService.headers, params: params});
   }
 
   /**

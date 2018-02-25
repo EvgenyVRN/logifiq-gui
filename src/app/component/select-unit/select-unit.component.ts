@@ -14,10 +14,10 @@ export class SelectUnitComponent implements OnInit {
   @Output() unitChange = new EventEmitter();
   @Input() required: boolean;
   selectItems: SelectItem[] = [];
+  selectedItem: Unit;
 
   constructor(
     private unitService: UnitService) {
-    this.unit = new Unit;
   }
 
   ngOnInit() {
@@ -29,6 +29,7 @@ export class SelectUnitComponent implements OnInit {
        .subscribe(units => {
          this.units = units;
          this.units.forEach(u => this.fillSelectItem(u));
+         this.selectedItem = this.unit;
        });
   }
 
@@ -37,6 +38,6 @@ export class SelectUnitComponent implements OnInit {
   }
 
   onItemSelect(){
-    this.unitChange.emit(this.unit);
+    this.unitChange.emit(this.selectedItem);
   }
 }

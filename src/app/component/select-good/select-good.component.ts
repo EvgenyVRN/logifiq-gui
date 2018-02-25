@@ -14,6 +14,7 @@ export class SelectGoodComponent implements OnInit {
   @Output() goodChange = new EventEmitter();
   @Input() required: boolean;
   selectItems: SelectItem[] = [];
+  selectedItem: Good;
 
   constructor(
     private goodService: GoodService) {
@@ -28,11 +29,12 @@ export class SelectGoodComponent implements OnInit {
        .subscribe(goods => {
          this.goods = goods;
          this.goods.forEach( g => this.fillSelectItem(g));
+         this.selectedItem = this.good;
        });
   }
 
   onItemSelect(){
-    this.goodChange.emit(this.good);
+    this.goodChange.emit(this.selectedItem);
   }
 
   private fillSelectItem(good: Good){

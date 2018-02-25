@@ -16,6 +16,7 @@ import {FormGroup} from "@angular/forms";
 import {Contract} from "../model/contract";
 import {ContractService} from "../service/contract.service";
 import {MenuItem, SelectItem} from "primeng/api";
+import {GoodInStockService} from "../service/good-in-stock.service";
 
 @Component({
   selector: 'app-consignment',
@@ -30,15 +31,11 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
   dld = false;
   order: Order;
   chosenGoods: GoodInStock[] = [];
-  reportItems: MenuItem[] = [
-    {label: 'CMR', command:() => {
-      this.cmr();
-    }}
-  ];
-
+  allGis: GoodInStock[] = [];
 
   constructor(
     private consignmentService: ConsignmentService,
+    private gisService: GoodInStockService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
   ) {
@@ -119,26 +116,34 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
 
   showOrderModal(){
     let dialogRef = this.dialog.open(OrderModalComponent, {
-      width: '700px',
+      width: '750px',
       height: '500px',
       data: { order: this.order }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.order = result;
+      this.consignment.goodsHolder = this.order.owner;
+      this.consignment.costPayer = this.order.payer;
+      this.consignment.costPayerContract = this.order.contract;
+      this.consignment.consignor = this.order.deliverTo;
+      this.consignment.consignee = this.order.receiver;
+      this.consignment.vehicleRegNum = this.order.vehicleId;
+      this.consignment.trailerRegNum = this.order.trailerId;
+      this.gisService.getByOrder(this.order.id).subscribe(goods => {
+        this.allGis = goods;
+      });
     });
   }
 
   showGisModal(){
     let dialogRef = this.dialog.open(GisModalComponent, {
-      width: '700px',
+      width: '750px',
       height: '500px',
-      data: { goods: this.order.goodsInStock, chosenGoods: this.chosenGoods }
+      data: { goods: this.allGis, chosenGoods: this.chosenGoods }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       result.forEach(good =>{
         let g = new GoodInConsignment;
         g.good = good.good;

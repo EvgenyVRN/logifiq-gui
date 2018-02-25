@@ -3,15 +3,28 @@
     <tr>
       <td>#</td>
       <th>
-        <div class="relative ui-float-lable">
-            <input pInputText size="7" id="goodId"/>
-            <label for="goodId">Good Id</label>
-        </div>
+        <!--<div class="relative ui-float-lable">-->
+            <!--<input pInputText size="7" id="goodId"/>-->
+            <!--<label for="goodId">Good Id</label>-->
+        <!--</div>-->
+        ID
       </th>
+      <th>Good</th>
+      <th>Place count</th>
+      <th>Place unit</th>
+      <th>Freight weight</th>
+      <th>Weight</th>
+      <th>Volume</th>
     </tr>
     <tr *ngFor="let g of data.goods; let i=index;" (click)="setClickedRow(i, g)" [class.active]="selectedRows.indexOf(i) > -1">
       <td>{{ i + 1 }}</td>
       <td>{{ g.id }}</td>
+      <td>{{g.good?.name}}</td>
+      <td>{{g.placeCount}}</td>
+      <td>{{g.placeUnit?.name}}</td>
+      <td>{{g.freightWeight}}</td>
+      <td>{{g.weight}}</td>
+      <td>{{g.volume}}</td>
     </tr>
   </table>
 </div>

@@ -32,15 +32,15 @@
             <div class="col-md-3">
               <div class="form-group">
                 <app-select-contractor [(contractor)]="consignment.goodsHolder" contractorType="Goods holder"
-                                       *ngIf="consignment.direction === 'Export'" [required]="true"></app-select-contractor>
+                                       *ngIf="consignment.direction === 'Export'" [required]="true" [disabled]="true"></app-select-contractor>
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <app-select-contractor contractorType="Cost payer"
+                <app-select-contractor contractorType="Cost payer" [disabled]="order"
                                        [(contractor)]="consignment.costPayer" [required]="true"></app-select-contractor>
                 <app-select-contract [(contract)]="consignment.costPayerContract" [contractor]="consignment.costPayer"
-                                     *ngIf="consignment.costPayer"></app-select-contract>
+                                     *ngIf="consignment.costPayer" [disabled]="order"></app-select-contract>
               </div>
             </div>
           </div>
@@ -53,9 +53,9 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-3">
-              <app-select-contractor contractorType="Consignor"
+              <app-select-contractor contractorType="Consignor" [disabled]="order"
                                      [(contractor)]="consignment.consignor" [required]="true"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consignorAddress" [required]="true" [ownerId]="consignment.consignor?.id">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.consignorAddress" [required]="true" [ownerId]="consignment.consignor?.id" text="Consignor address">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.consignorCustoms" [required]="false"></app-select-customs>
 
               <div class="ui-float-label">
@@ -64,15 +64,15 @@
               </div>
             </div>
             <div class="col-md-3">
-              <app-select-contractor contractorType="Consignee"
+              <app-select-contractor contractorType="Consignee" [disabled]="order"
                                      [(contractor)]="consignment.consignee" [required]="true"></app-select-contractor>
-              <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id" text="Consignee address">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true" [ownerId]="null">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true" [ownerId]="null" text="Deliver to company">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.finalDestination" [ownerId]="null">Select address</app-select-address>
+              <app-select-address [(address)]="consignment.finalDestination" [ownerId]="null" text="Final destination">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.finalDestinationCustoms"></app-select-customs>
             </div>
           </div>
@@ -92,7 +92,7 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="form-group ui-float-label">
                 <input pInputText id="vrn" [(ngModel)]="consignment.vehicleRegNum" name="vehicleRegNum" required/>
                 <label for="vrn">Vehicle registration number</label>
@@ -111,7 +111,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="form-group ui-float-label">
                 <input pInputText id="avrn" [(ngModel)]="consignment.trailerRegNum" name="trailerRegNum"/>
                 <label for="avrn">Active vehicle registration number</label>
@@ -145,7 +145,7 @@
             <div class="col-md-2">
               <div class="form-group ui-float-label">
                 <input pInputText [(ngModel)]="consignment.deliveryTermsPlaces" id="dvt" name="deliveryTermsPlaces"/>
-                <label for="dvt">Places</label>
+                <label for="dvt">Place</label>
               </div>
             </div>
             <div class="col-md-3">
@@ -156,7 +156,7 @@
             <div class="col-md-2">
               <div class="form-group ui-float-label">
                 <input pInputText id="rtp" [(ngModel)]="consignment.releaseTermsPlaces" name="releaseTermsPlaces"/>
-                <label for="rtp">Places</label>
+                <label for="rtp">Place</label>
               </div>
             </div>
           </div>
