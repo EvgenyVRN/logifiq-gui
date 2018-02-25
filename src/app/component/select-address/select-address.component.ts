@@ -36,15 +36,16 @@ export class SelectAddressComponent implements OnInit, OnChanges {
     }
   }
 
-  private fillSelectItems(address: Address) {
-    this.selectItems.push({label: this.getFullAddress(address), value: address});
+  fillSelectItems():void{
+    this.selectItems = [];
+    this.addresses.forEach(a => this.selectItems.push({label: this.getFullAddress(a), value: a}));
   }
 
   getAddresses(): void {
     this.addressService.getAddressesByOwner(this.ownerId)
       .subscribe(addresses => {
         this.addresses = addresses;
-        this.addresses.forEach(address => this.fillSelectItems(address));
+        this.fillSelectItems();
         this.selectedItem = this.address;
       });
   }
@@ -53,7 +54,7 @@ export class SelectAddressComponent implements OnInit, OnChanges {
     this.addressService.getAddresses()
       .subscribe(addresses => {
         this.addresses = addresses;
-        this.addresses.forEach(address => this.fillSelectItems(address));
+        this.fillSelectItems();
         this.selectedItem = this.address;
       });
   }

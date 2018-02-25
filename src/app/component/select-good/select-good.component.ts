@@ -17,7 +17,6 @@ export class SelectGoodComponent implements OnInit {
 
   constructor(
     private goodService: GoodService) {
-    this.good = new Good;
   }
 
   ngOnInit() {

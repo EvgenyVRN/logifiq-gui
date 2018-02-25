@@ -61,6 +61,7 @@ export class SelectContractComponent implements OnChanges{
 
   fillSelectItems():void{
     console.log('filling select items');
+    this.selectItems = [];
     this.contracts.forEach(c => this.selectItems.push({label: c.name, value: c}));
     console.log('filling select items end');
   }
