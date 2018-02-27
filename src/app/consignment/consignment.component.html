@@ -69,10 +69,14 @@
               <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id" text="Consignee address">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.deliveryToCompany" [required]="true" [ownerId]="null" text="Deliver to company">Select address</app-select-address>
+              <app-select-contractor contractorType="Deliver to company" [disabled]="order"
+                                     [(contractor)]="consignment.deliveryToCompany" [required]="true"></app-select-contractor>
+              <app-select-address [(address)]="consignment.deliveryTo" [required]="true" [ownerId]="consignment.deliveryToCompany?.id" text="Deliver to">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-address [(address)]="consignment.finalDestination" [ownerId]="null" text="Final destination">Select address</app-select-address>
+              <app-select-contractor contractorType="Final destination company" [disabled]="order"
+                                     [(contractor)]="consignment.finalDestinationCompany" [required]="true"></app-select-contractor>
+              <app-select-address [(address)]="consignment.finalDestination" [ownerId]="consignment.finalDestinationCompany?.id" text="Final destination">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.finalDestinationCustoms"></app-select-customs>
             </div>
           </div>

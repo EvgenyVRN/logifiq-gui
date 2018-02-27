@@ -1,5 +1,6 @@
 import {GoodInStock} from "./good-in-stock";
 import {Contractor} from "./contractor";
+import {Contract} from "./contract";
 
 export class Order {
   id: number;

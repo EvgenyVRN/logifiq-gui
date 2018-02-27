@@ -24,8 +24,10 @@ export class Consignment {
   otherConsignorAddress: Address;
   consignee: Contractor;
   consigneeAddress: Address;
-  deliveryToCompany: Address;
+  deliveryToCompany: Contractor;
+  deliveryTo: Address;
   finalDestination: Address;
+  finalDestinationCompany: Contractor;
   finalDestinationCustoms: Customs;
   goodsHolder: Contractor;
   costPayer: Contractor;
