@@ -1,0 +1,184 @@
+<div class="wrapper">
+
+  <ul class="nav nav-tabs nav-justified">
+    <li><a href="./tirs">Browse Tirs</a></li>
+    <li class="active"><a href="#">Add New Tir Carnet</a></li>
+  </ul>
+
+  <div>
+    <form #myForm="ngForm">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group ui-float-label">
+                <input pInputText id="tirId" [(ngModel)]="tir.id" name="tirId" required/>
+                <label for="tirId">TIR Identity</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <label>Customs office(s) of departure</label>
+              <div class="form-group ui-float-label">
+                <input pInputText id="customs1" [(ngModel)]="tir.customs1" name="customs1" required/>
+                <label for="customs1">Customs office No.1</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="customs2" [(ngModel)]="tir.customs2" name="customs2"/>
+                <label for="customs2">Customs office No.2</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="customs3" [(ngModel)]="tir.customs3" name="customs3"/>
+                <label for="customs3">Customs office No.3</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div>
+                <label>Customs office(s) of destination</label>
+              </div>
+              <div class="ui-float-label">
+                <input pInputText id="destCustoms1" [(ngModel)]="tir.destCustoms1" name="destCustoms1" required/>
+                <label for="destCustoms1">Destination customs No.1</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="destCustoms2" [(ngModel)]="tir.destCustoms2" name="destCustoms2"/>
+                <label for="destCustoms2">Destination customs No.2</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="destCustoms3" [(ngModel)]="tir.destCustoms3" name="destCustoms3"/>
+                <label for="destCustoms3">Destination customs No.3</label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div>&nbsp;</div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="destCustoms1Pkgs" [(ngModel)]="tir.destCustoms1Pkgs" name="destCustoms1Pkgs" required/>
+                <label for="destCustoms1Pkgs">Pkgs</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="destCustoms2Pkgs" [(ngModel)]="tir.destCustoms2Pkgs" name="destCustoms2Pkgs"/>
+                <label for="destCustoms2Pkgs">Pkgs</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="destCustoms3Pkgs" [(ngModel)]="tir.destCustoms3Pkgs" name="destCustoms3Pkgs"/>
+                <label for="destCustoms3Pkgs">Pkgs</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="totalPkgs" [(ngModel)]="tir.totalPkgs" name="totalPkgs"/>
+                <label for="totalPkgs">Total Pkgs</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Transport</label>
+              <div class="form-group ui-float-label">
+                <input pInputText id="transportId" [(ngModel)]="tir.transportId" name="transportId" required/>
+                <label for="transportId">Transport ID</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText id="trailerId" [(ngModel)]="tir.trailerId" name="trailerId"/>
+                <label for="trailerId">Trailer ID</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.departureCountry" id="departureCountry" name="departureCountry" required/>
+                <label for="departureCountry">Departure country</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group ui-float-label">
+                <app-select-country [(country)]="tir.destinationCountry" [required]="true"></app-select-country>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.remarks" id="remarks" name="remarks"/>
+                <label for="remarks">Remarks</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <label>Documents Attached</label>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.attachments1" id="attachments1" name="attachments1"/>
+                <label for="attachments1">Manifest attachments No.1</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.attachments2" id="attachments2" name="attachments2"/>
+                <label for="attachments2">Manifest attachments No.2</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.attachments3" id="attachments3" name="attachments3"/>
+                <label for="attachments3">Manifest attachments No.3</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.attachments4" id="attachments4" name="attachments4"/>
+                <label for="attachments4">Manifest attachments No.4</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.signDate" id="signDate" name="signDate"/>
+                <label for="signDate">Sign date</label>
+              </div>
+              <div class="form-group ui-float-label">
+                <input pInputText [(ngModel)]="tir.signPlace" id="signPlace" name="signPlace"/>
+                <label for="signPlace">Sign place</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table width="95%">
+            <tr>
+              <th style="width:14%">Marks and numbers</th>
+              <th style="width:58%">Description of goods</th>
+              <th style="width:14%">Gross weight</th>
+              <th style="width:14%">Seal or id marks</th>
+            </tr>
+            <tr>
+              <td>
+                <textarea rows="25"></textarea>
+              </td>
+              <td>
+                <textarea rows="25"></textarea>
+              </td>
+              <td>
+                <textarea rows="25"></textarea>
+              </td>
+              <td>
+                <textarea rows="25"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="btns-arrival">
+        <input (click)="submit($event)" type="submit" value="{{ consignment.id == null ?  'Save' : 'Update' }}" [disabled]="myForm.form.invalid">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" value="Reset" (click)="reset()">
+        <input type="submit" value="Preview" >
+        <input type="submit" value="Print" >
+        <input type="submit" value="Email" >
+      </div>
+    </form>
+  </div>
+</div>

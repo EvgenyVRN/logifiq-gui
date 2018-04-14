@@ -35,6 +35,8 @@ import { GisModalComponent } from './component/gis-modal/gis-modal.component';
 import {CalendarModule, CheckboxModule, DropdownModule, InputTextModule, SplitButtonModule} from "primeng/primeng";
 import {CommonModule} from "@angular/common";
 import {MatDialogModule} from "@angular/material";
+import { TirCarnetComponent } from './component/tir-carnet/tir-carnet/tir-carnet.component';
+import { TirCarnetListComponent } from './component/tir-carnet-list/tir-carnet-list/tir-carnet-list.component';
 
 
 
@@ -57,7 +59,9 @@ import {MatDialogModule} from "@angular/material";
     SelectCountryComponent,
     ConsignmentFilterPipe,
     OrderModalComponent,
-    GisModalComponent
+    GisModalComponent,
+    TirCarnetComponent,
+    TirCarnetListComponent
   ],
   imports: [
     BrowserModule,

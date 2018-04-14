@@ -25,14 +25,12 @@ export class SelectContractComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('select contract on changes');
     const contractor: SimpleChange = changes.contractor;
     if (contractor != null && contractor.currentValue != null){
       this.getContractsByContractor();
     } else {
       this.getAllContracts();
     }
-    console.log('select contract on changes end');
   }
 
   getContractsByContractor():void {
@@ -40,7 +38,6 @@ export class SelectContractComponent implements OnChanges{
       .subscribe(contracts => {
         this.contracts = contracts;
         this.fillSelectItems();
-        console.log('before assign selected item');
         this.selectedItem = this.contract;
       });
   }
@@ -50,7 +47,6 @@ export class SelectContractComponent implements OnChanges{
       .subscribe(contracts => {
         this.contracts = contracts;
         this.fillSelectItems();
-        console.log('before assign selected item');
         this.selectedItem = this.contract;
       });
   }
@@ -60,10 +56,8 @@ export class SelectContractComponent implements OnChanges{
   }
 
   fillSelectItems():void{
-    console.log('filling select items');
     this.selectItems = [];
     this.contracts.forEach(c => this.selectItems.push({label: c.name, value: c}));
-    console.log('filling select items end');
   }
 
 }

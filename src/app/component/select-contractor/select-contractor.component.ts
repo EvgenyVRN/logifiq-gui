@@ -39,19 +39,6 @@ export class SelectContractorComponent implements OnInit {
        });
   }
 
-  getMockContractors():void {
-    const c1 = new Contractor();
-    c1.id = 1;
-    c1.name = "Contractor1";
-    const c2 = new Contractor();
-    c2.id = 2;
-    c2.name = "Contractor2";
-    const c3 = new Contractor();
-    c3.id = 3;
-    c3.name = "Contractor3";
-    this.contractors.push(c1, c2, c3);
-  }
-
   private fillSelectItems(contractor: Contractor){
     this.selectItems.push({label: contractor.name, value: contractor});
   }

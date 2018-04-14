@@ -1,6 +1,9 @@
 import { Consignment } from '../model/consignment';
 import { ConsignmentService } from '../service/consignment.service';
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {
+  AfterViewInit, Component, DoCheck, KeyValueDiffers, OnChanges, OnInit, SimpleChange,
+  SimpleChanges
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {GoodInStock} from "../model/good-in-stock";
 import {GoodInConsignment} from "../model/goodinconsignment";
@@ -24,7 +27,7 @@ import {GoodInStockService} from "../service/good-in-stock.service";
   styleUrls: ['./consignment.component.css']
 })
 
-export class ConsignmentComponent implements AfterViewInit, OnInit{
+export class ConsignmentComponent implements AfterViewInit, DoCheck{
 
   consignment: Consignment = new Consignment();
   gis: GoodInStock[];
@@ -32,32 +35,52 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
   order: Order;
   chosenGoods: GoodInStock[] = [];
   allGis: GoodInStock[] = [];
+  differ: any;
 
   constructor(
     private consignmentService: ConsignmentService,
     private gisService: GoodInStockService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    differs: KeyValueDiffers
   ) {
+    this.differ = differs.find([]).create();
   }
 
   ngAfterViewInit(){
-    console.log('consignment after view init');
     this.getConsignment();
-    console.log('consignment after view init end');
   }
 
-
-  ngOnInit(): void {
-
-  }
 
   cmr():void{
 
   }
 
   tirCarnet():void{
+    window.location.href = '/tir';
+  }
 
+  ngDoCheck(){
+    let changes = this.differ.diff(this.consignment);
+    if (changes){
+      changes.forEachChangedItem((item) => {
+        if (item.key === 'consignee'){
+          this.consignment.consigneeAddress = null;
+        }
+        if (item.key === 'consignor'){
+          this.consignment.consignorAddress = null;
+        }
+        if (item.key === 'deliveryToCompany'){
+          this.consignment.deliveryTo = null;
+        }
+        if (item.key === 'finalDestinationCompany'){
+          this.consignment.finalDestination = null;
+        }
+        if (item.key === 'costPayer'){
+          this.consignment.costPayerContract = null;
+        }
+      });
+    }
   }
 
   getConsignment(): void {
@@ -79,9 +102,14 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
   }
 
   public submit(value: any): void {
-    this.consignmentService.createConsignment(this.consignment).subscribe(c => this.consignment = c);
+    if (this.consignment.id == null){
+      this.consignmentService.createConsignment(this.consignment).subscribe(c => this.consignment = c);
+    } else {
+      this.consignmentService.updateConsignment(this.consignment).subscribe(c => this.consignment = c);
+    }
+
     console.log('submit consignment: ', this.consignment);
-    // window.location.href = '/consignments';
+    window.location.href = '/consignments';
   }
 
   public addRow(event){
@@ -128,6 +156,8 @@ export class ConsignmentComponent implements AfterViewInit, OnInit{
       this.consignment.costPayerContract = this.order.contract;
       this.consignment.consignor = this.order.deliverTo;
       this.consignment.consignee = this.order.receiver;
+      this.consignment.consignorAddress = this.order.deliveryAddress;
+      this.consignment.consigneeAddress = this.order.receiverAddress;
       this.consignment.vehicleRegNum = this.order.vehicleId;
       this.consignment.trailerRegNum = this.order.trailerId;
       this.gisService.getByOrder(this.order.id).subscribe(goods => {

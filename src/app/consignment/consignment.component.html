@@ -69,12 +69,12 @@
               <app-select-address [(address)]="consignment.consigneeAddress" [required]="true" [ownerId]="consignment.consignee?.id" text="Consignee address">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-contractor contractorType="Deliver to company" [disabled]="order"
+              <app-select-contractor contractorType="Deliver to company"
                                      [(contractor)]="consignment.deliveryToCompany" [required]="true"></app-select-contractor>
               <app-select-address [(address)]="consignment.deliveryTo" [required]="true" [ownerId]="consignment.deliveryToCompany?.id" text="Deliver to">Select address</app-select-address>
             </div>
             <div class="col-md-3">
-              <app-select-contractor contractorType="Final destination company" [disabled]="order"
+              <app-select-contractor contractorType="Final destination company"
                                      [(contractor)]="consignment.finalDestinationCompany" [required]="true"></app-select-contractor>
               <app-select-address [(address)]="consignment.finalDestination" [ownerId]="consignment.finalDestinationCompany?.id" text="Final destination">Select address</app-select-address>
               <app-select-customs [(customs)]="consignment.finalDestinationCustoms"></app-select-customs>
@@ -286,8 +286,8 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Cancel" >
         <input type="submit" value="Reset" (click)="reset()">
-        <input value="TIR CARNET" (onClick)="tirCarnet()" type="submit">
-        <input value="CMR" (onClick)="cmr()" type="submit">
+        <input value="TIR CARNET" (click)="tirCarnet()" type="submit">
+        <input value="CMR" (click)="cmr()" type="submit">
       </div>
     </form>
   </div>
